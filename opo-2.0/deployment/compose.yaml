@@ -1,0 +1,20 @@
+services:
+  opo:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    ports:
+      - "127.0.0.1:3200:3200"
+    environment:
+      OPO_MODE: sandbox
+      OPO_ORIGIN: http://127.0.0.1:3200
+    volumes:
+      - opo-data:/app/database/runtime
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3200/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  opo-data:
