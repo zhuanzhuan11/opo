@@ -8,9 +8,28 @@ services:
     environment:
       OPO_MODE: sandbox
       OPO_ORIGIN: http://127.0.0.1:3200
+      OPO_MFA_KEY_FILE: /run/secrets/mfa-key
+    secrets:
+      - mfa-key
     volumes:
       - opo-data:/app/database/runtime
     restart: unless-stopped
+    init: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 128
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '3'
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3200/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
       interval: 30s
@@ -18,3 +37,7 @@ services:
       retries: 3
 volumes:
   opo-data:
+secrets:
+  mfa-key:
+    file: ../.secrets/mfa-key
+

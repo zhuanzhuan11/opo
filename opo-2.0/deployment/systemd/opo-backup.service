@@ -1,0 +1,18 @@
+[Unit]
+Description=OPO encrypted consistent database backup
+
+[Service]
+Type=oneshot
+User=opo
+Group=opo
+WorkingDirectory=/opt/opo/current/opo-2.0
+Environment=OPO_DATABASE=/var/lib/opo/opo.db
+Environment=OPO_BACKUP_DIR=/var/lib/opo/backups-encrypted
+Environment=OPO_BACKUP_KEY_FILE=/etc/opo/backup-key
+ExecStart=/usr/bin/node scripts/backup-encrypted.mjs
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/opo

@@ -1,0 +1,10 @@
+# Run together with compose.yaml after local administrator/MFA enrollment.
+services:
+  opo:
+    environment:
+      OPO_MODE: catalog
+      OPO_ORIGIN: ${OPO_ORIGIN:?Set the exact HTTPS origin}
+      OPO_OPERATOR_NAME: ${OPO_OPERATOR_NAME:?Set the real operator name}
+      OPO_SUPPORT_EMAIL: ${OPO_SUPPORT_EMAIL:?Set the public support email}
+      OPO_INQUIRY_RETENTION_DAYS: ${OPO_INQUIRY_RETENTION_DAYS:-30}
+      OPO_TRUSTED_PROXIES: ${OPO_TRUSTED_PROXIES:?Set exact trusted proxy IP addresses}

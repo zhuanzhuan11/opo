@@ -10,3 +10,7 @@ backups/
 test-results/
 .DS_Store
 *.log
+
+
+.secrets/
+!.env.catalog.example
