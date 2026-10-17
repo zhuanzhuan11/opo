@@ -5,14 +5,18 @@ import {randomBytes} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {openDatabase,root,transaction} from './database.mjs';
 import {Domain,id,hash,fail,text,integer} from './domain.mjs';
+import {reconcile} from './reconcile.mjs';
+import {rateLimit,validateOrigin} from './security.mjs';
+import {mfaEnabled,verifyMfa,beginEnrollment,confirmEnrollment,mfaKeyConfigured} from './mfa.mjs';
 
 export function createApp({db=openDatabase(process.env.OPO_DATABASE),sandbox=process.env.OPO_MODE!=='production',now=()=>Date.now()}={}){
- const d=new Domain(db,{sandbox,now});const attempts=new Map();let origin=process.env.OPO_ORIGIN||null;
+ const d=new Domain(db,{sandbox,now});let origin=validateOrigin(process.env.OPO_ORIGIN);
  const server=http.createServer(async(req,res)=>{
  let status=200;let headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','X-Frame-Options':'DENY','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"};
- const send=(body,code=status)=>{res.writeHead(code,headers);res.end(JSON.stringify(body))};
+ const send=(body,code=status)=>{if(res.destroyed||res.writableEnded)return;res.writeHead(code,headers);res.end(JSON.stringify(body))};
  try{
   const url=new URL(req.url,'http://localhost');const p=url.pathname;const method=req.method;
+  if(origin?.startsWith('https:'))headers['Strict-Transport-Security']='max-age=31536000';
   if(!p.startsWith('/api/')){
    if(method!=='GET'&&method!=='HEAD')fail('METHOD_NOT_ALLOWED',405);
    let file=resolve(root,'frontend','.'+decodeURIComponent(p==='/'?'/index.html':p));const allowed=resolve(root,'frontend')+sep;
@@ -22,36 +26,44 @@ export function createApp({db=openDatabase(process.env.OPO_DATABASE),sandbox=pro
   }
   if(!['GET','POST'].includes(method))fail('METHOD_NOT_ALLOWED',405);
   let b={};if(method==='POST'){
+   rateLimit(db,'mutations',req.socket.remoteAddress,180,60000,now());
    const expected=origin||`http://127.0.0.1:${server.address().port}`;
    if(req.headers.origin!==expected)fail('ORIGIN_REJECTED',403);
    if(!req.headers['content-type']?.startsWith('application/json'))fail('JSON_REQUIRED',415);
+   if(Number(req.headers['content-length'])>64000)fail('REQUEST_TOO_LARGE',413);
    let size=0,chunks=[];for await(const part of req){size+=part.length;if(size>64000)fail('REQUEST_TOO_LARGE',413);chunks.push(part)}try{b=JSON.parse(Buffer.concat(chunks).toString('utf8'))}catch{fail('INVALID_JSON')};if(!b||Array.isArray(b)||typeof b!=='object')fail('INVALID_JSON');
   }
   const cookie=(req.headers.cookie||'').split(';').map(s=>s.trim()).find(s=>s.startsWith('opo_session='))?.slice(12)||'';
   const session=d.one('SELECT * FROM sessions WHERE hash=? AND expires>?',hash(cookie),now());const u=session?d.user(session.user_id):null;
-  if(p==='/api/health')return send({ok:true,version:'2.0.0-preview.1',mode:sandbox?'sandbox':'production-disabled'});
+  if(p==='/api/health')return send({ok:true,version:'2.0.0-preview.2',mode:sandbox?'sandbox':'production-disabled'});
   if(p==='/api/products'&&method==='GET')return send(d.products());
   if(['/api/register','/api/login'].includes(p)&&method==='POST'){
-   const key=req.socket.remoteAddress;let a=attempts.get(key);if(!a||a.until<now())a={count:0,until:now()+900000};attempts.set(key,a);if(++a.count>30)fail('RATE_LIMITED',429);
-   const user=transaction(db,()=>p==='/api/register'?d.register(b):d.login(b));const token=randomBytes(32).toString('hex'),csrf=randomBytes(24).toString('hex');
-   d.run('INSERT INTO sessions VALUES(?,?,?,?)',hash(token),user.id,csrf,now()+8*3600000);headers['Set-Cookie']=`opo_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800${origin?.startsWith('https:')?'; Secure':''}`;return send({user,csrf,sandbox});
+   rateLimit(db,'auth-ip',req.socket.remoteAddress,30,900000,now());
+   if(typeof b.username==='string')rateLimit(db,'auth-account',b.username.trim().toLowerCase(),20,900000,now());
+   let verified=false;const user=transaction(db,()=>{const result=p==='/api/register'?d.register(b):d.login(b);if(result.role==='admin'&&mfaEnabled(d,result.id))verified=verifyMfa(d,result.id,b.otp);return result});const token=randomBytes(32).toString('hex'),csrf=randomBytes(24).toString('hex');
+   d.run('INSERT INTO sessions(hash,user_id,csrf,expires,mfa_verified) VALUES(?,?,?,?,?)',hash(token),user.id,csrf,now()+8*3600000,verified?1:0);headers['Set-Cookie']=`opo_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800${origin?.startsWith('https:')?'; Secure':''}`;return send({user,csrf,sandbox});
   }
   if(p==='/api/session'&&method==='GET')return send({user:u,csrf:session?.csrf||null,sandbox});
   if(!u)fail('UNAUTHORIZED',401);if(method==='POST'&&req.headers['x-csrf-token']!==session.csrf)fail('CSRF_REJECTED',403);
-  const admin=()=>{if(u.role!=='admin')fail('FORBIDDEN',403)};
-  if(p==='/api/logout'&&method==='POST'){d.run('DELETE FROM sessions WHERE hash=?',session.hash);headers['Set-Cookie']='opo_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0';return send({ok:true})}
+  const admin=()=>{if(u.role!=='admin')fail('FORBIDDEN',403);if(mfaEnabled(d,u.id)&&!session.mfa_verified)fail('MFA_REQUIRED',401)};
+  if(p==='/api/admin/security'&&method==='GET'){admin();return send({enabled:mfaEnabled(d,u.id),keyConfigured:mfaKeyConfigured()})}
+  if(p==='/api/admin/mfa/begin'&&method==='POST'){admin();rateLimit(db,'mfa',u.id,10,900000,now());return send(transaction(db,()=>beginEnrollment(d,u,b.password)))}
+  if(p==='/api/admin/mfa/confirm'&&method==='POST'){admin();rateLimit(db,'mfa',u.id,10,900000,now());return send(transaction(db,()=>confirmEnrollment(d,u,b.otp,session.hash)))}
+  if(p==='/api/logout'&&method==='POST'){d.run('DELETE FROM sessions WHERE hash=?',session.hash);headers['Set-Cookie']=`opo_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0${origin?.startsWith('https:')?'; Secure':''}`;return send({ok:true})}
   if(method==='GET'){
    if(p==='/api/cart')return send(d.cart(u.id));
    if(p==='/api/orders')return send(d.orderList(u.id,url.searchParams.get('scope')==='seller'&&u.role==='merchant'?'merchant':'customer'));
    if(p==='/api/points')return send({user:u,ledger:d.all('SELECT * FROM journal WHERE debit LIKE ? OR credit LIKE ? ORDER BY id DESC LIMIT 200',`user:${u.id}:%`,`user:${u.id}:%`),referrals:d.all('SELECT username,name,created FROM users WHERE inviter=?',u.id),subscriptions:d.all('SELECT * FROM subscriptions WHERE user_id=? ORDER BY created DESC',u.id),exchanges:d.all('SELECT * FROM exchanges WHERE user_id=? ORDER BY created DESC',u.id)});
    if(p==='/api/merchant')return send({merchant:u.merchant,products:d.products(true).filter(x=>u.role==='admin'||x.merchant_id===u.merchant?.id),jobs:d.all('SELECT id,kind,ref,status,attempts,created FROM jobs WHERE json_extract(payload,\'$.merchant\')=?',u.merchant?.id||'' )});
-   if(p==='/api/admin'){admin();return send({products:d.products(true),merchants:d.all('SELECT * FROM merchants'),orders:d.orderList(u.id,'admin'),users:d.all('SELECT id,username,name,role,inviter FROM users'),settings:d.settings(),finance:d.finance(),jobs:d.all('SELECT * FROM jobs ORDER BY created DESC'),reports:d.all('SELECT * FROM reports ORDER BY created DESC LIMIT 30').map(x=>JSON.parse(x.body)),tickets:d.all('SELECT * FROM tickets ORDER BY created DESC'),candidates:d.all('SELECT * FROM candidates ORDER BY created DESC'),audit:d.all('SELECT * FROM audit ORDER BY id DESC LIMIT 100')})}
+   if(p==='/api/admin/health'){admin();return send({reconciliation:reconcile(d),notificationsPending:d.one("SELECT COUNT(*) n FROM jobs WHERE status!='delivered'").n})}
+   if(p==='/api/admin'){admin();return send({products:d.products(true),merchants:d.all('SELECT * FROM merchants'),orders:d.orderList(u.id,'admin'),users:d.all('SELECT id,username,name,role,inviter FROM users'),settings:d.settings(),ruleProposals:d.all('SELECT * FROM rule_proposals ORDER BY created DESC LIMIT 100').map(p=>({...p,value:JSON.parse(p.value)})),finance:d.finance(),jobs:d.all('SELECT * FROM jobs ORDER BY created DESC'),reports:d.all('SELECT * FROM reports ORDER BY created DESC LIMIT 30').map(x=>JSON.parse(x.body)),tickets:d.all('SELECT * FROM tickets ORDER BY created DESC'),candidates:d.all('SELECT * FROM candidates ORDER BY created DESC'),audit:d.all('SELECT * FROM audit ORDER BY id DESC LIMIT 100')})}
    fail('NOT_FOUND',404);
   }
+  if(u.role==='admin'&&mfaEnabled(d,u.id)&&!session.mfa_verified)fail('MFA_REQUIRED',401);
   let action;
   if(p==='/api/cart')action=()=>d.setCart(u.id,b);
-  else if(p==='/api/quote')action=()=>d.quote(u.id,amountInput(b.points));
-  else if(p==='/api/checkout')action=()=>d.checkout(u.id,b);
+  else if(p==='/api/quote')action=()=>d.createCheckoutQuote(u.id,amountInput(b.points));
+  else if(p==='/api/checkout')action=()=>{text(b.quote_id);return d.checkout(u.id,b)};
   else if(p==='/api/test-credit')action=()=>d.faucet(u.id);
   else if(p==='/api/subscribe')action=()=>d.subscribe(u.id,b);
   else if(p==='/api/release')action=()=>d.release(u.id);
@@ -61,7 +73,8 @@ export function createApp({db=openDatabase(process.env.OPO_DATABASE),sandbox=pro
   else if(p==='/api/merchant/apply')action=()=>d.merchantApply(u.id,b);
   else if(p==='/api/products/save')action=()=>d.productSave(u,b);
   else if(p==='/api/admin/merchant'){admin();action=()=>d.merchantApprove(u,b)}
-  else if(p==='/api/admin/settings'){admin();action=()=>d.saveSettings(u.id,b)}
+  else if(p==='/api/admin/settings'){admin();action=()=>d.proposeRules(u.id,b)}
+  else if(p==='/api/admin/settings/review'){admin();action=()=>d.reviewRules(u.id,b)}
   else if(p==='/api/admin/report'){admin();action=()=>d.report()}
   else if(p==='/api/admin/ticket'){admin();action=()=>{const status=b.status==='closed'?'closed':'open';d.run('UPDATE tickets SET status=? WHERE id=?',status,text(b.id));d.audit(u.id,'ticket.update',b.id,{status});return {ok:true}}}
   else if(p==='/api/admin/candidate'){admin();action=()=>{const cid=id();if(!Array.isArray(b.names)||b.names.length!==3)fail('INVALID_INPUT');b.names.forEach(n=>text(n,1,100));const source=new URL(text(b.source,1,500));if(source.protocol!=='https:')fail('INVALID_SOURCE');d.run('INSERT INTO candidates VALUES(?,?,?,?,?,?,?)',cid,JSON.stringify(b.names),integer(b.cost,1,10000000),integer(b.multiplier,250,300),source.href,'pending',now());d.audit(u.id,'candidate.import',cid);return {id:cid}}}
@@ -71,7 +84,7 @@ export function createApp({db=openDatabase(process.env.OPO_DATABASE),sandbox=pro
  }catch(e){send({error:e.status?e.message:'INTERNAL_ERROR'},e.status||500);if(!e.status)console.error('Request failed:',e.name)}
  });
  server.requestTimeout=15000;server.headersTimeout=10000;
- return {server,domain:d,db,setOrigin:v=>{origin=v}};
+ return {server,domain:d,db,setOrigin:v=>{origin=validateOrigin(v)}};
 }
 function amountInput(v){if(typeof v!=='string'||!/^\d{1,9}(\.\d{1,2})?$/.test(v))fail('INVALID_AMOUNT');const [a,b='']=v.split('.');return Number(a)*100+Number(b.padEnd(2,'0'))}
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
