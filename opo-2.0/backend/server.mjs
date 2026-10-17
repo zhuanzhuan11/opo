@@ -5,51 +5,62 @@ import {randomBytes} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {openDatabase,root,transaction} from './database.mjs';
 import {Domain,id,hash,fail,text,integer} from './domain.mjs';
+import {catalogConfig,catalogProducts,submitInquiry,catalogAdmin,saveCatalogProduct,updateInquiry} from './catalog.mjs';
 import {reconcile} from './reconcile.mjs';
-import {rateLimit,validateOrigin} from './security.mjs';
+import {rateLimit,validateOrigin,clientAddress} from './security.mjs';
 import {mfaEnabled,verifyMfa,beginEnrollment,confirmEnrollment,mfaKeyConfigured} from './mfa.mjs';
 
-export function createApp({db=openDatabase(process.env.OPO_DATABASE),sandbox=process.env.OPO_MODE!=='production',now=()=>Date.now()}={}){
- const d=new Domain(db,{sandbox,now});let origin=validateOrigin(process.env.OPO_ORIGIN);
+export function createApp({db=openDatabase(process.env.OPO_DATABASE),mode=process.env.OPO_MODE||'sandbox',sandbox=mode==='sandbox',now=()=>Date.now()}={}){
+ if(!['sandbox','catalog','production'].includes(mode))throw Error('INVALID_OPO_MODE');
+ const isCatalog=mode==='catalog';
+ const d=new Domain(db,{sandbox,now});if(isCatalog)d.run('DELETE FROM catalog_inquiries WHERE expires<=?',now());let origin=validateOrigin(process.env.OPO_ORIGIN);
  const server=http.createServer(async(req,res)=>{
  let status=200;let headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','X-Frame-Options':'DENY','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"};
  const send=(body,code=status)=>{if(res.destroyed||res.writableEnded)return;res.writeHead(code,headers);res.end(JSON.stringify(body))};
  try{
-  const url=new URL(req.url,'http://localhost');const p=url.pathname;const method=req.method;
+  const url=new URL(req.url,'http://localhost');const p=url.pathname;const method=req.method;const remote=clientAddress(req);
   if(origin?.startsWith('https:'))headers['Strict-Transport-Security']='max-age=31536000';
   if(!p.startsWith('/api/')){
+   if(isCatalog){const allowedPaths=['/','/index.html','/catalog.html','/catalog-admin.html','/assets/catalog.js','/assets/catalog-admin.js','/assets/catalog.css'];if(!allowedPaths.includes(p))fail('NOT_FOUND',404);headers['Content-Security-Policy']=headers['Content-Security-Policy'].replace("img-src 'self' data:","img-src 'self' data: https:")}
    if(method!=='GET'&&method!=='HEAD')fail('METHOD_NOT_ALLOWED',405);
-   let file=resolve(root,'frontend','.'+decodeURIComponent(p==='/'?'/index.html':p));const allowed=resolve(root,'frontend')+sep;
+   let file=resolve(root,'frontend','.'+decodeURIComponent(isCatalog&&(p==='/'||p==='/index.html')?'/catalog.html':p==='/'?'/index.html':p));const allowed=resolve(root,'frontend')+sep;
    if(!file.startsWith(allowed)||!existsSync(file)||!statSync(file).isFile())fail('NOT_FOUND',404);
    const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png'};
    headers['Content-Type']=types[extname(file)]||'application/octet-stream';res.writeHead(200,headers);res.end(method==='HEAD'?undefined:readFileSync(file));return;
   }
   if(!['GET','POST'].includes(method))fail('METHOD_NOT_ALLOWED',405);
   let b={};if(method==='POST'){
-   rateLimit(db,'mutations',req.socket.remoteAddress,180,60000,now());
+   rateLimit(db,'mutations',remote,180,60000,now());
    const expected=origin||`http://127.0.0.1:${server.address().port}`;
    if(req.headers.origin!==expected)fail('ORIGIN_REJECTED',403);
    if(!req.headers['content-type']?.startsWith('application/json'))fail('JSON_REQUIRED',415);
    if(Number(req.headers['content-length'])>64000)fail('REQUEST_TOO_LARGE',413);
    let size=0,chunks=[];for await(const part of req){size+=part.length;if(size>64000)fail('REQUEST_TOO_LARGE',413);chunks.push(part)}try{b=JSON.parse(Buffer.concat(chunks).toString('utf8'))}catch{fail('INVALID_JSON')};if(!b||Array.isArray(b)||typeof b!=='object')fail('INVALID_JSON');
   }
+  if(isCatalog){
+   if(p==='/api/public/config'&&method==='GET')return send(catalogConfig());
+   if(p==='/api/public/products'&&method==='GET')return send(catalogProducts(d,{offset:Number(url.searchParams.get('offset')||0),limit:Number(url.searchParams.get('limit')||100),search:url.searchParams.get('search')||''}));
+   if(p==='/api/public/inquiries'&&method==='POST')return send(d.idem('public:'+hash(remote),req.headers['idempotency-key'],p,b,()=>submitInquiry(d,b,remote)),201);
+   if(!['/api/health','/api/session','/api/login','/api/logout','/api/admin/security','/api/admin/mfa/begin','/api/admin/mfa/confirm','/api/catalog/admin','/api/catalog/products/save','/api/catalog/inquiries/update'].includes(p))fail('FEATURE_NOT_AVAILABLE',404);
+  }
   const cookie=(req.headers.cookie||'').split(';').map(s=>s.trim()).find(s=>s.startsWith('opo_session='))?.slice(12)||'';
   const session=d.one('SELECT * FROM sessions WHERE hash=? AND expires>?',hash(cookie),now());const u=session?d.user(session.user_id):null;
-  if(p==='/api/health')return send({ok:true,version:'2.0.0-preview.2',mode:sandbox?'sandbox':'production-disabled'});
+  if(p==='/api/health')return send({ok:true,version:'2.0.0-preview.3',mode:isCatalog?'catalog':sandbox?'sandbox':'production-disabled'});
   if(p==='/api/products'&&method==='GET')return send(d.products());
   if(['/api/register','/api/login'].includes(p)&&method==='POST'){
-   rateLimit(db,'auth-ip',req.socket.remoteAddress,30,900000,now());
+   rateLimit(db,'auth-ip',remote,30,900000,now());
    if(typeof b.username==='string')rateLimit(db,'auth-account',b.username.trim().toLowerCase(),20,900000,now());
    let verified=false;const user=transaction(db,()=>{const result=p==='/api/register'?d.register(b):d.login(b);if(result.role==='admin'&&mfaEnabled(d,result.id))verified=verifyMfa(d,result.id,b.otp);return result});const token=randomBytes(32).toString('hex'),csrf=randomBytes(24).toString('hex');
    d.run('INSERT INTO sessions(hash,user_id,csrf,expires,mfa_verified) VALUES(?,?,?,?,?)',hash(token),user.id,csrf,now()+8*3600000,verified?1:0);headers['Set-Cookie']=`opo_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800${origin?.startsWith('https:')?'; Secure':''}`;return send({user,csrf,sandbox});
   }
-  if(p==='/api/session'&&method==='GET')return send({user:u,csrf:session?.csrf||null,sandbox});
+  if(p==='/api/session'&&method==='GET')return send({user:u,csrf:session?.csrf||null,sandbox,mode});
   if(!u)fail('UNAUTHORIZED',401);if(method==='POST'&&req.headers['x-csrf-token']!==session.csrf)fail('CSRF_REJECTED',403);
   const admin=()=>{if(u.role!=='admin')fail('FORBIDDEN',403);if(mfaEnabled(d,u.id)&&!session.mfa_verified)fail('MFA_REQUIRED',401)};
   if(p==='/api/admin/security'&&method==='GET'){admin();return send({enabled:mfaEnabled(d,u.id),keyConfigured:mfaKeyConfigured()})}
   if(p==='/api/admin/mfa/begin'&&method==='POST'){admin();rateLimit(db,'mfa',u.id,10,900000,now());return send(transaction(db,()=>beginEnrollment(d,u,b.password)))}
   if(p==='/api/admin/mfa/confirm'&&method==='POST'){admin();rateLimit(db,'mfa',u.id,10,900000,now());return send(transaction(db,()=>confirmEnrollment(d,u,b.otp,session.hash)))}
   if(p==='/api/logout'&&method==='POST'){d.run('DELETE FROM sessions WHERE hash=?',session.hash);headers['Set-Cookie']=`opo_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0${origin?.startsWith('https:')?'; Secure':''}`;return send({ok:true})}
+  if(isCatalog&&p.startsWith('/api/catalog/')){admin();if(!mfaEnabled(d,u.id))fail('MFA_SETUP_REQUIRED',403);if(p==='/api/catalog/admin'&&method==='GET')return send(catalogAdmin(d));if(p==='/api/catalog/products/save'&&method==='POST')return send(d.idem(u.id,req.headers['idempotency-key'],p,b,()=>saveCatalogProduct(d,u,b)));if(p==='/api/catalog/inquiries/update'&&method==='POST')return send(d.idem(u.id,req.headers['idempotency-key'],p,b,()=>updateInquiry(d,u,b)));fail('NOT_FOUND',404)}
   if(method==='GET'){
    if(p==='/api/cart')return send(d.cart(u.id));
    if(p==='/api/orders')return send(d.orderList(u.id,url.searchParams.get('scope')==='seller'&&u.role==='merchant'?'merchant':'customer'));
@@ -91,8 +102,9 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).hr
  if(process.env.OPO_MODE==='production'){console.error('Production activation is blocked: payment adapters, reserve policy, security review and operational approval are not completed.');process.exit(1)}
  const app=createApp();const port=Number(process.env.PORT||3200),host=process.env.HOST||'127.0.0.1';
  if(!['127.0.0.1','localhost'].includes(host)&&!process.env.OPO_ORIGIN){console.error('OPO_ORIGIN must be set when binding a public interface');process.exit(1)}
- app.server.listen(port,host,()=>console.log(`OPO 2.0 sandbox: http://127.0.0.1:${port}`));
- const timer=setInterval(()=>{try{app.domain.tick()}catch{console.error('Scheduled task failed')}},60000);timer.unref();
+ if(process.env.OPO_MODE==='catalog'&&!['127.0.0.1','localhost'].includes(host)){if(!process.env.OPO_ORIGIN?.startsWith('https:')||!catalogConfig().inquiriesEnabled||!mfaKeyConfigured()||!app.domain.one('SELECT user_id FROM admin_mfa')){console.error('Public catalog requires HTTPS origin, operator/contact, MFA key and an enrolled administrator.');app.db.close();process.exit(1)}}
+ app.server.listen(port,host,()=>console.log(`OPO 2.0 ${process.env.OPO_MODE||'sandbox'}: http://127.0.0.1:${port}`));
+ const timer=setInterval(()=>{try{if(process.env.OPO_MODE==='catalog')app.domain.run('DELETE FROM catalog_inquiries WHERE expires<=?',Date.now());else app.domain.tick()}catch{console.error('Scheduled task failed')}},60000);timer.unref();
  const stop=()=>{clearInterval(timer);app.server.close(()=>{app.db.close();process.exit(0)})};process.on('SIGTERM',stop);process.on('SIGINT',stop);
 }
 
