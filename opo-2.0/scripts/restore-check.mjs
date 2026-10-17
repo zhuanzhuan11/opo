@@ -16,5 +16,5 @@ try{
  if(restored.prepare('PRAGMA foreign_key_check').all().length)throw Error('FOREIGN_KEY_CHECK_FAILED');
  const d=new Domain(restored,{sandbox:false}),result=reconcile(d);
  if(!result.ok)throw Error('RESTORED_LEDGER_RECONCILIATION_FAILED');
- console.log(JSON.stringify({ok:true,scope:'Isolated copy; production database untouched; no chain replay',migrations:d.all('SELECT version FROM migrations').map(r=>r.version),users:d.one('SELECT COUNT(*) n FROM users').n,orders:d.one('SELECT COUNT(*) n FROM orders').n}));
+ console.log(JSON.stringify({ok:true,scope:'Isolated copy; production database untouched; no chain replay',migrations:d.all('SELECT version FROM migrations').map(r=>r.version),users:d.one('SELECT COUNT(*) n FROM users').n,orders:d.one('SELECT COUNT(*) n FROM orders').n,catalogProducts:d.one('SELECT COUNT(*) n FROM catalog_products').n,catalogInquiries:d.one('SELECT COUNT(*) n FROM catalog_inquiries').n,expiredInquiries:d.one('SELECT COUNT(*) n FROM catalog_inquiries WHERE expires<=?',Date.now()).n}));
 }finally{input?.close();restored?.close();rmSync(dir,{recursive:true,force:true})}

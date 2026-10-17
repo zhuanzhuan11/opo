@@ -1,0 +1,32 @@
+# Optional bare-Node deployment template. Do not combine with Docker on the same DB.
+[Unit]
+Description=OPO catalog and inquiries
+After=network.target
+
+[Service]
+Type=simple
+User=opo
+Group=opo
+WorkingDirectory=/opt/opo/current/opo-2.0
+EnvironmentFile=/etc/opo/catalog.env
+Environment=OPO_MODE=catalog
+Environment=HOST=127.0.0.1
+Environment=PORT=3200
+Environment=OPO_DATABASE=/var/lib/opo/opo.db
+Environment=OPO_MFA_KEY_FILE=/etc/opo/mfa-key
+ExecStart=/usr/bin/node backend/server.mjs
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0077
+StateDirectory=opo
+StateDirectoryMode=0700
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/opo
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target

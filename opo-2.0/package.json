@@ -18,6 +18,11 @@
     "chain:inspect": "node scripts/chain-inspect.mjs",
     "secrets:init": "node scripts/init-secrets.mjs",
     "load:check": "node scripts/load-check.mjs",
-    "catalog:readiness": "node scripts/catalog-readiness.mjs"
+    "catalog:readiness": "node scripts/catalog-readiness.mjs",
+    "backup:key:init": "node scripts/init-backup-key.mjs",
+    "backup:encrypted": "node scripts/backup-encrypted.mjs",
+    "backup:decrypt": "node scripts/decrypt-backup.mjs",
+    "smoke:catalog": "node scripts/smoke-catalog.mjs",
+    "release:package": "node scripts/package-release.mjs"
   }
 }

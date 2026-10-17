@@ -4,7 +4,7 @@ import {resolve,extname,sep} from 'node:path';
 import {randomBytes} from 'node:crypto';
 import {pathToFileURL} from 'node:url';
 import {openDatabase,root,transaction} from './database.mjs';
-import {Domain,id,hash,fail,text,integer} from './domain.mjs';
+import {Domain,id,hash,fail,text,integer,passwordHash} from './domain.mjs';
 import {catalogConfig,catalogProducts,submitInquiry,catalogAdmin,saveCatalogProduct,updateInquiry} from './catalog.mjs';
 import {reconcile} from './reconcile.mjs';
 import {rateLimit,validateOrigin,clientAddress} from './security.mjs';
@@ -13,7 +13,7 @@ import {mfaEnabled,verifyMfa,beginEnrollment,confirmEnrollment,mfaKeyConfigured}
 export function createApp({db=openDatabase(process.env.OPO_DATABASE),mode=process.env.OPO_MODE||'sandbox',sandbox=mode==='sandbox',now=()=>Date.now()}={}){
  if(!['sandbox','catalog','production'].includes(mode))throw Error('INVALID_OPO_MODE');
  const isCatalog=mode==='catalog';
- const d=new Domain(db,{sandbox,now});if(isCatalog)d.run('DELETE FROM catalog_inquiries WHERE expires<=?',now());let origin=validateOrigin(process.env.OPO_ORIGIN);
+ const d=new Domain(db,{sandbox,now});if(isCatalog){const existing=d.one("SELECT id FROM users WHERE username='opo'");if(existing&&existing.id!=='opo-platform')throw Error('PLATFORM_INVITE_CONFLICT');d.run("INSERT OR IGNORE INTO users VALUES('opo-platform','opo','OPO商城',?,'customer',NULL,?)",passwordHash(randomBytes(32).toString('hex')),now())}if(isCatalog)d.run('DELETE FROM catalog_inquiries WHERE expires<=?',now());let origin=validateOrigin(process.env.OPO_ORIGIN);
  const server=http.createServer(async(req,res)=>{
  let status=200;let headers={'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'same-origin','X-Frame-Options':'DENY','Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"};
  const send=(body,code=status)=>{if(res.destroyed||res.writableEnded)return;res.writeHead(code,headers);res.end(JSON.stringify(body))};
@@ -21,7 +21,7 @@ export function createApp({db=openDatabase(process.env.OPO_DATABASE),mode=proces
   const url=new URL(req.url,'http://localhost');const p=url.pathname;const method=req.method;const remote=clientAddress(req);
   if(origin?.startsWith('https:'))headers['Strict-Transport-Security']='max-age=31536000';
   if(!p.startsWith('/api/')){
-   if(isCatalog){const allowedPaths=['/','/index.html','/catalog.html','/catalog-admin.html','/assets/catalog.js','/assets/catalog-admin.js','/assets/catalog.css'];if(!allowedPaths.includes(p))fail('NOT_FOUND',404);headers['Content-Security-Policy']=headers['Content-Security-Policy'].replace("img-src 'self' data:","img-src 'self' data: https:")}
+   if(isCatalog){const allowedPaths=['/','/index.html','/catalog.html','/catalog-admin.html','/assets/catalog.js','/assets/catalog-members.js','/assets/catalog-admin.js','/assets/catalog.css'];if(!allowedPaths.includes(p))fail('NOT_FOUND',404);headers['Content-Security-Policy']=headers['Content-Security-Policy'].replace("img-src 'self' data:","img-src 'self' data: https:")}
    if(method!=='GET'&&method!=='HEAD')fail('METHOD_NOT_ALLOWED',405);
    let file=resolve(root,'frontend','.'+decodeURIComponent(isCatalog&&(p==='/'||p==='/index.html')?'/catalog.html':p==='/'?'/index.html':p));const allowed=resolve(root,'frontend')+sep;
    if(!file.startsWith(allowed)||!existsSync(file)||!statSync(file).isFile())fail('NOT_FOUND',404);
@@ -41,7 +41,7 @@ export function createApp({db=openDatabase(process.env.OPO_DATABASE),mode=proces
    if(p==='/api/public/config'&&method==='GET')return send(catalogConfig());
    if(p==='/api/public/products'&&method==='GET')return send(catalogProducts(d,{offset:Number(url.searchParams.get('offset')||0),limit:Number(url.searchParams.get('limit')||100),search:url.searchParams.get('search')||''}));
    if(p==='/api/public/inquiries'&&method==='POST')return send(d.idem('public:'+hash(remote),req.headers['idempotency-key'],p,b,()=>submitInquiry(d,b,remote)),201);
-   if(!['/api/health','/api/session','/api/login','/api/logout','/api/admin/security','/api/admin/mfa/begin','/api/admin/mfa/confirm','/api/catalog/admin','/api/catalog/products/save','/api/catalog/inquiries/update'].includes(p))fail('FEATURE_NOT_AVAILABLE',404);
+   if(!['/api/health','/api/session','/api/register','/api/login','/api/logout','/api/admin/security','/api/admin/mfa/begin','/api/admin/mfa/confirm','/api/catalog/admin','/api/catalog/products/save','/api/catalog/inquiries/update'].includes(p))fail('FEATURE_NOT_AVAILABLE',404);
   }
   const cookie=(req.headers.cookie||'').split(';').map(s=>s.trim()).find(s=>s.startsWith('opo_session='))?.slice(12)||'';
   const session=d.one('SELECT * FROM sessions WHERE hash=? AND expires>?',hash(cookie),now());const u=session?d.user(session.user_id):null;
@@ -50,6 +50,7 @@ export function createApp({db=openDatabase(process.env.OPO_DATABASE),mode=proces
   if(['/api/register','/api/login'].includes(p)&&method==='POST'){
    rateLimit(db,'auth-ip',remote,30,900000,now());
    if(typeof b.username==='string')rateLimit(db,'auth-account',b.username.trim().toLowerCase(),20,900000,now());
+   if(isCatalog&&p==='/api/register'){if(b.consent!==true)fail('CONSENT_REQUIRED');if(b.invite!==undefined&&typeof b.invite!=='string')fail('INVALID_INVITE');b.invite=b.invite?.trim()||'opo'}if(isCatalog&&p==='/api/login'&&b.username?.trim().toLowerCase()==='opo')fail('BAD_CREDENTIALS',401);
    let verified=false;const user=transaction(db,()=>{const result=p==='/api/register'?d.register(b):d.login(b);if(result.role==='admin'&&mfaEnabled(d,result.id))verified=verifyMfa(d,result.id,b.otp);return result});const token=randomBytes(32).toString('hex'),csrf=randomBytes(24).toString('hex');
    d.run('INSERT INTO sessions(hash,user_id,csrf,expires,mfa_verified) VALUES(?,?,?,?,?)',hash(token),user.id,csrf,now()+8*3600000,verified?1:0);headers['Set-Cookie']=`opo_session=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=28800${origin?.startsWith('https:')?'; Secure':''}`;return send({user,csrf,sandbox});
   }
