@@ -1,0 +1,13 @@
+node_modules/
+database/runtime/
+*.db
+*.db-wal
+*.db-shm
+.env
+.env.*
+!.env.example
+backups/
+test-results/
+.DS_Store
+*.log
+
