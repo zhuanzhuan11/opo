@@ -1,0 +1,8 @@
+# Planned deployment only. Domain ownership, DNS and server are not yet provisioned.
+www.opo3market.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3200
+}
+opo3market.com {
+    redir https://www.opo3market.com{uri} permanent
+}
