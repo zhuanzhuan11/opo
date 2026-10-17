@@ -7,7 +7,7 @@ export function openDatabase(path=resolve(root,'database/runtime/opo.db')){
  if(path!==':memory:')mkdirSync(dirname(path),{recursive:true});
  const db=new DatabaseSync(path);
  try{
- db.exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000; PRAGMA synchronous=FULL;');
+ db.exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000; PRAGMA synchronous=FULL; PRAGMA secure_delete=ON;');
  db.exec('CREATE TABLE IF NOT EXISTS migrations(version INTEGER PRIMARY KEY, applied_at INTEGER NOT NULL)');
  const directory=resolve(root,'database/migrations');
  const files=readdirSync(directory).filter(f=>/^\d+_.+\.sql$/.test(f)).sort();

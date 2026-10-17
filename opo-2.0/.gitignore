@@ -13,3 +13,4 @@ test-results/
 
 
 .secrets/
+!.env.catalog.example
