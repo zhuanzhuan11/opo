@@ -44,7 +44,28 @@
     "vestingDaysDemo": 1095,
     "weight": "eligible spendable OPOC multiplied by holding time",
     "countHighestTierOnce": true,
-    "priceAtEachRelease": true
+    "priceAtEachRelease": true,
+    "legacyWhitelist": {
+      "retained": true,
+      "creditsSpendablePoints": false,
+      "transferEligibilityAndFutureBenefitsOnly": true,
+      "baseWeightOPOC": 300,
+      "weightFormula": "(300 base + personally held spendable OPOC) multiplied by eligible time",
+      "transferableWeightOPOC": 300
+    },
+    "newWhitelistMinimumUnit": "spendable OPOC",
+    "legacyUpgradePolicy": "pending",
+    "timeWeighting": {
+      "method": "sum effective eligible OPOC multiplied by interval duration",
+      "unit": "OPOC-hours",
+      "splitOn": [
+        "balance change",
+        "eligibility change",
+        "eligibility transfer"
+      ],
+      "extraTenureMultiplier": false,
+      "productionEventHistoryImplemented": false
+    }
   },
   "designatedPoolSellFee": {
     "totalBps": 2000,

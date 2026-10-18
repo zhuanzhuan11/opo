@@ -4,7 +4,13 @@ export function priceFor(costCents,multiplier){if(!Number.isSafeInteger(costCent
 export function releasedMicro(grant,day){const days=Math.max(0,Math.min(365,day-grant.start));return Number(BigInt(grant.totalMicro)*BigInt(days)/365n)}
 export function pointBalance(grants,day,usedMicro=0){return Math.max(0,grants.reduce((n,g)=>n+releasedMicro(g,day),0)-usedMicro)}
 export function purchaseRights(cashCents){if(!Number.isSafeInteger(cashCents)||cashCents<5000||cashCents>200000000)throw Error('认购测试金额50 USDT起，单次不超过剩余额度');return {burnZC:cashCents,totalMicro:cashCents*20000}}
-export function checkoutQuote(priceCents,availableMicro,usePoints){const pointCents=usePoints?Math.min(Math.floor(priceCents/2),Math.floor(availableMicro/10000)):0;return {pointCents,cashCents:priceCents-pointCents}}
+export function checkoutQuote(priceCents,availableMicro,usePoints,requestedPointCents){
+ if(!Number.isSafeInteger(priceCents)||priceCents<0||!Number.isSafeInteger(availableMicro)||availableMicro<0)throw Error('无效的结算金额');
+ const maxPointCents=Math.min(Math.max(0,Math.ceil(priceCents/2)-1),Math.floor(availableMicro/10000));
+ const pointCents=usePoints?(requestedPointCents??maxPointCents):0;
+ if(!Number.isSafeInteger(pointCents)||pointCents<0||pointCents>maxPointCents)throw Error('积分数量超出本单可用上限');
+ return {pointCents,cashCents:priceCents-pointCents};
+}
 export function lpAccrue(state,day){if(day<state.day||day>1095)throw Error('测试时间不能倒退');if(state.user>0){state.earned+=(day-state.day)*(100000000/1095)*state.user/(state.other+state.user)}state.day=day;return state}
 export function formatToken(hex,decimals=18){if(!/^0x[0-9a-f]{1,64}$/i.test(hex))throw Error('钱包返回了无效余额');const v=BigInt(hex),base=10n**BigInt(decimals);return (v/base).toString()+'.'+(v%base).toString().padStart(decimals,'0').slice(0,4)}
 

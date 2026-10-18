@@ -1,3 +1,5 @@
+> 2026-10-19最新冻结交付：先读 [PROJECT_MEMORY.md](PROJECT_MEMORY.md) 和 [当前版本交接](docs/当前版本交接.md)。公开模拟站版本21，含本轮商品详情、自设积分付款、内部转账、历史资格及时间权重；旧PDF不能替代最新规则。真实资金仍关闭。
+
 # OPO2.0 已确认界面与交付入口
 
 2026-10-19：最新确认的红白商城、经济模型、城市资格和节点页面从 **[交付与运行入口](docs/OPO2.0交付与运行入口.md)** 开始。运行 `npm run preview:model` 打开 `http://127.0.0.1:3211`。公开演示：[OPO2.0测试站](https://opo-member-demo.guiguowang09.chatgpt.site)。
