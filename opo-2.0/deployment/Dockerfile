@@ -10,3 +10,4 @@ USER node
 ENV HOST=0.0.0.0 PORT=3200 OPO_MODE=sandbox OPO_ORIGIN=http://127.0.0.1:3200
 EXPOSE 3200
 CMD ["node", "backend/server.mjs"]
+

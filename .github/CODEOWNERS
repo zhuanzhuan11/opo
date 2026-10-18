@@ -1,0 +1,9 @@
+# Ownership does not enforce approval until branch rules enable it.
+# Add a real independent reviewer before requiring approval of owner-authored PRs.
+* @zhuanzhuan11
+/.github/ @zhuanzhuan11
+/opo-2.0/backend/ @zhuanzhuan11
+/opo-2.0/frontend/ @zhuanzhuan11
+/opo-2.0/migrations/ @zhuanzhuan11
+/opo-2.0/scripts/ @zhuanzhuan11
+/opo-2.0/deployment/ @zhuanzhuan11

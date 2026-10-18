@@ -13,4 +13,10 @@ test-results/
 
 
 .secrets/
+backups-encrypted/
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
 !.env.catalog.example

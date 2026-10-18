@@ -23,6 +23,8 @@
     "backup:encrypted": "node scripts/backup-encrypted.mjs",
     "backup:decrypt": "node scripts/decrypt-backup.mjs",
     "smoke:catalog": "node scripts/smoke-catalog.mjs",
-    "release:package": "node scripts/package-release.mjs"
+    "release:package": "node scripts/package-release.mjs",
+    "preview:model": "node scripts/start-model-preview.mjs",
+    "test:model": "node --test tests/model-preview.test.mjs tests/city-rewards-preview.test.mjs"
   }
 }

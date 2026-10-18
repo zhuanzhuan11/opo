@@ -1,0 +1,63 @@
+{
+  "version": "opo2-approved-20261019",
+  "productionEnabled": false,
+  "chainId": 56,
+  "tokens": {
+    "ZC": "0x231bde6480345804679882c8349497a3eeba7905",
+    "USDT": "0x55d398326f99059fF775485246999027B3197955"
+  },
+  "plannedSupply": 1000000000,
+  "allocationZC": {
+    "initialLP": 1000000,
+    "subscriptionBurnInventory": 200000000,
+    "legacyNodesInitialReserve": 100000000,
+    "lpReserve": 549000000,
+    "lpStakingRewards": 100000000,
+    "cityInitialReserve": 50000000
+  },
+  "subscription": {
+    "priceUSDT": "0.01",
+    "minimumUSDT": "50",
+    "burnZC": true,
+    "returnZC": false,
+    "opocMultiplier": 2,
+    "vestingDaysDemo": 365,
+    "opocRedeemableForTokens": false
+  },
+  "lpRewards": {
+    "totalZC": 100000000,
+    "vestingDaysDemo": 1095,
+    "weight": "active LP shares multiplied by eligible time"
+  },
+  "legacyNodes": {
+    "USDTPerShare": 1000,
+    "principalAndReturnMultiplier": 1.5,
+    "vestingDaysDemo": 1095,
+    "priceAtEachRelease": true,
+    "extraPrincipalRefund": false
+  },
+  "cityRewards": {
+    "whitelistSpendableOPOC": 5000,
+    "providerSpendableOPOC": 10000,
+    "budgetUSDT": 500000,
+    "initialReserveZC": 50000000,
+    "vestingDaysDemo": 1095,
+    "weight": "eligible spendable OPOC multiplied by holding time",
+    "countHighestTierOnce": true,
+    "priceAtEachRelease": true
+  },
+  "designatedPoolSellFee": {
+    "totalBps": 2000,
+    "platformBps": 1000,
+    "convertToUSDTAndPairLPBps": 1000,
+    "buyBps": 0,
+    "ordinaryTransferBps": 0,
+    "rewardClaimBps": 0
+  },
+  "productPricing": {
+    "allCostMultiplierMin": "2.5",
+    "allCostMultiplierMax": "3",
+    "opocDiscountCapDesignPercent": 50
+  },
+  "fundsWarning": "All browser balances, orders, burns and claims are simulated. Existing server sandbox is not integrated with these approved economic rules."
+}
