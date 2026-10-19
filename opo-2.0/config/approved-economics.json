@@ -80,5 +80,16 @@
     "allCostMultiplierMax": "3",
     "opocDiscountCapDesignPercent": 50
   },
-  "fundsWarning": "All browser balances, orders, burns and claims are simulated. Existing server sandbox is not integrated with these approved economic rules."
+  "fundsWarning": "All browser balances, orders, burns and claims are simulated. Existing server sandbox is not integrated with these approved economic rules.",
+  "productReferralCommission": {
+    "basis": "actual USDT paid less refunded USDT; OPOC excluded",
+    "rate": "configured per product at listing, default 0; snapshot on order",
+    "eligibleRecipients": [
+      "whitelist",
+      "city service provider"
+    ],
+    "settlement": "order completed and after-sales period closed; credit store USDT ledger",
+    "buyerReferralIndependent": true,
+    "productionImplemented": false
+  }
 }
