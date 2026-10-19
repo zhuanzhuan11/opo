@@ -1,4 +1,11 @@
 export const messages={
+"OPO商城":{"en":"OPO Store","ja":"OPOストア"},
+"平台愿景":{"en":"Platform vision","ja":"プラットフォームのビジョン"},
+"消费者与分享者，都是建设者":{"en":"Consumers and sharers are builders","ja":"消費者も共有する人も、プラットフォームの創り手"},
+"完全去中心化商业平台，消费者，分享者即为建设者。享受平台带来的红利分配。":{"en":"A fully decentralized commerce platform where consumers and sharers are builders, sharing in the value created by the platform.","ja":"完全に分散化された商業プラットフォーム。消費者も共有する人も創り手となり、プラットフォームが生み出す価値の分配を享受します。"},
+"建立一个全新的分配平权，信息平权新一代的价值互联网。":{"en":"Build a new generation of the Internet of Value, founded on equal access to distribution and information.","ja":"分配と情報への平等なアクセスを基盤とする、新世代の価値のインターネットを築きます。"},
+"打破传统商业的垄断和价值孤岛，让智能体接入价值互联网，为建设者创造无限可能。":{"en":"Break down traditional commercial monopolies and isolated pools of value. Connect intelligent agents to the Internet of Value and create limitless possibilities for its builders.","ja":"従来の商業の独占と価値の孤立を打ち破り、インテリジェントエージェントを価値のインターネットへつなぎ、創り手に無限の可能性をもたらします。"},
+"本页为平台建设愿景。当前站点为功能模拟展示，去中心化架构、治理及真实红利分配尚未实施验收。":{"en":"This page describes the platform vision. The current site is a functional simulation; decentralized architecture, governance and real value distributions have not been implemented and accepted.","ja":"このページは構築のビジョンを示しています。現在のサイトは機能デモであり、分散型アーキテクチャ・ガバナンス・実際の分配は実装・検証されていません。"},
 "商品不存在":{"en":"Product not found","ja":"商品が見つかりません"},
 "请返回商品分类重新选择。":{"en":"Return to categories and choose a product.","ja":"商品カテゴリーに戻ってお選びください。"},
 "商品图片":{"en":"Product images","ja":"商品画像"},
