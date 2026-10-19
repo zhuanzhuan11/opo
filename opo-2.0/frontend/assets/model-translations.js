@@ -31,7 +31,7 @@ export const messages={"原有城市白名单资格":{"en":"Existing city whitel
 "分佣比例须为0至100，最多两位小数":{"en":"Rate must be 0–100 with at most two decimal places","ja":"率は0〜100、小数点以下2桁以内で入力してください"},
 "该订单分佣已结算":{"en":"Order commission already settled","ja":"この注文は精算済みです"},
 "订单完成且售后结束后才能结算":{"en":"Settlement requires completed order and closed after-sales period","ja":"注文完了・アフターサービス期間終了後に精算できます"},
-"OPO NEXUS":{"en":"OPO NEXUS","ja":"OPO NEXUS"},
+"OPO":{"en":"OPO","ja":"OPO"},
 "平台愿景":{"en":"Platform vision","ja":"プラットフォームのビジョン"},
 "消费者与分享者，都是建设者":{"en":"Consumers and sharers are builders","ja":"消費者も共有する人も、プラットフォームの創り手"},
 "完全去中心化商业平台，消费者，分享者即为建设者。享受平台带来的红利分配。":{"en":"A fully decentralized commerce platform where consumers and sharers are builders, sharing in the value created by the platform.","ja":"完全に分散化された商業プラットフォーム。消費者も共有する人も創り手となり、プラットフォームが生み出す価値の分配を享受します。"},
@@ -930,11 +930,11 @@ export const messages={"原有城市白名单资格":{"en":"Existing city whitel
     "en": "Store",
     "ja": "ストア"
   },
-  "OPO NEXUS": {
-    "en": "OPO NEXUS",
-    "ja": "OPO NEXUS"
+  "OPO": {
+    "en": "OPO",
+    "ja": "OPO"
   },
-  "消费 · 分享 · 共建": {
+  "消费 分享共建": {
     "en": "Consume · Share · Build",
     "ja": "消費 · 共有 · 共創"
   },
@@ -1010,13 +1010,13 @@ export const messages={"原有城市白名单资格":{"en":"Existing city whitel
     "en": "OPO 2.0 demo · Sample products and balances only · No real payments",
     "ja": "OPO 2.0デモ・商品と残高はすべてサンプルです・実際の決済は行えません"
   },
-  "OPO NEXUS · 2.0规则测试": {
-    "en": "OPO NEXUS · 2.0 demo",
-    "ja": "OPO NEXUS・2.0デモ"
+  "OPO · 2.0规则测试": {
+    "en": "OPO · 2.0 demo",
+    "ja": "OPO・2.0デモ"
   },
-  "OPO NEXUS · 基于原2.0界面删减整合": {
-    "en": "OPO NEXUS · Refined from the original 2.0 design",
-    "ja": "OPO NEXUS・従来の2.0デザインを整理・統合"
+  "OPO · 基于原2.0界面删减整合": {
+    "en": "OPO · Refined from the original 2.0 design",
+    "ja": "OPO・従来の2.0デザインを整理・統合"
   },
   "功能测试版 · 非真实交易 · 刷新重置": {
     "en": "Interactive demo · No real transactions · Refresh to reset",
@@ -2286,7 +2286,7 @@ export const messages={"原有城市白名单资格":{"en":"Existing city whitel
     "en": "Open interactive storefront",
     "ja": "操作できるストアへ"
   },
-  "沿用原版OPO NEXUS，在原界面上删减整合": {
+  "沿用原版OPO，在原界面上删减整合": {
     "en": "Original OPO design, refined and integrated",
     "ja": "従来のOPOデザインを整理・統合"
   },
