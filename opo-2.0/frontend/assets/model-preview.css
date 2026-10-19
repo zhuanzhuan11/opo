@@ -53,3 +53,16 @@ html:not([lang="zh-CN"]) .tagline{font-size:10px;letter-spacing:0;white-space:no
 .opo-about-entry{display:flex;justify-content:space-between;align-items:center;width:100%;padding:11px 12px;margin-bottom:12px;background:#fff1f0;border:1px solid #ffdcd8;border-radius:8px;color:#d92c28;font-size:17px;font-weight:700;text-align:left}.opo-about h2{font-size:26px;line-height:1.5;margin:16px 0 22px}.opo-about>p:not(.sub){font-size:17px;line-height:2;margin:18px 0}.opo-about .note{padding:12px;border-radius:8px}@media(max-width:650px){.opo-about-entry{font-size:16px;margin-bottom:10px}.opo-about h2{font-size:23px}.opo-about>p:not(.sub){font-size:15px}}
 
 .sideextra .admin-entry{display:block;text-decoration:none;color:var(--ink);padding:7px 3px;font-size:13px}.sideextra .admin-entry:hover{color:var(--red);background:var(--pink)}
+
+.commission-choice{border:1px solid #f0d0cd;border-radius:10px;margin:16px 0;padding:14px;min-width:0}.commission-choice legend{font-weight:700}.commission-option{display:flex!important;gap:12px;align-items:flex-start;padding:12px;border:1px solid #e7e7e7;border-radius:8px;cursor:pointer}.commission-option:has(input:checked){border-color:#ee3933;background:#fff4f3}.commission-option input{width:auto!important;flex:0 0 auto;margin-top:5px}.commission-option strong,.commission-option small{display:block}.commission-option small{font-size:12px;line-height:1.8;margin-top:5px}[hidden]{display:none!important}
+
+.eni-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.eni-roles article{min-width:0}.eni-roles h3{font-size:16px}#eni-panel p{line-height:1.8}#eni-panel .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}#eni-interest label{display:block;margin:12px 0}#eni-interest input,#eni-interest select{display:block;width:100%;padding:10px;border:1px solid #e6e9ee;border-radius:6px}@media(max-width:800px){.eni-roles{grid-template-columns:1fr}}
+
+.sideextra button.active{background:#fff0ee;color:#ee3933;font-weight:700;border-left:3px solid #ee3933}
+
+.logo{display:flex;align-items:center;flex-wrap:wrap;column-gap:8px;white-space:normal;max-width:100%}.logo b{font-size:44px;letter-spacing:-2px;margin-right:0;flex:0 0 auto}.logo .platform-name{font-size:17px;line-height:1.4;flex:1;min-width:0;overflow-wrap:anywhere}.logo .tagline{flex-basis:100%;font-size:11px;letter-spacing:1px;margin-top:4px}.opo-about-entry{white-space:normal;text-align:left;line-height:1.6;font-size:14px}html:not([lang="zh-CN"]) .logo .platform-name{font-size:13px}@media(max-width:600px){.logo .platform-name{font-size:15px}.logo b{font-size:38px}}
+
+/* Confirmed OPO NEXUS three-line identity */
+.top .logo{display:flex;flex-direction:column;align-items:flex-start;gap:3px}.top .logo b{font-size:27px;white-space:nowrap}.top .logo .platform-name{font-size:15px}.top .logo .tagline{font-size:12px;white-space:nowrap}
+
+.top .logo{flex-wrap:nowrap;min-width:0}.top .logo .tagline{display:block;flex-basis:auto;white-space:normal;max-width:100%;letter-spacing:0}.top .logo .platform-name{flex:initial;max-width:100%}

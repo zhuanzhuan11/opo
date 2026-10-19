@@ -6,6 +6,7 @@ import process from 'node:process';
 const requiredNode = 'v24.18.1';
 const protectedBranches = new Set(['main', 'master']);
 const handoffFiles = new Set([
+  'opo-2.0/docs/最新开发同步.md',
   'opo-2.0/PROJECT_MEMORY.md',
   'opo-2.0/docs/当前版本交接.md',
 ]);
@@ -47,7 +48,7 @@ function repositoryContext() {
   }
   const rootResult = command('git', ['rev-parse', '--show-toplevel'], {cwd: process.cwd(), allowFailure: true});
   if (rootResult.status !== 0) stop('当前目录不在 Git 仓库中。');
-  const root = output(rootResult);
+  const root = resolve(output(rootResult));
   const branch = output(git(root, ['branch', '--show-current']));
   if (!branch) stop('当前处于 detached HEAD，不能执行接续流程。');
   if (protectedBranches.has(branch)) stop(`禁止在受保护分支 ${branch} 上执行接续脚本。`);
@@ -63,9 +64,13 @@ function status(root) {
 }
 
 function runCheck(app) {
-  const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
   console.log('\n运行 npm run check...');
-  command(npm, ['run', 'check'], {cwd: app, inherit: true});
+  // npm.cmd needs the Windows command interpreter; arguments here are fixed.
+  if (process.platform === 'win32') {
+    command(process.env.ComSpec || 'cmd.exe', ['/d', '/s', '/c', 'npm run check'], {cwd: app, inherit: true});
+  } else {
+    command('npm', ['run', 'check'], {cwd: app, inherit: true});
+  }
 }
 
 function begin(context) {
@@ -125,12 +130,12 @@ async function finish(context, args) {
   console.log(pending || '（无）');
   const parsed = parseFinishArgs(args);
   if (!parsed.message || parsed.files.length === 0) {
-    console.log('\n请先更新 PROJECT_MEMORY.md 或 docs/当前版本交接.md，再明确列出文件：');
+    console.log('\n请先更新 docs/最新开发同步.md（仅公开技术内容），再明确列出文件：');
     console.log('node scripts/dev-handoff.mjs finish --message "docs: update handoff" --files <仓库相对路径...>');
     return;
   }
   const files = normalizeFiles(context.root, parsed.files);
-  if (!files.some((file) => handoffFiles.has(file))) stop('收工提交必须明确包含 PROJECT_MEMORY.md 或 docs/当前版本交接.md 作为交接记录。');
+  if (!files.some((file) => handoffFiles.has(file))) stop('收工提交必须明确包含 docs/最新开发同步.md 或经脱敏的既有交接记录。');
   const staged = gitNameList(context.root, ['diff', '--cached', '--name-only']);
   if (staged.length) stop(`暂存区已有文件，脚本不会混入提交：\n${staged.join('\n')}`);
   for (const file of files) {

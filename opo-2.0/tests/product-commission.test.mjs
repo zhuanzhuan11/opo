@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {commissionRate,commissionQuote,settleCommission} from '../frontend/assets/product-commission.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';import {commissionRate,commissionQuote,settleCommission,assertRefundable} from '../frontend/assets/product-commission.mjs';
 import {transferReferralRights} from '../frontend/assets/product-commission.mjs';
 test('legacy qualification transfers future product referrals without rewriting paid order snapshots',()=>{const old=Object.freeze({recipientId:'A',ownerId:'A',rateBps:1000,qualificationSource:'legacy',version:'v1'}),product={productReferral:old},order={productReferral:old};transferReferralRights([product],'A','B','transfer-v2');assert.equal(product.productReferral.recipientId,'B');assert.equal(product.productReferral.ownerId,'B');assert.equal(order.productReferral.recipientId,'A');assert.equal(order.productReferral.version,'v1')});
 test('product commission uses only net actual USDT and conserves merchant plus referral amounts',()=>{
@@ -13,3 +13,6 @@ test('completion, aftersales, recipient, snapshot and replay protection gate com
  settleCommission(order,r);assert.equal(r.ledger.cash,395);assert.equal(order.commissionSettlement.ruleVersion,'v1');assert.throws(()=>settleCommission(order,r));assert.equal(r.ledger.cash,395);
  assert.throws(()=>settleCommission({...order,commissionSettlement:null,refunded:true},r));
 });
+
+
+test('payment timing snapshots gate immediate nonrefund and buyer acceptance without double credit',()=>{const recipient={id:'R',ledger:{cash:0}},base={id:'T',cashCents:10000,pointCents:4000,productReferral:{recipientId:'R',rateBps:100,version:'v1'}};const immediate={...base,commissionMode:'on-payment',nonRefundable:true,paymentConfirmed:false};assert.throws(()=>settleCommission(immediate,recipient));assert.equal(recipient.ledger.cash,0);immediate.paymentConfirmed=true;assert.equal(settleCommission(immediate,recipient).commissionCents,100);assert.throws(()=>settleCommission(immediate,recipient));assert.throws(()=>assertRefundable(immediate));const accepted={...base,id:'A',commissionMode:'after-acceptance'};assert.throws(()=>settleCommission(accepted,recipient));assert.equal(assertRefundable(accepted),true);accepted.completed=true;assert.equal(settleCommission(accepted,recipient).commissionCents,100);assert.equal(recipient.ledger.cash,200);assert.throws(()=>assertRefundable(accepted));});

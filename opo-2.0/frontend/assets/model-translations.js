@@ -1,4 +1,4 @@
-export const messages={"管理后台":{"en":"Management console","ja":"管理画面"},"商品推荐销售如何分佣？":{"en":"How are product referral commissions calculated?","ja":"商品紹介のコミッションはどう計算しますか？"},"商品上传时可设置一名白名单或城市服务商推荐人及分佣百分比，默认0%。分佣按订单实付USDT扣除退款后计算，OPOC抵扣不计入。订单完成且售后期结束后才记入推荐人的商城USDT余额。每笔订单保存推荐人和比例版本，后来改比例不影响旧订单；商品推荐不等于买家邀请。本版仅示意商品配置及手动推进订单阶段，不是真实商品发布或资金自动结算。":{"en":"Product listing can specify one whitelist or city-provider referrer and a commission percentage, default 0%. Commission uses actual USDT paid less refunds and excludes OPOC. It credits the referrer’s store USDT only after completion and the after-sales period. Orders snapshot the referrer and rule version; later changes do not rewrite them. Product referral is separate from buyer invitation. This demo configures sample products and manually advances stages; it is not live publication or financial settlement.","ja":"商品掲載時にホワイトリストまたは都市事業者の紹介者1名と率（初期0%）を設定できます。実USDT支払額から返金を除き、OPOCは対象外です。注文完了・期間終了後にストアUSDTへ反映します。注文ごとに紹介者・ルールを保存し、後の変更は遡及しません。購入者招待とは別です。サンプル設定と段階操作のデモであり、本番公開・自動資金精算ではありません。"},
+export const messages={"Telegram账号已开放，其他链接待确认":{"en":"Telegram contact available; other links pending","ja":"Telegram連絡先公開中。他のリンクは確認待ちです。"},"去中心化商业平台":{"en":"Decentralized Commerce Platform","ja":"分散型商業プラットフォーム"},"ENI生态参与":{"en":"ENI participation","ja":"ENIコミュニティ参加"},"会员支付":{"en":"Member payment","ja":"会員決済"},"管理后台":{"en":"Management console","ja":"管理画面"},"商品推荐销售如何分佣？":{"en":"How are product referral commissions calculated?","ja":"商品紹介のコミッションはどう計算しますか？"},"商品上传时可设置一名白名单或城市服务商推荐人及分佣百分比，默认0%。分佣按订单实付USDT扣除退款后计算，OPOC抵扣不计入。订单完成且售后期结束后才记入推荐人的商城USDT余额。每笔订单保存推荐人和比例版本，后来改比例不影响旧订单；商品推荐不等于买家邀请。本版仅示意商品配置及手动推进订单阶段，不是真实商品发布或资金自动结算。":{"en":"Product listing can specify one whitelist or city-provider referrer and a commission percentage, default 0%. Commission uses actual USDT paid less refunds and excludes OPOC. It credits the referrer’s store USDT only after completion and the after-sales period. Orders snapshot the referrer and rule version; later changes do not rewrite them. Product referral is separate from buyer invitation. This demo configures sample products and manually advances stages; it is not live publication or financial settlement.","ja":"商品掲載時にホワイトリストまたは都市事業者の紹介者1名と率（初期0%）を設定できます。実USDT支払額から返金を除き、OPOCは対象外です。注文完了・期間終了後にストアUSDTへ反映します。注文ごとに紹介者・ルールを保存し、後の変更は遡及しません。購入者招待とは別です。サンプル設定と段階操作のデモであり、本番公開・自動資金精算ではありません。"},
 "商品推荐与分佣":{"en":"Product referrals & commission","ja":"商品紹介・コミッション"},
 "商品上架时设置推荐会员ID及分佣比例，按实付USDT计算。":{"en":"Set the referring member ID and rate when listing a product; commission uses actual USDT paid.","ja":"商品掲載時に紹介会員IDと率を設定し、実際のUSDT支払額を基準に計算します。"},
 "商品上架分佣设置":{"en":"Listing commission settings","ja":"商品掲載時のコミッション設定"},
@@ -31,7 +31,7 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
 "分佣比例须为0至100，最多两位小数":{"en":"Rate must be 0–100 with at most two decimal places","ja":"率は0〜100、小数点以下2桁以内で入力してください"},
 "该订单分佣已结算":{"en":"Order commission already settled","ja":"この注文は精算済みです"},
 "订单完成且售后结束后才能结算":{"en":"Settlement requires completed order and closed after-sales period","ja":"注文完了・アフターサービス期間終了後に精算できます"},
-"OPO商城":{"en":"OPO Store","ja":"OPOストア"},
+"OPO NEXUS":{"en":"OPO NEXUS","ja":"OPO NEXUS"},
 "平台愿景":{"en":"Platform vision","ja":"プラットフォームのビジョン"},
 "消费者与分享者，都是建设者":{"en":"Consumers and sharers are builders","ja":"消費者も共有する人も、プラットフォームの創り手"},
 "完全去中心化商业平台，消费者，分享者即为建设者。享受平台带来的红利分配。":{"en":"A fully decentralized commerce platform where consumers and sharers are builders, sharing in the value created by the platform.","ja":"完全に分散化された商業プラットフォーム。消費者も共有する人も創り手となり、プラットフォームが生み出す価値の分配を享受します。"},
@@ -78,7 +78,7 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "New eligibility follows spendable balances: provider status pauses below 10,000; whitelist remains from 5,000 and pauses below it. Spending, transfers and refunds trigger reassessment. Legacy eligibility is retained below the new threshold with a 300 base plus personally held spendable OPOC weight. After transfer, the sender loses that legacy eligibility and its future weight.",
     "ja": "新資格は利用可能残高で判定し、10,000未満で事業者を停止、5,000以上ならホワイトリストを維持し、それ未満では新ホワイトリストも停止します。消費・送金・返金で再判定します。旧資格は新基準未満でも300基礎に本人の利用可能OPOCを加えて計算し、譲渡後は元の保有者の旧資格と将来の加重がなくなります。"
   },
-  "登录会员中心，在会员ID旁查看☆历史白名单、◇白名单或◆城市服务商标记。左侧“LP与奖励”中，模拟质押区下方是城市资格与专项奖励。展开计算器，选择旧资格300基础加实际持有量或新资格实际持有量，输入合格小时、其他用户权重和ZC价格查看试算。计算器不授予资格，不代表已到账奖励。": {
+  "登录会员中心，在会员ID旁查看☆历史白名单、◇白名单或◆城市服务商标记。左侧“LP与奖励”中，模拟质押区下方是城市白名单资格与专项奖励。展开计算器，选择旧资格300基础加实际持有量或新资格实际持有量，输入合格小时、其他用户权重和ZC价格查看试算。计算器不授予资格，不代表已到账奖励。": {
     "en": "Sign in and check the badge beside your member ID: ☆ legacy whitelist, ◇ whitelist or ◆ city provider. Open LP & Rewards and find city eligibility below demo staking. Expand the calculator and choose legacy 300-base-plus-holdings or new actual-holdings weighting, with eligible hours, others’ weight and ZC price. Calculator choices do not grant eligibility or credit rewards.",
     "ja": "ログイン後、会員ID横の☆旧ホワイトリスト、◇ホワイトリスト、◆都市事業者の表示を確認します。「LP・報酬」のデモステーキング下に都市資格があります。計算欄で旧300基礎＋実保有量または新実保有加重を選び、時間・他会員加重・ZC価格を入力して試算できます。計算だけで資格や報酬は付与されません。"
   },
@@ -106,11 +106,11 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "City service provider",
     "ja": "都市サービス事業者"
   },
-  "旧资格承接与转让": {
+  "原有城市白名单资格承接与转让": {
     "en": "Legacy eligibility and transfer",
     "ja": "旧資格の承継・譲渡"
   },
-  "历史消费取得的白名单在2.0继续保留，按300 OPOC入门权重加本人实际可用OPOC参与城市专项，不增加可消费积分、不兑换USDT或ZC。新白名单需至少5,000可用OPOC，按实际持有量与时间加权；不叠加两份权重。": {
+  "历史消费取得的白名单资格在2.0继续保留，按300 OPOC入门权重，加本人实际可用OPOC参与城市专项，不增加可消费积分、不兑换USDT或ZC。新白名单需至少5,000可用OPOC，按实际持有量与时间加权；不叠加两份权重。": {
     "en": "Previously earned whitelist eligibility continues in 2.0 with a city reward weight of 300 base plus personally held spendable OPOC. It credits no spendable points and cannot be redeemed for USDT or ZC. New whitelist eligibility requires at least 5,000 spendable OPOC and is weighted by actual holdings and time. Weights do not stack.",
     "ja": "過去の消費で取得した資格は2.0に承継し、都市報酬は300の基礎加重に本人の利用可能OPOCを加えて計算します。利用可能ポイントは増えず、USDT・ZCへ交換できません。新規資格には利用可能OPOCが5,000以上必要で、実保有量と時間で加重します。加重は重複しません。"
   },
@@ -282,7 +282,7 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "Where can I check eligibility and estimated rewards?",
     "ja": "資格と権益の試算はどこで確認できますか？"
   },
-  "先登录会员中心，再从左侧进入“LP与奖励”，查看左列“模拟质押LP”下方的“城市资格与专项奖励”。页面显示当前账号可用OPOC、待释放OPOC及资格状态；展开“资格与奖励模拟计算”，可输入持有量、合格小时、其他用户权重及ZC价格，查看模拟个人当日分配比例、USDT记账额度和ZC枚数。计算器输入不会改变账号余额或授予资格；结果不是已到账或可领取收益，当前没有真实奖励账单。": {
+  "先登录会员中心，再从左侧进入“LP与奖励”，查看左列“模拟质押LP”下方的“城市白名单资格与专项奖励”。页面显示当前账号可用OPOC、待释放OPOC及资格状态；展开“资格与奖励模拟计算”，可输入持有量、合格小时、其他用户权重及ZC价格，查看模拟个人当日分配比例、USDT记账额度和ZC枚数。计算器输入不会改变账号余额或授予资格；结果不是已到账或可领取收益，当前没有真实奖励账单。": {
     "en": "Sign in, open LP & Rewards from the left navigation, and find City eligibility and special rewards below Demo LP staking in the left column. Check your spendable OPOC, unvested points and tier. Expand the eligibility and reward calculator to explore holding amounts, eligible hours, other users’ weight and ZC price. It shows a simulated daily share, USDT accounting amount and ZC quantity. Inputs do not change your account or grant eligibility. Estimates are not credited or claimable rewards; live reward statements are not available.",
     "ja": "ログイン後、左メニューの「LP・報酬」を開き、左列のデモLPステーキング下にある都市資格・特別報酬を確認します。利用可能OPOC・付与予定分・資格を表示します。資格・報酬計算を展開して、保有量・対象時間・他会員の加重・ZC価格を入力すると、個人の日次割合・USDT記帳額・ZC枚数を試算できます。入力で残高や資格は変わりません。試算は入金済み・受取可能な報酬ではなく、本番明細は未実装です。"
   },
@@ -802,9 +802,9 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "Daily weight is the sum of spendable OPOC × holding hours across eligible intervals. Intervals below 5,000 count as zero, and service providers do not also receive whitelist weight. Your reward equals your weight divided by all eligible weight, multiplied by that day’s pool; OPOC is not spent. The demo uses 1,095 days, about 45,662.100457 ZC daily. Actual dates, precision and periods with no eligible users remain to be defined.",
     "ja": "日次ウェイトは対象となる各時間帯の「利用可能OPOC×保有時間」の合計です。5,000未満の時間帯は0とし、事業者にホワイトリスト分を重複加算しません。個人ウェイト÷対象者全体のウェイト×当日の報酬枠で計算し、OPOCは消費しません。デモは1,095日、1日約45,662.100457 ZCとします。正式期間、精度、対象者がいない日の処理は未定です。"
   },
-  "城市资格与专项奖励": {
-    "en": "City eligibility & dedicated rewards",
-    "ja": "都市サービス資格・専用報酬"
+  "城市白名单资格与专项奖励": {
+    "en": "City whitelist eligibility & dedicated rewards",
+    "ja": "都市ホワイトリスト資格・専用報酬"
   },
   "OPOC持有资格与专项ZC奖励独立；OPOC本身仍只能商城消费，不兑换ZC或USDT。": {
     "en": "OPOC-based eligibility and dedicated ZC rewards are separate. OPOC itself remains for store purchases only, with no redemption for ZC or USDT.",
@@ -930,13 +930,13 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "Store",
     "ja": "ストア"
   },
-  "OPO 商城": {
-    "en": "OPO Store",
-    "ja": "OPOストア"
+  "OPO NEXUS": {
+    "en": "OPO NEXUS",
+    "ja": "OPO NEXUS"
   },
-  "消费省 · 分享得 · 消费即积累": {
-    "en": "Shop smart · Share more · Earn as you shop",
-    "ja": "お得に買う・紹介する・買い物で貯める"
+  "消费 · 分享 · 共建": {
+    "en": "Consume · Share · Build",
+    "ja": "消費 · 共有 · 共創"
   },
   "商品分类": {
     "en": "Categories",
@@ -1010,13 +1010,13 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "OPO 2.0 demo · Sample products and balances only · No real payments",
     "ja": "OPO 2.0デモ・商品と残高はすべてサンプルです・実際の決済は行えません"
   },
-  "OPO 商城 · 2.0规则测试": {
-    "en": "OPO Store · 2.0 demo",
-    "ja": "OPOストア・2.0デモ"
+  "OPO NEXUS · 2.0规则测试": {
+    "en": "OPO NEXUS · 2.0 demo",
+    "ja": "OPO NEXUS・2.0デモ"
   },
-  "OPO 商城 · 基于原2.0界面删减整合": {
-    "en": "OPO Store · Refined from the original 2.0 design",
-    "ja": "OPOストア・従来の2.0デザインを整理・統合"
+  "OPO NEXUS · 基于原2.0界面删减整合": {
+    "en": "OPO NEXUS · Refined from the original 2.0 design",
+    "ja": "OPO NEXUS・従来の2.0デザインを整理・統合"
   },
   "功能测试版 · 非真实交易 · 刷新重置": {
     "en": "Interactive demo · No real transactions · Refresh to reset",
@@ -2286,7 +2286,7 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "Open interactive storefront",
     "ja": "操作できるストアへ"
   },
-  "沿用原版OPO商城，在原界面上删减整合": {
+  "沿用原版OPO NEXUS，在原界面上删减整合": {
     "en": "Original OPO design, refined and integrated",
     "ja": "従来のOPOデザインを整理・統合"
   },
@@ -2622,8 +2622,100 @@ export const messages={"管理后台":{"en":"Management console","ja":"管理画
     "en": "members",
     "ja": "人"
   },
-  "旧资格增持示例：实际持有0 OPOC按300计权；持有1,000按1,300计权；持有5,000按5,300计权。300仅是资格基础，不是分红上限，也不是可花积分。": {
-    "en": "Legacy examples: 0 spendable OPOC gives 300 weight; 1,000 gives 1,300; 5,000 gives 5,300. The 300 is the eligibility base, not a reward cap or spendable points.",
-    "ja": "旧資格の例：利用可能OPOCが0なら300、1,000なら1,300、5,000なら5,300で加重します。300は資格の基礎であり、報酬上限や利用可能ポイントではありません。"
+  "原来城市白名单权益示例：实际持有0 OPOC按300计权；持有1,000按1,300计权；持有5,000按5,300计权。300仅是资格基础，不是分红上限，也不是可花积分。": {
+    "en": "Legacy city whitelist benefit examples: 0 spendable OPOC gives 300 weight; 1,000 gives 1,300; 5,000 gives 5,300. The 300 is the eligibility base, not a reward cap or spendable points.",
+    "ja": "従来の都市ホワイトリスト特典の例：利用可能OPOCが0なら300、1,000なら1,300、5,000なら5,300で加重します。300は資格の基礎であり、報酬上限や利用可能ポイントではありません。"
+  },
+
+  "白名单及城市服务商均可推荐商品。推荐提成建议不超过净实付USDT的1%，超过时提示。OPOC抵扣部分不返佣，消费后销毁，退款恢复原支付数量。订单完成且售后结束后记入推荐人的商城USDT余额；退款部分不计佣。": {
+    "en": "Whitelist members and city providers may refer products. Commission should preferably stay at or below 1% of net USDT paid; higher rates show a warning. Spent OPOC earns no commission and is destroyed in the demo, with the original paid quantity restored on refund. Commission credits store USDT after completion and the after-sales period; refunded amounts are excluded.",
+    "ja": "ホワイトリスト・都市事業者は商品を紹介できます。返金控除後のUSDT実支払額の1%以下を推奨し、超過時は警告します。使用OPOCは報酬対象外で、デモ上で消却し、返金時は元の使用数量を戻します。注文完了・アフターサービス期間終了後にストアUSDTへ反映し、返金分は除外します。"
+  },
+  "分佣比例 / %（建议≤1%，超出提示）": {
+    "en": "Commission / % (recommended ≤1%; warning above)",
+    "ja": "コミッション / %（推奨1%以下・超過時警告）"
+  },
+  "提示：提成超过建议上限1%，请核对；仍可保存。": {
+    "en": "Warning: above the recommended 1%. Please check; saving is still allowed.",
+    "ja": "推奨上限1%を超えています。確認してください。保存は可能です。"
+  },
+  "推荐提成建议不超过净实付USDT的1%。": {
+    "en": "Recommended commission: at most 1% of net USDT paid.",
+    "ja": "コミッションは返金控除後のUSDT実支払額の1%以下を推奨します。"
+  },
+  "提示：提成超过建议上限1%；已保存，仅影响后续订单。": {
+    "en": "Warning: above the recommended 1%; saved for future orders only.",
+    "ja": "推奨上限1%超過。保存しました。今後の注文のみに適用します。"
+  },
+  "模拟订单已生成，OPOC已模拟销毁、不参与返佣；未产生真实支付": {
+    "en": "Demo order created. Spent OPOC is marked destroyed and earns no commission; no real payment occurred.",
+    "ja": "デモ注文を作成しました。使用OPOCは消却扱いで報酬対象外です。実決済はありません。"
+  },
+  "OPOC消费销毁（模拟）": {
+    "en": "Spent OPOC destroyed (demo)",
+    "ja": "使用OPOC消却（デモ）"
+  },
+  "退款恢复": {
+    "en": "Restored on refund",
+    "ja": "返金時復元"
+  },
+
+  "选择分佣方式": {
+    "en": "Choose commission timing",
+    "ja": "コミッションのタイミング"
+  },
+  "付款即分佣": {
+    "en": "Commission at payment",
+    "ja": "決済時にコミッション"
+  },
+  "付款成功后推荐人立即收到模拟佣金；商品不可退。": {
+    "en": "The referrer receives demo commission immediately after payment; the item cannot be returned.",
+    "ja": "決済後、紹介者にデモ報酬を即時反映します。商品は返品不可です。"
+  },
+  "验收后分佣": {
+    "en": "Commission after acceptance",
+    "ja": "取引確認後にコミッション"
+  },
+  "客户确认收货并完成交易后，再给推荐人分配佣金。": {
+    "en": "Commission is distributed after the buyer confirms receipt and completes the transaction.",
+    "ja": "購入者が受取・取引完了を確認してから紹介者に報酬を反映します。"
+  },
+  "我已确认：付款即分佣，此订单商品不可退。": {
+    "en": "I confirm: commission is immediate and this order cannot be returned.",
+    "ja": "決済時に報酬が発生し、この注文は返品不可であることを確認しました。"
+  },
+  "只改变分佣时间，不增加佣金比例；OPOC不参与返佣。": {
+    "en": "This changes timing only, not commission rates; OPOC earns no commission.",
+    "ja": "報酬の時期のみ変更し、率は増えません。OPOCは報酬対象外です。"
+  },
+  "付款即分佣 · 此订单不可退款": {
+    "en": "Commission at payment · This order cannot be refunded",
+    "ja": "決済時報酬・この注文は返金不可"
+  },
+  "验收后分佣 · 确认交易后结算": {
+    "en": "Commission after acceptance · Settled after buyer confirmation",
+    "ja": "取引確認後報酬・購入者の確認後に精算"
+  },
+  "确认收货并完成交易": {
+    "en": "Confirm receipt and complete transaction",
+    "ja": "受取確認・取引完了"
+  },
+  "请确认付款即分佣且商品不可退": {
+    "en": "Please confirm immediate commission and no returns",
+    "ja": "決済時報酬と返品不可を確認してください"
+  },
+  "此订单选择付款即分佣，付款前已确认不可退款": {
+    "en": "This order chose commission at payment with no refunds confirmed before paying",
+    "ja": "この注文は決済時報酬を選び、決済前に返金不可を確認済みです"
+  },
+
+  "商品发布页可设一级、二级与白名单分销比例。一级归买家直接邀请人，二级归邀请人的邀请人；白名单就是原商品推荐佣金，不重复叠加，建议不超过1%。基数为扣退款后的实付USDT，OPOC不计佣。付款前选择付款即分佣（须确认商品不可退）或验收后分佣（客户确认交易后结算）。每单保存方式、推荐人和比例快照。当前一级二级仅保存设置，商品推荐佣金可模拟上述两种时间；不是真实商品发布或资金结算。": {
+    "en": "The publishing form configures level 1, level 2 and whitelist rates. Level 1 goes to the buyer’s direct inviter, level 2 to that inviter’s inviter. Whitelist commission is the existing product-referral commission, never an additional duplicate; ≤1% is recommended. The basis is net USDT paid after refunds, excluding OPOC. Before payment choose immediate commission with explicit no-return consent, or commission after buyer acceptance. Each order snapshots the timing, referrer and rate. Inviter tiers currently store settings only; product-referral timing is simulated. This is not real listing or settlement.",
+    "ja": "掲載画面で1次・2次・ホワイトリスト率を設定できます。1次は購入者の直接招待者、2次はその招待者の招待者です。ホワイトリスト分は従来の商品紹介報酬と同一で二重計上せず、1%以下を推奨します。基準は返金控除後のUSDT支払額で、OPOCは対象外です。決済前に返品不可への同意を伴う即時報酬か、購入者の取引確認後の報酬を選択します。注文ごとに方式・紹介者・率を保存します。招待者報酬は設定保存のみ、商品紹介報酬の時期はシミュレーションです。本番の掲載・精算ではありません。"
+  },
+  "白名单及城市服务商均可推荐商品。推荐提成建议不超过净实付USDT的1%，超过时提示。OPOC抵扣部分不返佣、消费销毁；可退款订单原量恢复。付款前选择付款即分佣（不可退）或验收后分佣（确认交易后结算），每单冻结方式与比例。": {
+    "en": "Whitelist members and city providers can refer products. A rate of at most 1% of net USDT paid is recommended; higher rates warn. Spent OPOC earns no commission and is destroyed in the demo, then restored for eligible refunds. Choose immediate commission with no returns or commission after buyer acceptance; each order snapshots its timing and rate.",
+    "ja": "ホワイトリスト・都市事業者は商品を紹介できます。返金控除後の実USDT支払額の1%以下を推奨し、超過時は警告します。OPOCは報酬対象外で使用時にデモ消却し、返金可能な注文では元の数量を戻します。返品不可の即時報酬か購入者の取引確認後の報酬を選び、注文ごとに方式と率を保存します。"
   }
+
 };

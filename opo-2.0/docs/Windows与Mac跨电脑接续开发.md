@@ -28,7 +28,7 @@ Windows PowerShell：
 ## 收工
 
 1. 查看 `git status --short` 和 `git diff`，确认每个文件的用途。
-2. 更新 `opo-2.0/PROJECT_MEMORY.md` 或 `opo-2.0/docs/当前版本交接.md`，写明本次完成、验证、断点和另一台电脑下一步。
+2. 更新 `opo-2.0/docs/最新开发同步.md`（只记录公开技术信息，不包含内部会话或个人资料），写明本次完成、验证、断点和另一台电脑下一步。
 3. 明确列出本次提交文件。不要使用 `git add .`、`git add -A` 或通配符。
 4. 运行收工脚本。脚本会再次运行 `npm run check`，只暂存列出的文件，显示摘要，经确认后提交并普通推送当前分支。
 
@@ -37,7 +37,7 @@ Mac 示例（从 `opo-2.0` 目录执行）：
 ```sh
 ./scripts/dev-mac.command finish \
   --message "docs: update cross-device handoff" \
-  --files opo-2.0/docs/当前版本交接.md opo-2.0/docs/Windows与Mac跨电脑接续开发.md
+  --files opo-2.0/docs/最新开发同步.md opo-2.0/docs/Windows与Mac跨电脑接续开发.md
 ```
 
 Windows PowerShell 示例：
@@ -45,7 +45,7 @@ Windows PowerShell 示例：
 ```powershell
 .\scripts\dev-windows.ps1 finish `
   --message "docs: update cross-device handoff" `
-  --files opo-2.0/docs/当前版本交接.md opo-2.0/docs/Windows与Mac跨电脑接续开发.md
+  --files opo-2.0/docs/最新开发同步.md opo-2.0/docs/Windows与Mac跨电脑接续开发.md
 ```
 
 文件参数始终使用仓库根目录相对路径。自动化环境只有在人工已核对清单后才能显式加入 `--yes`；脚本不会提供强制推送选项。
@@ -61,3 +61,6 @@ Windows PowerShell 示例：
 ## Windows 仍需逐机完成
 
 Mac 上无法替代验证 Windows。回到 Windows 后需要确认正确仓库路径、保存或提交原有修改、安装并选择 Node 24.18.1、运行开工脚本和 `npm run check`，再用 `npm run preview:model` 打开 3211 预览。任何本地数据库、私有上传、环境变量和密钥都应先盘点，不能从 Mac 覆盖。
+
+## 当前合并状态
+Windows唯一开发目录为opo-windows/opo-2.0；旧opo-release及opo-sync目录保留为历史备份/审查目录，不再作为第二开发入口。Windows兼容修复已实机检查，Mac本次未重新实机验证。
