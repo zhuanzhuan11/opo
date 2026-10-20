@@ -2770,7 +2770,7 @@ Object.assign(messages,{
     "en": "Where is AI Digital Services and what does it cover?",
     "ja": "AIデジタルサービスの入口と内容は？"
   },
-  "从左侧AI数字服务或右侧演示按钮进入。页面包含服务介绍、选品与咨询、群管理、商品与素材、每日同步、云端知识库和我的汇总七区。": {
+  "点击首页右侧AI数字服务卡片上的“进入”按钮。页面包含服务介绍、选品与咨询、群管理、商品与素材、每日同步、云端知识库和我的汇总七区。": {
     "en": "Open AI Digital Services from the sidebar or the demo button on the right. The seven sections cover the overview, product advice, group management, products and media, daily updates, cloud knowledge, and owner reports.",
     "ja": "左メニューのAIデジタルサービス、または右側のデモから開きます。概要、商品相談、グループ管理、商品・素材、日次更新、クラウド知識、管理者向け集計の7項目です。"
   },
@@ -2826,7 +2826,7 @@ Object.assign(messages,{
     "en": "Open AI Digital Services and switch sections",
     "ja": "AIデジタルサービスを開く"
   },
-  "点击左侧AI数字服务或右侧演示按钮，进入介绍页。点击上方七个栏目切换；返回入口后可再点演示重新打开。详细演示目前主要中文，其他语言完整文案待正式接入时完善。": {
+  "点击首页右侧AI数字服务卡片上的“进入”按钮，打开介绍页。再点击上方七个栏目切换内容；返回首页后可再次点击“进入”。详细演示目前主要中文，其他语言完整文案待正式接入时完善。": {
     "en": "Use the sidebar entry or right-side demo, then switch among the seven sections. Return to the entry and reopen the demo if needed. Detailed demo content is currently mainly Chinese; full localization is pending.",
     "ja": "左メニューまたは右側デモから開き、上部の7項目を切り替えます。入口へ戻った後も再度開けます。詳細デモは現在主に中国語で、多言語の全文は本実装時に対応予定です。"
   },
@@ -2867,3 +2867,5 @@ Object.assign(messages,{
     "ja": "以下のPDFは過去のフレームワーク資料で、今回のAIサービス説明は含みません。最新手順は本ページをご参照ください。"
   }
 });
+
+Object.assign(messages,{"进入":{"en":"Enter","ja":"開く"},"进入　›":{"en":"Enter ›","ja":"開く ›"},"会员快捷支付系统":{"en":"Member Quick Payment System","ja":"会員クイック決済システム"},"会员快捷支付系统 · 单店自动奖励试用":{"en":"Member Quick Payment System · Single-store reward pilot","ja":"会員クイック決済システム・単一店舗特典パイロット"}});
