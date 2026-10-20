@@ -1,0 +1,136 @@
+{
+  "version": "opo2-approved-20261019",
+  "productionEnabled": false,
+  "chainId": 56,
+  "tokens": {
+    "ZC": "0x231bde6480345804679882c8349497a3eeba7905",
+    "USDT": "0x55d398326f99059fF775485246999027B3197955"
+  },
+  "plannedSupply": 1000000000,
+  "allocationZC": {
+    "initialLP": 1000000,
+    "subscriptionBurnInventory": 200000000,
+    "legacyNodesInitialReserve": 100000000,
+    "lpReserve": 549000000,
+    "lpStakingRewards": 100000000,
+    "cityInitialReserve": 50000000
+  },
+  "subscription": {
+    "priceUSDT": "0.01",
+    "minimumUSDT": "50",
+    "burnZC": true,
+    "returnZC": false,
+    "opocMultiplier": 2,
+    "vestingDaysDemo": 365,
+    "opocRedeemableForTokens": false
+  },
+  "lpRewards": {
+    "totalZC": 100000000,
+    "vestingDaysDemo": 1095,
+    "weight": "active LP shares multiplied by eligible time"
+  },
+  "legacyNodes": {
+    "USDTPerShare": 1000,
+    "principalAndReturnMultiplier": 1.5,
+    "maximumCumulativeReleasedUSDTValueMultiplier": 1.5,
+    "stopNewOutputWhenCumulativeValueCapReached": true,
+    "capUsesSumOfReleaseTimeUSDTValues": true,
+    "vestingDaysDemo": 1095,
+    "priceAtEachRelease": true,
+    "priceSource": "BSC PancakeSwap V2 ZC/USDT pair reserves, resolved from the configured token addresses at release time; spot ratio only, not an executable quote",
+    "extraPrincipalRefund": false
+  },
+  "cityRewards": {
+    "whitelistSpendableOPOC": 5000,
+    "providerSpendableOPOC": 10000,
+    "budgetUSDT": 500000,
+    "initialReserveZC": 50000000,
+    "vestingDaysDemo": 1095,
+    "weight": "eligible spendable OPOC multiplied by holding time",
+    "countHighestTierOnce": true,
+    "priceAtEachRelease": true,
+    "legacyWhitelist": {
+      "retained": true,
+      "creditsSpendablePoints": false,
+      "transferEligibilityAndFutureBenefitsOnly": true,
+      "baseWeightOPOC": 300,
+      "weightFormula": "(300 base + personally held spendable OPOC) multiplied by eligible time",
+      "transferableWeightOPOC": 300
+    },
+    "newWhitelistMinimumUnit": "spendable OPOC",
+    "legacyUpgradePolicy": "pending",
+    "timeWeighting": {
+      "method": "sum effective eligible OPOC multiplied by interval duration",
+      "unit": "OPOC-hours",
+      "splitOn": [
+        "balance change",
+        "eligibility change",
+        "eligibility transfer"
+      ],
+      "extraTenureMultiplier": false,
+      "productionEventHistoryImplemented": false
+    }
+  },
+  "designatedPoolSellFee": {
+    "totalBps": 2000,
+    "platformBps": 1000,
+    "convertToUSDTAndPairLPBps": 1000,
+    "buyBps": 0,
+    "ordinaryTransferBps": 0,
+    "rewardClaimBps": 0
+  },
+  "productPricing": {
+    "allCostMultiplierMin": "2.5",
+    "allCostMultiplierMax": "3",
+    "opocDiscountCapDesignPercent": 50
+  },
+  "fundsWarning": "All browser balances, orders, burns and claims are simulated. Existing server sandbox is not integrated with these approved economic rules.",
+  "productReferralCommission": {
+    "basis": "actual USDT paid less refunded USDT; OPOC excluded",
+    "rate": "configured per product at listing, default 0; snapshot on order",
+    "eligibleRecipients": [
+      "whitelist",
+      "city service provider"
+    ],
+    "settlement": "new order snapshots payment-time immediate nonreturnable mode or buyer-acceptance mode; legacy unspecific orders retain completion and after-sales gate",
+    "buyerReferralIndependent": true,
+    "productionImplemented": false,
+    "suggestedMaximumBps": 100,
+    "aboveSuggestionPolicy": "warn, allow save; do not rewrite paid order snapshots",
+    "opocConsumption": "destroy consumed OPOC in simulation; excluded from commissions; restore original paid quantity on refund",
+    "distributionSettings": {
+      "level1": "buyer direct inviter",
+      "level2": "buyer inviter parent",
+      "whitelist": "same as product referral; never duplicate",
+      "basis": "actual USDT less refunded USDT; OPOC excluded",
+      "defaultInviterRateBps": 0,
+      "suggestedWhitelistMaximumBps": 100,
+      "inviterSettlementImplemented": false
+    },
+    "paymentTiming": {
+      "default": "after-acceptance",
+      "choices": {
+        "on-payment": "settle on successful simulated payment; buyer must explicitly confirm nonreturnable order",
+        "after-acceptance": "settle on buyer confirmation of receipt and transaction completion"
+      },
+      "snapshotPerPaidOrder": true,
+      "productionImplemented": false
+    }
+  },
+  "platformDisplayName": "OPO NEXUS",
+  "decentralizationStatus": "vision; architecture, governance and real distribution not implemented or accepted",
+  "eniParticipation": {
+    "mode": "simulation-only",
+    "burnValueMultiple": 1,
+    "opocEntitlementMultiple": 2,
+    "vesting": "one year; calculator uses 365 days",
+    "opocPlatformUSDTOrZCRedemption": false,
+    "newWhitelistSpendableOPOC": 5000,
+    "cityProviderSpendableOPOC": 10000,
+    "sameExistingCityDividendRules": true,
+    "extraLegacyBaseWeight": false,
+    "referralOPOCGrantRules": "pending"
+  },
+  "platformSubtitle": "去中心化商业平台",
+  "platformTagline": "消费 · 分享 · 共建"
+}

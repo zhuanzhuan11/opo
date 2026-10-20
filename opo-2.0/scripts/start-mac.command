@@ -7,3 +7,4 @@ if ! command -v node >/dev/null 2>&1; then
 fi
 echo "Open http://127.0.0.1:3200 after the server starts. Ctrl+C stops the server."
 node backend/server.mjs
+

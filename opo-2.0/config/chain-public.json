@@ -1,0 +1,9 @@
+{
+  "chainId": 56,
+  "network": "BSC",
+  "zc": "0x231bde6480345804679882c8349497a3eeba7905",
+  "usdt": "0x55d398326f99059fF775485246999027B3197955",
+  "platformReceiptAddress": "0xaB8BCFC5dcb42B1c3c1a741082af025eeFc93bae",
+  "status": "User-confirmed public identifiers; not evidence of contract capabilities or control of the receipt address",
+  "enabledInCatalog": false
+}

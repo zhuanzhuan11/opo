@@ -1,0 +1,20 @@
+import {whitelistQuote} from './legacy-whitelist.mjs';
+export function cityTimeQuote(segments,otherWeight,price){
+ if(!Array.isArray(segments)||!segments.length||segments.length>12)throw Error('请设置1至12个不重叠的持有时段');
+ const baseline=whitelistQuote(0,0,otherWeight,price,false);let previousEnd=0,weight=0,eligibleHours=0;
+ for(const segment of segments){const {start,end,balanceMicro,legacy,qualified}=segment;
+  if(!Number.isFinite(start)||!Number.isFinite(end)||start<previousEnd||start<0||end>24||end<=start||typeof qualified!=='boolean')throw Error('时段须按顺序且不重叠，范围为0至24小时');
+  const quote=whitelistQuote(balanceMicro,end-start,otherWeight,price,legacy);previousEnd=end;
+  if(qualified&&quote.tier!=='none'){weight+=quote.weight;eligibleHours+=end-start}
+ }
+ const totalWeight=weight+otherWeight,share=totalWeight?weight/totalWeight:0,rewardUSDT=baseline.poolDailyUSDT*share;
+ return {weight,eligibleHours,totalWeight,share,rewardUSDT,reward:rewardUSDT/price};
+}
+export function mountCityTime(container){
+ if(!container)return;
+ const label={start:'起始小时',end:'结束小时',balance:'该时段可用OPOC',source:'资格来源（仅用于计算器）',qualified:'该时段具有分红资格'};
+ const row=(start,end,balance)=>`<div class="time-segment"><div class="formgrid"><label>${label.start}<input data-start type="number" min="0" max="24" step="0.01" value="${start}"></label><label>${label.end}<input data-end type="number" min="0" max="24" step="0.01" value="${end}"></label><label>${label.balance}<input data-balance type="number" min="0" max="1000000000" step="0.000001" value="${balance}"></label><label>${label.source}<select data-source><option value="new">新资格 · 按实际可用OPOC</option><option value="legacy">旧资格 · 300基础＋实际持有</option></select></label></div><label class="checklabel"><input data-qualified type="checkbox" checked>${label.qualified}</label><button type="button" data-remove>删除时段</button></div>`;
+ container.innerHTML=`<h3>按合格持有时间分段计算</h3><p>个人权重＝Σ（各合格时段的有效OPOC数量×该时段小时数）。分配比例＝个人累计权重÷全体累计权重。余额变化、资格暂停或转让时分段；不把最后余额套用全天。</p><div id="citysegments">${row(0,12,5000)}${row(12,24,10000)}</div><button type="button" id="addcitysegment" class="soft padded">增加持有时段</button><label>其他合格用户当日OPOC·小时总权重<input id="timeothers" type="number" min="0" max="24000000000" step="0.01" value="240000"></label><label>城市奖励模拟ZC价格 / USDT<input id="timeprice" type="number" min="0.000001" max="1000000" step="0.000001" value="0.01"></label><div id="citytimeresult" class="result"></div><p class="sub">仅模拟一天0至24小时，不代表已记录真实资格时间。正式系统须按服务器事件记录时间、余额、资格及转让，日切时区待定。</p>`;
+ const update=()=>{const output=container.querySelector('#citytimeresult');try{const rows=[...container.querySelectorAll('.time-segment')].map(el=>({start:Number(el.querySelector('[data-start]').value),end:Number(el.querySelector('[data-end]').value),balanceMicro:Math.round(Number(el.querySelector('[data-balance]').value)*1000000),legacy:el.querySelector('[data-source]').value==='legacy',qualified:el.querySelector('[data-qualified]').checked}));const q=cityTimeQuote(rows,Number(container.querySelector('#timeothers').value),Number(container.querySelector('#timeprice').value));output.innerHTML=`<div class="line"><span>合格持有时间</span><strong>${q.eligibleHours.toFixed(2)} h</strong></div><div class="line"><span>累计时间权重</span><strong id="citytimeweight">${q.weight.toFixed(6)} OPOC·h</strong></div><div class="line"><span>模拟当日分配比例</span><strong>${(q.share*100).toFixed(6)}%</strong></div><div class="line"><span>模拟个人当日美元额度</span><strong>${q.rewardUSDT.toFixed(6)} USDT</strong></div><div class="line"><span>模拟个人当日ZC奖励</span><strong>${q.reward.toFixed(6)} ZC</strong></div>`}catch(err){output.textContent=err.message}};
+ container.oninput=update;container.onchange=update;container.onclick=e=>{if(e.target.closest('[data-remove]')){e.target.closest('.time-segment').remove();update()}if(e.target.id==='addcitysegment'){if(container.querySelectorAll('.time-segment').length>=12)return;const last=container.querySelector('.time-segment:last-child [data-end]'),start=last?Number(last.value):0;container.querySelector('#citysegments').insertAdjacentHTML('beforeend',row(start,Math.min(24,start+1),5000));update()}};update();
+}

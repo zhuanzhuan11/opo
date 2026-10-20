@@ -1,0 +1,5 @@
+# Domain, DNS and TLS issuance must be validated on the actual host.
+{$OPO_DOMAIN} {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:3200
+}
