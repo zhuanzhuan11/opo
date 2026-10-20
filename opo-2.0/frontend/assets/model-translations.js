@@ -155,9 +155,9 @@ export const messages={
     "en": "Settlement requires completed order and closed after-sales period",
     "ja": "注文完了・アフターサービス期間終了後に精算できます"
   },
-  "OPO NEXUS": {
-    "en": "OPO NEXUS",
-    "ja": "OPO NEXUS"
+  "OPO": {
+    "en": "OPO",
+    "ja": "OPO"
   },
   "平台愿景": {
     "en": "Platform vision",
@@ -1275,13 +1275,13 @@ export const messages={
     "en": "OPO 2.0 demo · Sample products and balances only · No real payments",
     "ja": "OPO 2.0デモ・商品と残高はすべてサンプルです・実際の決済は行えません"
   },
-  "OPO NEXUS · 2.0规则测试": {
-    "en": "OPO NEXUS · 2.0 demo",
-    "ja": "OPO NEXUS・2.0デモ"
+  "OPO · 2.0规则测试": {
+    "en": "OPO · 2.0 demo",
+    "ja": "OPO・2.0デモ"
   },
-  "OPO NEXUS · 基于原2.0界面删减整合": {
-    "en": "OPO NEXUS · Refined from the original 2.0 design",
-    "ja": "OPO NEXUS・従来の2.0デザインを整理・統合"
+  "OPO · 基于原2.0界面删减整合": {
+    "en": "OPO · Refined from the original 2.0 design",
+    "ja": "OPO・従来の2.0デザインを整理・統合"
   },
   "功能测试版 · 非真实交易 · 刷新重置": {
     "en": "Interactive demo · No real transactions · Refresh to reset",
@@ -2559,7 +2559,7 @@ export const messages={
     "en": "Open interactive storefront",
     "ja": "操作できるストアへ"
   },
-  "沿用原版OPO NEXUS，在原界面上删减整合": {
+  "沿用原版OPO，在原界面上删减整合": {
     "en": "Original OPO design, refined and integrated",
     "ja": "従来のOPOデザインを整理・統合"
   },
