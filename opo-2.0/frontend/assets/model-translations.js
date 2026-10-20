@@ -2719,3 +2719,38 @@ export const messages={"原有城市白名单资格":{"en":"Existing city whitel
   }
 
 };
+
+Object.assign(messages,{
+  "ENI公链": {
+    "en": "ENI blockchain",
+    "ja": "ENIブロックチェーン"
+  },
+  "链接待提供": {
+    "en": "Link pending",
+    "ja": "リンク確認待ち"
+  },
+  "Telegram账号已开放；DeBox名称OPO，链接待提供": {
+    "en": "Telegram available; DeBox name: OPO, link pending",
+    "ja": "Telegram公開中。DeBox名：OPO、リンク確認待ち"
+  },
+  "USDT购买与OTC参考 ↗": {
+    "en": "USDT purchase and OTC guidance ↗",
+    "ja": "USDT購入・OTCの参考 ↗"
+  },
+  "USDT购买与OTC参考": {
+    "en": "USDT purchase and OTC guidance",
+    "ja": "USDT購入・OTCの参考"
+  },
+  "币安P2P仅为参考之一，可自行选择其他当地可用渠道。": {
+    "en": "Binance P2P is one example; other locally available channels may be chosen.",
+    "ja": "Binance P2Pは参考例です。地域で利用可能な他の方法も選べます。"
+  },
+  "当前可通过支持EIP-1193的钱包内置浏览器或扩展连接BSC，只读同步余额；不发起签名或转账。": {
+    "en": "Use an EIP-1193 wallet browser or extension to connect to BSC and read balances only, without signing or transfers.",
+    "ja": "EIP-1193対応の内蔵ブラウザ・拡張でBSC残高を読取専用で確認できます。署名・送金は行いません。"
+  }
+});
+
+Object.assign(messages,{"ENI用户专用通道":{"en":"Dedicated ENI user channel","ja":"ENIユーザー専用窓口"},"BSC · 商城钱包":{"en":"BSC · Store wallet","ja":"BSC・ストアウォレット"}});
+
+Object.assign(messages,{"OPO去中心化商城(会员群)":{"en":"OPO Decentralized Marketplace (Members Group)","ja":"OPO分散型マーケット（会員グループ）"},"Telegram账号已开放；DeBox群链接待提供":{"en":"Telegram available; DeBox group link pending","ja":"Telegram公開中。DeBoxグループリンク確認待ち"}});
