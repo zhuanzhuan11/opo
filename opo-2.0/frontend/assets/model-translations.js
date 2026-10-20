@@ -2754,3 +2754,5 @@ Object.assign(messages,{
 Object.assign(messages,{"ENI用户专用通道":{"en":"Dedicated ENI user channel","ja":"ENIユーザー専用窓口"},"BSC · 商城钱包":{"en":"BSC · Store wallet","ja":"BSC・ストアウォレット"}});
 
 Object.assign(messages,{"OPO去中心化商城(会员群)":{"en":"OPO Decentralized Marketplace (Members Group)","ja":"OPO分散型マーケット（会員グループ）"},"Telegram账号已开放；DeBox群链接待提供":{"en":"Telegram available; DeBox group link pending","ja":"Telegram公開中。DeBoxグループリンク確認待ち"}});
+
+Object.assign(messages,{"opo去中心化商业平台":{"en":"opo Decentralized Commerce Platform","ja":"opo分散型商業プラットフォーム"},"Telegram群邀请":{"en":"Telegram group invite","ja":"Telegramグループ招待"},"加入Telegram群 ↗":{"en":"Join Telegram group ↗","ja":"Telegramグループに参加 ↗"},"Telegram群入口已更新；DeBox群链接待提供":{"en":"Telegram group link updated; DeBox group link pending","ja":"Telegramグループリンク更新済み。DeBoxグループリンク確認待ち"}});

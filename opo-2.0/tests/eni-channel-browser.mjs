@@ -10,8 +10,8 @@ try{
  await page.goto(process.env.ENI_CHANNEL_URL||`http://127.0.0.1:${server.address().port}`);
  await page.locator('.eni-home-entry').waitFor();
  assert.match(await page.locator('.eni-home-entry').innerText(),/ENI用户专用通道/);
- const social=page.locator('.social-community');assert.match(await social.innerText(),/DeBox\s+OPO去中心化商城\(会员群\)\s+链接待提供/);
- assert.equal(await social.locator('a[href*="671a"]').count(),0);
+ const social=page.locator('.social-community');assert.match(await social.innerText(),/DeBox\s+opo去中心化商业平台\s+链接待提供/);
+ assert.equal(await social.locator('a[href*="671a"]').count(),0);assert.equal(await social.locator('a[href="https://t.me/+PTrwmNRCG30yOTY1"]').count(),1);assert.equal(await social.locator('a[href="https://t.me/MGWGG"]').count(),0);
  await page.locator('.eni-home-entry [data-go="eni-channel"]').click();await page.locator('.eni-channel').waitFor();
  assert.match(await page.locator('main').innerText(),/建议一切信息以官方公告为准/);
  assert.equal(await page.locator('main a[href="https://scan.eniac.network/"]').count(),1);
