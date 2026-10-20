@@ -212,3 +212,7 @@ ENI页现有365期/365天OPOC每日释放模拟账单，按期展示日期、本
 ## 2026-10-21 官方社群区位置与联系邮箱
 - 按用户要求将“官方社群”从左侧栏移到“OPO 生态认购”下方，保留Telegram、X、DeBox原有链接，横向排列并在窄屏自动换行；增加 `guiguowang09@gmail.com` 邮件链接。保留当前红/白/灰配色及模拟展示标识。
 - 本次仅修改前端展示与版式，不涉及上传、推送、部署或链上状态。
+
+## 2026-10-21 OPO 2.0 当前界面源码上传 GitHub
+- 用户明确要求上传便于其他电脑同步。当前界面代码与已暂存的项目工作提交 `68283cb33c55347cd1e10922fd4c4de6535fccd8` 已推送到公开仓库 `zhuanzhuan11/opo` 的独立分支 `codex/opo-production-hardening`；远端分支 SHA 已通过 GitHub API 核验一致。基点 `main` 为 `b8a18d3`，未修改 `main`，未部署测试站或生产站。
+- 其他电脑可运行：`git fetch github codex/opo-production-hardening`，然后切换到该分支（首次可 `git switch --track github/codex/opo-production-hardening`）。
