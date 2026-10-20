@@ -2758,3 +2758,5 @@ Object.assign(messages,{"OPO去中心化商城(会员群)":{"en":"OPO Decentrali
 Object.assign(messages,{"opo去中心化商业平台":{"en":"opo Decentralized Commerce Platform","ja":"opo分散型商業プラットフォーム"},"Telegram群邀请":{"en":"Telegram group invite","ja":"Telegramグループ招待"},"加入Telegram群 ↗":{"en":"Join Telegram group ↗","ja":"Telegramグループに参加 ↗"},"Telegram群入口已更新；DeBox群链接待提供":{"en":"Telegram group link updated; DeBox group link pending","ja":"Telegramグループリンク更新済み。DeBoxグループリンク確認待ち"}});
 
 Object.assign(messages,{"Telegram群 opo去中心化商业平台":{"en":"Telegram group: opo Decentralized Commerce Platform","ja":"Telegramグループ：opo分散型商業プラットフォーム"},"opo去中心化商业平台 ↗":{"en":"opo Decentralized Commerce Platform ↗","ja":"opo分散型商業プラットフォーム ↗"}});
+
+Object.assign(messages,{"DeBox群 OPO去中心化商城(会员群)":{"en":"DeBox group: OPO Decentralized Marketplace (Members Group)","ja":"DeBoxグループ：OPO分散型マーケット（会員グループ）"},"OPO去中心化商城(会员群) ↗":{"en":"OPO Decentralized Marketplace (Members Group) ↗","ja":"OPO分散型マーケット（会員グループ） ↗"},"Telegram与DeBox群入口已开放":{"en":"Telegram and DeBox group links available","ja":"TelegramとDeBoxのグループリンクを公開中"}});
