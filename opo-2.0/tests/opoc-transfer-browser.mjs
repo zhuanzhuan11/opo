@@ -1,0 +1,13 @@
+import {createRequire} from 'node:module';import assert from 'node:assert/strict';import {createPreviewServer} from '../scripts/start-model-preview.mjs';
+const {chromium}=createRequire(import.meta.url)(process.env.PLAYWRIGHT_MODULE||'playwright');const s=createPreviewServer();await new Promise(r=>s.listen(0,'127.0.0.1',r));const b=await chromium.launch({headless:true,executablePath:process.env.BROWSER_EXECUTABLE});const p=await b.newPage({viewport:{width:1440,height:1000}});const errors=[];p.on('pageerror',e=>errors.push(e.message));
+async function go(hash){await p.evaluate(h=>location.hash=h,hash);await p.waitForTimeout(80)}
+async function register(digit){await go('member');await p.locator('#registerwallet').fill('0x'+digit.repeat(40));await p.locator('#registerpass').fill('Demo-only-2026');await p.locator('#register button').click();await p.locator('#memberid').waitFor();return (await p.locator('#memberid').innerText()).trim()}
+try{
+ await p.goto('http://127.0.0.1:'+s.address().port+'/#transfer');assert.equal(await p.locator('.sidebar [data-go="transfer"]').count(),1);assert.equal(await p.locator('#opocform').count(),0);
+ const recipient=await register('2');await p.locator('#logout').click();const sender=await register('1');
+ await go('deposit');await p.locator('#depositform button').click();await p.locator('[data-confirm-deposit]').click();await go('rights');await p.locator('#subscribeamount').fill('50');await p.locator('#subscribe button').click();await p.locator('[data-days="365"]').click();
+ await go('transfer');await p.locator('#opocrecipient').fill(recipient);await p.locator('#opocamount').fill('10.1234');await p.locator('#opocform button').click();await p.locator('#confirmopoc').click();assert.match(await p.locator('#main').innerText(),/89.8766/);
+ await go('member');await p.locator('#logout').click();await p.locator('#loginid').fill(recipient);await p.locator('#loginpass').fill('Demo-only-2026');await p.locator('#login button').click();await p.locator('#memberid').waitFor();await go('transfer');assert.match(await p.locator('#main').innerText(),/10.1234/);assert.match(await p.locator('#main').innerText(),new RegExp(sender));
+ for(const lang of ['zh-CN','ja','en']){await p.locator('[data-language="'+lang+'"]').click();for(const width of [1440,768,390,360]){await p.setViewportSize({width,height:1000});assert.equal(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true)}}
+ await p.screenshot({path:'test-results/opoc-transfer-mobile.png',fullPage:true});assert.deepEqual(errors,[]);console.log('PASS: login gate, sidebar, two members, transfer and balances, retained account records, three languages, four widths, no page errors');
+}finally{await b.close();await new Promise(r=>s.close(r))}

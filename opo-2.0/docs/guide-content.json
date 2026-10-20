@@ -1,0 +1,254 @@
+{
+  "faq": [
+    [
+      "这是正式资金商城吗？",
+      "当前链接是功能框架演示。商品、订单、认购、充值、销毁和奖励均为模拟，不接收真实资金；正式会员、支付与合约还需研发验收。",
+      "Is this a live money-handling store?",
+      "This link is a framework demo. Products, orders, subscriptions, deposits, burns and rewards are simulated. Do not send funds. Production identity, payments and contracts still require development and acceptance.",
+      "実際の資金を扱うストアですか？",
+      "このリンクは全体構成のデモです。商品・注文・申込・入金・バーン・報酬はすべてシミュレーションです。送金しないでください。本番の本人確認・決済・コントラクトは開発と検証が必要です。"
+    ],
+    [
+      "没有邀请码如何注册？",
+      "邀请码留空自动使用平台代码opo1。填写本页已注册会员的邀请码可建立直接邀请关系。BSC公开钱包地址必填；请用虚构资料和测试口令，妥善记录本次生成的会员ID。",
+      "How do I register without a referral code?",
+      "Leave the code blank to use platform code opo1. A member code created on this page records a direct referral. A public BSC wallet address is required. Use fictitious details and a test password, and note the generated member ID.",
+      "紹介コードがない場合は？",
+      "空欄ならプラットフォームコードopo1を使用します。同ページで作成した会員コードなら直接紹介を記録します。BSC公開アドレスは必須です。架空の情報・テスト用パスワードを使い、発行された会員IDを控えてください。"
+    ],
+    [
+      "刷新后为什么账号和订单消失？",
+      "当前模拟记录仅在页面内存中，刷新或关闭会清空。只保存语言偏好。正式版必须接入持久数据库、安全登录和账号恢复，当前无法恢复已清空的模拟账号。",
+      "Why do accounts and orders disappear after refresh?",
+      "Demo records live only in page memory and are cleared on refresh or close. Only the language preference is saved. Production needs a persistent database, secure sign-in and account recovery. Cleared demo accounts cannot be restored.",
+      "再読み込みで会員情報や注文が消えるのはなぜ？",
+      "デモ記録はページのメモリ内のみで、再読み込み・終了により消えます。保存するのは言語設定のみです。本番にはデータベース・安全な認証・アカウント復旧が必要です。消えたデモ情報は復元できません。"
+    ],
+    [
+      "平台USDT余额与钱包余额为何不同？",
+      "钱包余额是链上资产，商城余额是会员账本，币安余额属于交易所账户，三者分开。正式充值必须经链上确认、会员匹配与防重复检查才入账，连接钱包不会自动充值。",
+      "Why do store USDT and wallet balances differ?",
+      "On-chain wallet assets, the member ledger and Binance account balances are separate. Live deposits need chain confirmation, member matching and duplicate protection. Connecting a wallet does not credit the store.",
+      "ストア残高とウォレット残高が違うのはなぜ？",
+      "チェーン上の資産、会員台帳、Binance口座は別です。本番入金はチェーン確認・会員照合・二重計上防止を経て反映します。接続だけでは入金になりません。"
+    ],
+    [
+      "充值页没有收款地址怎么办？",
+      "当前故意显示待确认，不提供真实二维码。请勿向旧收款地址或陌生人地址转账。可先登录，创建模拟充值记录，再点击模拟链上确认体验入账；正式备用金地址需要平台核定。",
+      "What if the deposit page has no address?",
+      "The address is intentionally pending and no real QR code is provided. Do not send to an old or unknown address. Sign in, create a demo deposit and simulate confirmation. Production reserve addresses require platform approval.",
+      "入金先が表示されない場合は？",
+      "現在は未確定と表示し、実際のQRコードは用意していません。旧アドレスや知らない相手に送金しないでください。ログイン後、デモ入金記録と確認操作を試せます。本番の準備金アドレスは確定が必要です。"
+    ],
+    [
+      "一键兑换USDT会自动充值吗？",
+      "不会。按钮先显示指引，再由用户打开币安官方P2P。登录、身份验证、付款和地区可用性由币安处理，返回商城不代表已付款，不会自动增加商城余额。",
+      "Does Get USDT automatically deposit to the store?",
+      "No. The button shows a guide and opens official Binance P2P at your choice. Binance handles sign-in, verification, payment and regional availability. Returning does not prove payment or credit the store.",
+      "USDT購入ボタンで自動入金されますか？",
+      "いいえ。ガイドの後に利用者がBinance公式P2Pを開きます。ログイン・本人確認・支払・地域別の利用可否はBinance側で扱います。戻るだけでは支払完了や残高反映になりません。"
+    ],
+    [
+      "认购50USDT后获得什么？",
+      "方案按0.01USDT每枚计5000ZC，锁定后最终销毁，不返还ZC；获得固定100OPOC总权益，一年释放。OPOC只用于商城消费，不能兑换ZC或USDT。页面操作均为模拟。",
+      "What does a 50 USDT subscription provide?",
+      "At the planned 0.01 USDT price, it corresponds to 5,000 ZC, locked and ultimately burned with no ZC returned, plus a fixed 100 OPOC entitlement vested over one year. OPOC is for store purchases only, not ZC or USDT redemption. All page actions are simulated.",
+      "50 USDTの申込内容は？",
+      "計画上の価格0.01 USDTでは5,000 ZCに相当し、ロック後に最終的にバーンして返還しません。固定100 OPOCを1年で付与します。OPOCはストアの買い物専用で、ZC・USDTに交換できません。画面の操作はすべてデモです。"
+    ],
+    [
+      "LP奖励和城市专项有什么区别？",
+      "LP质押奖励预算为1亿ZC，三年按有效LP份额与时间分配。城市专项按可用OPOC资格与持有时间分配三年50万USDT等值ZC，初始预留5000万ZC。两项独立，不重复使用同一预算。",
+      "How do LP rewards differ from city rewards?",
+      "LP staking has a 100 million ZC budget over three years, weighted by active LP shares and time. City rewards allocate a total 500,000 USDT-equivalent in ZC over three years using spendable OPOC eligibility and holding time, with an initial 50 million ZC reserve. The budgets are separate.",
+      "LP報酬と都市報酬の違いは？",
+      "LP報酬は1億ZCを3年間、有効LP持分と時間で配分します。都市報酬は利用可能OPOCの資格・保有時間に応じ、3年総額500,000 USDT相当をZCで配分し、初期5,000万ZCを確保します。予算は別々です。"
+    ],
+    [
+      "为什么城市服务商资格会暂停？",
+      "新资格随实际可用余额判断：低于10,000暂停服务商资格，仍满5,000保留白名单，不足5,000暂停新白名单；消费、转出及退款恢复会触发重判。历史白名单不因低于新门槛而失效，按300基础加本人实际可用OPOC计权；转让后原持有人不再拥有该历史资格或对应未来权重。",
+      "Why can city-provider eligibility pause?",
+      "New eligibility follows spendable balances: provider status pauses below 10,000; whitelist remains from 5,000 and pauses below it. Spending, transfers and refunds trigger reassessment. Legacy eligibility is retained below the new threshold with a 300 base plus personally held spendable OPOC weight. After transfer, the sender loses that legacy eligibility and its future weight.",
+      "都市サービス事業者の資格が停止するのはなぜ？",
+      "新資格は利用可能残高で判定し、10,000未満で事業者を停止、5,000以上ならホワイトリストを維持し、それ未満では新ホワイトリストも停止します。消費・送金・返金で再判定します。旧資格は新基準未満でも300基礎に本人の利用可能OPOCを加えて計算し、譲渡後は元の保有者の旧資格と将来の加重がなくなります。"
+    ],
+    [
+      "城市专项是固定发完5000万ZC吗？",
+      "不是。固定的是三年共50万USDT的记账额度，按日加权后用当次ZC价格折算。币价涨则所需ZC减少。5000万ZC只是0.01价格下的初始预留，真实取价和不足补足机制仍待落实。",
+      "Must all 50 million reserved ZC be distributed?",
+      "No. The fixed amount is the total three-year 500,000 USDT accounting budget, weighted daily and converted at each release price. Higher ZC prices require fewer tokens. The initial 50 million reserve assumes 0.01; live pricing and reserve top-up rules remain to be implemented.",
+      "準備した5,000万ZCを必ず配り切りますか？",
+      "いいえ。固定するのは3年総額500,000 USDTの記帳枠です。日ごとの加重配分後、各回のZC価格で枚数を換算し、価格が上がれば必要枚数は減ります。初期5,000万ZCは0.01を前提とし、実際の取価・補充方法は未実装です。"
+    ],
+    [
+      "历史投入4000USDT对应多少节点？",
+      "1000USDT为1份算力，所以4000为4份，三年本息合计6000USDT等值ZC。10000为10份，三年15000USDT等值ZC。每次释放按当时价格换算；投资记录必须核定并绑定会员ID。",
+      "How many shares does a historical 4,000 USDT investment represent?",
+      "Each 1,000 USDT is one share, so 4,000 is four shares and 6,000 USDT-equivalent in ZC over three years, including principal. 10,000 is ten shares and 15,000 equivalent. Releases use the then-current price; records must be verified and linked to a member ID.",
+      "過去に4,000 USDT投資した場合は何口ですか？",
+      "1,000 USDTを1口とするため4口で、3年間の元本・収益合計は6,000 USDT相当のZCです。10,000なら10口・15,000相当です。付与時点の価格で換算し、投資記録の確認と会員ID連携が必要です。"
+    ],
+    [
+      "卖出ZC的20%如何分配？",
+      "任何来源的ZC向指定BSC池卖出收20%：10%平台收益，10%换USDT并配对平台LP预留ZC增加底池。买入、普通转账和领取不收此卖出费。DEX费用、滑点、Gas另计；实际执行要由合约验收证明。",
+      "How is the 20% ZC sell fee allocated?",
+      "Selling ZC from any source into designated BSC pools incurs 20%: 10% platform revenue and 10% converted to USDT and paired with reserved ZC to add LP. Buying, ordinary transfers and claims do not incur this fee. DEX fees, slippage and gas are separate. Contract acceptance must verify enforcement.",
+      "ZC売却手数料20%の内訳は？",
+      "取得経路を問わず指定BSCプールへの売却で20%を適用し、10%はプラットフォーム収入、10%はUSDTに換えて準備ZCとLPに追加します。購入・通常送金・受取は対象外です。DEX手数料・価格ずれ・Gasは別途です。実際の適用にはコントラクト検証が必要です。"
+    ],
+    [
+      "为什么不能上传真实商品或领取ZC？",
+      "当前上传、资格鉴权、真实发币尚未接入，按钮会标记待开发。正式商品还需图片授权、完整成本、库存、物流税费、退换货与商家结算资料；不可把示意商品当成真实供货宣传。",
+      "Why are live uploads and ZC claims unavailable?",
+      "Production uploads, authorization and payouts are not connected. Live products need image rights, complete costs, inventory, shipping, taxes, returns and merchant settlement details. Do not promote sample items as available stock.",
+      "実際の商品アップロードやZC受取ができないのは？",
+      "本番の商品登録・権限検証・送付は未導入です。実商品には画像の権利、総原価、在庫、配送、税、返品、店舗精算の資料が必要です。サンプルを実在庫として宣伝しないでください。"
+    ],
+    [
+      "钱包连接失败或提示网络不对怎么办？",
+      "确认使用支持浏览器钱包的环境，在钱包中自行切换BSC主网后重试；切换账户会清除旧余额。连接只读地址与余额，不发起授权、签名或转账。不要提供私钥、助记词、验证码。",
+      "What if wallet connection fails or the network is wrong?",
+      "Use a compatible browser wallet, switch to BSC Mainnet in the wallet and retry. Account changes clear stale balances. This demo only reads addresses and balances; it does not sign, approve or transfer. Never share private keys, seed phrases or verification codes.",
+      "ウォレット接続失敗・ネットワーク違いの場合は？",
+      "対応するブラウザーウォレットを使い、ウォレット側でBSCメインネットへ切り替えて再試行してください。アカウント変更時は旧残高を消去します。デモはアドレス・残高の読み取りのみで、署名・承認・送金はしません。秘密鍵・シードフレーズ・認証コードは共有しないでください。"
+    ],
+    [
+      "遇到其他问题如何反馈？",
+      "公开客服为guiguowang99@gmail.com。记录页面、操作步骤、设备、语言和脱敏截图；不要发送密码或客户资产资料。Telegram、X、DeBox链接待平台确认，当前没有可用官方群跳转。",
+      "How do I report another issue?",
+      "Public support: guiguowang99@gmail.com. Record the page, steps, device, language and a redacted screenshot. Do not send passwords or customer asset records. Telegram, X and DeBox links await confirmation; no official group links are enabled.",
+      "その他の問題を報告するには？",
+      "公開窓口はguiguowang99@gmail.comです。画面・手順・端末・言語と個人情報を隠した画像を記録してください。パスワードや顧客資産資料は送らないでください。Telegram・X・DeBoxの公式リンクは未確定です。"
+    ],
+    [
+      "成为白名单和城市服务商需要什么条件？",
+      "新取得白名单按至少5,000已释放、未消费的可用OPOC判断；城市服务商仍为10,000可用OPOC。此前通过消费1,500元取得白名单的一批旧客户，核定历史名单后在2.0保留资格，不要求补足新5,000门槛。该历史消费不是新版资格收费，也不自动换成积分。",
+      "What qualifies me for the whitelist or city service provider?",
+      "New whitelist eligibility requires at least 5,000 released, unspent OPOC; city provider remains at 10,000. A historical customer cohort earned whitelist status through RMB 1,500 in spending. Their verified eligibility carries into 2.0 without the new 5,000 threshold. That historical spending is not a new eligibility fee and is not converted into points.",
+      "ホワイトリスト・都市サービス事業者になる条件は？",
+      "新規ホワイトリストは付与済み・未使用OPOCが5,000以上、都市事業者は引き続き10,000以上です。過去に1,500人民元の消費で取得した旧会員は、名簿確認後に2.0へ資格を承継し、新基準5,000への補充は不要です。過去の消費は新版の資格費用ではなく、ポイントへ換算しません。"
+    ],
+    [
+      "白名单和城市服务商分别有哪些权益？",
+      "白名单可上传商品，仍须商家核验和商品审核；城市服务商的区域、具体权限及职责待确认。旧白名单按（300基础＋本人实际可用OPOC）乘合格时间，新资格按实际可用OPOC持有量乘合格时间，参与同一三年50万USDT等值ZC城市专项，不重复叠加。300只是分配权重，不是赠送积分或固定收益。两类权益以后逐步增加，未公布内容不预先承诺。",
+      "What benefits do the two tiers provide?",
+      "Whitelist members may upload products subject to merchant and product review. Provider territory, permissions and duties remain pending. Legacy whitelist uses (300 base + personally held spendable OPOC) times eligible time; new eligibility uses actual spendable OPOC times eligible time. Both share the three-year 500,000 USDT-equivalent city ZC budget without stacking. The 300 is a weight, not free points or a fixed return. Benefits will expand gradually; unpublished benefits are not promised.",
+      "各資格にはどのような権益がありますか？",
+      "ホワイトリストの商品登録は店舗確認・商品審査が必要です。事業者の区域・権限・業務は未確定です。旧資格は固定（300基礎＋本人の利用可能OPOC）×対象時間、新資格は実際の利用可能OPOC×対象時間で、3年総額500,000 USDT相当ZCの都市枠を共有し、重複計上しません。300は配分加重であり、付与ポイントや固定利益ではありません。権益は段階的に追加します。"
+    ],
+    [
+      "在哪里查看资格和预计权益？",
+      "登录会员中心，在会员ID旁查看☆历史白名单、◇白名单或◆城市服务商标记。左侧“LP与奖励”中，模拟质押区下方是城市资格与专项奖励。展开计算器，选择旧资格300基础加实际持有量或新资格实际持有量，输入合格小时、其他用户权重和ZC价格查看试算。计算器不授予资格，不代表已到账奖励。",
+      "Where can I check eligibility and estimated rewards?",
+      "Sign in and check the badge beside your member ID: ☆ legacy whitelist, ◇ whitelist or ◆ city provider. Open LP & Rewards and find city eligibility below demo staking. Expand the calculator and choose legacy 300-base-plus-holdings or new actual-holdings weighting, with eligible hours, others’ weight and ZC price. Calculator choices do not grant eligibility or credit rewards.",
+      "資格と権益の試算はどこで確認できますか？",
+      "ログイン後、会員ID横の☆旧ホワイトリスト、◇ホワイトリスト、◆都市事業者の表示を確認します。「LP・報酬」のデモステーキング下に都市資格があります。計算欄で旧300基礎＋実保有量または新実保有加重を選び、時間・他会員加重・ZC価格を入力して試算できます。計算だけで資格や報酬は付与されません。"
+    ],
+    [
+      "如何获得资格、上传商品或领取城市奖励？",
+      "旧资格须由历史名单与消费资料核定后绑定会员ID，不重新收取1,500元。新版按5,000可用OPOC门槛判断。当前可在会员中心体验一份虚构历史资格，或通过模拟认购释放体验新门槛；样本只在当前页面有效、刷新清空，不连接真实旧客户。商品上传和真实发币尚未接入。OPOC可消费和内部转账，不能兑换USDT或ZC。",
+      "How do I qualify, upload products or receive city rewards?",
+      "Legacy eligibility must be verified against historical rosters and spending records and linked to a member ID, with no new RMB 1,500 charge. New eligibility uses the 5,000 spendable OPOC threshold. The member center offers one fictitious legacy record per page, or demo subscriptions and vesting for the new tier. Samples reset on reload and do not import real customers. Product uploads and live token distribution are not connected. OPOC can be spent or internally transferred, not redeemed for USDT or ZC.",
+      "資格取得・商品登録・都市報酬の受取方法は？",
+      "旧資格は過去の名簿・消費記録を確認して会員IDに紐付け、1,500元を再徴収しません。新資格は利用可能OPOCが5,000以上です。会員画面で架空の旧資格1件、またはデモ申込・付与で新基準を体験できます。再読み込みで消えるサンプルで、実際の旧会員とは連携しません。商品登録・実発行は未実装です。OPOCは消費・内部送金専用で、USDT・ZCには交換できません。"
+    ],
+    [
+      "历史白名单如何转让？",
+      "仅转资格及转让时点后的未来权益；原账户OPOC余额和已获奖励不转。会员中心输入接收会员ID、核对并确认模拟转让后，旧持有人历史标记和300权重取消，新用户承接。当前仅同页虚构历史资格可演示；真实名单、转让核验、日内时间切分及新余额型资格转让流程尚待开发。",
+      "How is legacy whitelist eligibility transferred?",
+      "Only eligibility and future benefits after transfer move. OPOC balances and earned rewards stay with their owners. Enter the recipient ID in Member center, review and confirm the demo transfer. The sender loses the legacy badge and 300 weight; the recipient inherits them. Only fictitious same-page legacy records are supported. Real roster checks, transfer verification, intraday timing and transfers of new balance-based eligibility remain to be developed.",
+      "旧ホワイトリストを譲渡するには？",
+      "譲渡対象は資格と譲渡時点以降の権益のみで、OPOC残高・獲得済み報酬は移動しません。会員画面で受取IDを入力し確認すると、元の旧資格マーク・300加重がなくなり受取人が承継します。同じページの架空記録のみのデモです。本番名簿・譲渡確認・日内按分・新残高型資格の譲渡は未実装です。"
+    ],
+    [
+      "持有时间如何影响分红？",
+      "分红按合格持有时间累计：每个时段分别计算有效OPOC数量×小时数，再汇总个人权重。旧资格有效数量为300基础＋实际可用OPOC，新资格为达到门槛时的实际可用OPOC；无资格时段为0，不另乘未经确认的长期持有奖励倍数。",
+      "How does holding time affect rewards?",
+      "Rewards accumulate over eligible holding time: calculate effective OPOC × hours for each interval, then sum the personal weight. Legacy uses 300 base plus spendable OPOC; new eligibility uses actual spendable OPOC while the threshold is met. Ineligible intervals count as zero. No unapproved long-term bonus multiplier is added.",
+      "保有時間は配分にどう影響しますか？",
+      "配分は資格を保有する時間で積算します。区間ごとの有効OPOC×時間を合計し、旧資格は300基礎＋利用可能OPOC、新資格は基準達成時の利用可能OPOCを使用します。資格がない区間は0とし、未確定の長期保有ボーナス倍率は追加しません。"
+    ],
+    [
+      "商品推荐销售如何分佣？",
+      "商品上传时可设置一名白名单或城市服务商推荐人及分佣百分比，默认0%。分佣按订单实付USDT扣除退款后计算，OPOC抵扣不计入。订单完成且售后期结束后才记入推荐人的商城USDT余额。每笔订单保存推荐人和比例版本，后来改比例不影响旧订单；商品推荐不等于买家邀请。本版仅示意商品配置及手动推进订单阶段，不是真实商品发布或资金自动结算。",
+      "How are product referral commissions calculated?",
+      "Product listing can specify one whitelist or city-provider referrer and a commission percentage, default 0%. Commission uses actual USDT paid less refunds and excludes OPOC. It credits the referrer’s store USDT only after completion and the after-sales period. Orders snapshot the referrer and rule version; later changes do not rewrite them. Product referral is separate from buyer invitation. This demo configures sample products and manually advances stages; it is not live publication or financial settlement.",
+      "商品紹介のコミッションはどう計算しますか？",
+      "商品掲載時にホワイトリストまたは都市事業者の紹介者1名と率（初期0%）を設定できます。実USDT支払額から返金を除き、OPOCは対象外です。注文完了・期間終了後にストアUSDTへ反映します。注文ごとに紹介者・ルールを保存し、後の変更は遡及しません。購入者招待とは別です。サンプル設定と段階操作のデモであり、本番公開・自動資金精算ではありません。"
+    ]
+  ],
+  "help": [
+    [
+      "先了解测试范围",
+      "本版用于技术、设计和宣发评审。页面展示最新模型，但不连接真实资金、正式用户或新合约。请在同一页面使用侧栏切换，避免刷新导致测试记录清空。",
+      "Understand the demo scope",
+      "This version is for technical, design and promotion review. It shows the latest rules but has no real funds, production users or new contracts. Navigate within the page; refresh clears demo records.",
+      "デモの範囲を確認",
+      "技術・デザイン・広報レビュー用です。最新ルールを示しますが、実資金・本番会員・新コントラクトには接続していません。ページ内で移動し、再読み込みによる記録消去に注意してください。"
+    ],
+    [
+      "注册登录与邀请",
+      "进入会员中心，邀请码可留空归属opo1，填写非零BSC测试地址与至少8位测试口令后注册。记下唯一会员ID，再查看我的邀请关系。退出后可用同页会员邀请码注册另一个测试地址体验直接邀请。",
+      "Register, sign in and refer",
+      "In Member Center, leave referral blank for opo1. Enter a non-zero fictitious BSC address and an eight-character-or-longer test password. Note the unique ID and view referrals. Sign out to register another fictitious address with that code in the same page.",
+      "登録・ログイン・紹介",
+      "会員センターで紹介欄を空欄にするとopo1になります。ゼロ以外の架空BSCアドレスと8文字以上のテスト用パスワードで登録し、固有IDを控えて紹介関係を確認します。同ページで別アドレスを紹介登録する体験もできます。"
+    ],
+    [
+      "体验充值与资产查询",
+      "登录后到USDT充值，输入模拟金额、创建待确认记录，再模拟链上确认。余额只加一次并归当前会员。我的资产显示商城模拟余额；真实浏览器钱包可主动只读同步BSC资产，两者不混加。",
+      "Try deposits and balance lookup",
+      "After sign-in, create a pending demo deposit and simulate confirmation. Credit occurs once for the current member. My Assets shows the store demo ledger; an optional wallet connection reads BSC balances separately.",
+      "入金と残高照会を体験",
+      "ログイン後、デモ入金の確認待ち記録を作成し、確認を試します。現在の会員に1回だけ反映します。マイ資産のデモ台帳と、任意接続で取得するBSC残高は分けて表示します。"
+    ],
+    [
+      "认购与OPOC释放",
+      "在我的积分输入50USDT起的测试认购。系统演示锁定并销毁ZC，创建两倍等值OPOC，分一年释放。推进测试天数查看已释放与待释放；不能兑换代币或提现。",
+      "Subscription and OPOC vesting",
+      "In My Points, simulate a subscription from 50 USDT. The demo locks and burns ZC and creates a fixed 2× OPOC entitlement over one year. Advance demo days to see vested and unvested points. No token redemption or withdrawal is available.",
+      "申込とOPOC付与",
+      "マイポイントで50 USDTから申込を試します。ZCのロック・バーンと2倍相当OPOCの1年付与を示します。デモ日数を進めて付与済み・予定を確認します。トークン交換・出金はできません。"
+    ],
+    [
+      "购买与订单退款",
+      "选择示意商品测试购买，自行填写本次使用的OPOC数量，可填0；积分抵扣金额必须低于商品总价50%，且不能超过可用积分，其余用模拟USDT支付。输入后实时显示两种支付金额。右侧订单入口查看支付组成，可模拟一次全额退款。",
+      "Purchases, orders and refunds",
+      "Choose a sample product and enter the OPOC amount to use, including 0. The offset must be below 50% of the product total and within your available points; the rest is paid in demo USDT. Both amounts update as you type. View the tender in Orders and try a single full refund.",
+      "購入・注文・返金",
+      "サンプル商品を選び、今回使用するOPOCを入力します。0も指定できます。抵扣額は商品合計の50%未満かつ利用可能ポイント以内とし、残りをデモUSDTで支払います。入力に応じて内訳が更新されます。注文欄で内訳と1回限りの全額返金を試せます。"
+    ],
+    [
+      "LP与城市资格奖励",
+      "LP页可模拟质押、推进时间及退出；退出停止新增LP奖励。左侧质押区下方是城市机制：5000可用OPOC白名单、10000服务商，余额下降暂停相应资格。展开计算器，调整持有小时和价格，查看固定50万USDT三年预算的日加权结果。",
+      "LP and city eligibility rewards",
+      "Simulate LP staking, time and exit; exit stops new LP rewards. City rules sit below the staking controls: 5,000 spendable OPOC for whitelist, 10,000 for provider, with pauses below thresholds. Expand the calculator to vary holding hours and price against the fixed three-year 500,000 USDT budget.",
+      "LPと都市資格報酬",
+      "LPステーキング・時間経過・解除を試せます。解除後は新たなLP報酬が停止します。質押欄の下に都市ルールを配置し、利用可能5,000 OPOCでホワイトリスト、10,000で事業者、未達で停止します。計算欄で時間・価格を変えて3年総額500,000 USDTの日次配分を確認できます。"
+    ],
+    [
+      "历史节点及分红",
+      "侧栏进入节点及分红。1000USDT为1份，4000为4份，10000为10份；三年本息总权益为原投入的1.5倍USDT等值ZC。计算器按本次价格换算，投资记录和收取账号须正式核定。此处不接受新投资。",
+      "Legacy nodes and distributions",
+      "Open Nodes & Distributions. 1,000 USDT is one share, 4,000 four and 10,000 ten. Total three-year principal and return equals 1.5× the original USDT in ZC, converted at each release price. Records and receiving accounts need verification. No new investment is accepted here.",
+      "既存ノードと分配",
+      "ノード・分配で、1,000 USDT＝1口、4,000＝4口、10,000＝10口を確認できます。3年の元本・収益合計は元投資の1.5倍USDT相当ZCで、各回の価格で換算します。記録と受取先の確認が必要です。新規投資は受け付けません。"
+    ],
+    [
+      "管理员与商品上传边界",
+      "成本定价只在独立后台原型展示，该地址没有真实鉴权。正式上传须服务器核验资格、商家资料、商品合规和审核发布；城市服务商具体权限仍待确定，不能只隐藏按钮就视为权限控制。",
+      "Admin and upload boundaries",
+      "Cost pricing is shown only in the separate admin prototype, which has no production authorization. Live uploads require server-side eligibility, merchant data and product review. City-provider permissions remain to be defined; hiding a button is not access control.",
+      "管理者・商品登録の範囲",
+      "原価設定は別の管理画面デモのみで、本番権限は未実装です。本番登録にはサーバーの資格検証、店舗資料、商品審査が必要です。事業者の具体的権限は未定で、ボタンを隠すだけではアクセス制御になりません。"
+    ],
+    [
+      "演示分享与发布要求",
+      "可以向技术及宣发人员分享当前公开测试链接。对外材料须标明模拟、未开通真实交易，不使用保证收益或已持牌等未经核实的说法。正式使用eni-opo.com前须完成交接、部署、数据与合约验收。",
+      "Sharing and publication",
+      "Share the public demo link with technical and promotion teams. Materials must identify it as a simulation without live trading and avoid unverified claims of guaranteed returns or licensing. Handover, deployment, data and contract acceptance must precede live use of eni-opo.com.",
+      "共有・公開時の注意",
+      "公開デモリンクを技術・広報担当に共有できます。実取引のないデモと明記し、保証利益や未確認の登録・認可をうたわないでください。eni-opo.comの本番利用には引継ぎ・配置・データ・コントラクトの検証が必要です。"
+    ]
+  ]
+}

@@ -1,0 +1,9 @@
+review/
+migration-private/
+
+# Local-only workspace material
+.idea/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db
