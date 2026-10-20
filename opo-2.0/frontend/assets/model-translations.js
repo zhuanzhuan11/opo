@@ -1785,7 +1785,11 @@ export const messages={
   },
   "按每个时段“个人有效质押LP÷总有效质押LP”计算；不再除以5.49亿ZC。该示例使用V2式同质LP份额。": {
     "en": "Each interval uses your active staked LP divided by all active staked LP, not by the 549 million ZC reserve. This demo uses V2-style fungible LP shares.",
-    "ja": "各期間の「自分の有効LP持分÷全体の有効LP持分」で計算します。5.99億ZCは分母に使いません。このデモはV2型の同質LP持分を想定しています。"
+    "ja": "各期間の「自分の有効LP持分÷全体の有効LP持分」で計算します。5.49億ZCは分母に使いません。このデモはV2型の同質LP持分を想定しています。"
+  },
+  "按每个时段“个人有效质押LP÷总有效质押LP”计算；不再除以5.49亿ZC。该示例使用V2式同质LP份额，不代表已确认的实际LP池或凭证规则。": {
+    "en": "Each interval uses your active staked LP divided by all active staked LP, not by the 549 million ZC reserve. This demo assumes fungible V2-style LP shares; it does not confirm the actual pool or receipt-token rules.",
+    "ja": "各期間の「自分の有効LP持分÷全体の有効LP持分」で計算し、5億4,900万ZCでは割りません。この例は同質なV2形式のLP持分を仮定したもので、実際のプールや持分ルールを確定するものではありません。"
   },
   "分配与费用规则": {
     "en": "Allocations & fees",
@@ -3070,5 +3074,30 @@ export const messages={
   "按有效LP份额与参与时间计算（模拟）": {"en":"Calculated by eligible LP shares and participation time (simulation)","ja":"有効なLP持分と参加時間に基づく計算（シミュレーション）"},
   "该示例使用V2式同质LP份额，不代表已确认的实际LP池或凭证规则。": {"en":"This example uses fungible V2-style LP shares; it does not confirm the actual LP pool or receipt-token rules.","ja":"この例ではV2形式の代替可能なLP持分を使用します。実際のLPプールや証明トークンのルールを確定するものではありません。"},
   "进入AI数字服务　›": {"en":"Open AI Digital Services ›","ja":"AIデジタルサービスを開く ›"},
-  "会员快捷支付系统 · 历史多商户方案模拟": {"en":"Member Quick Payment System · Legacy multi-merchant simulation","ja":"会員クイック決済システム・旧マルチ店舗シミュレーション"}
+  "会员快捷支付系统 · 历史多商户方案模拟": {"en":"Member Quick Payment System · Legacy multi-merchant simulation","ja":"会員クイック決済システム・旧マルチ店舗シミュレーション"},
+  "1.5倍是本金与收益合计的个人累计释放价值上限，不额外返还本金；每批以发放时BSC链上价格折算ZC枚数。": {"en":"The 1.5× cap is the participant’s total released value, including principal and return; principal is not repaid separately. Each batch converts to ZC using the approved BSC price at distribution time.","ja":"1.5倍は元本とリターンを合計した本人の累計リリース価値上限で、元本を別途返還するものではありません。各回のZC数量は配布時に承認されたBSC価格で換算します。"},
+  "按1095天匀速演示。以累计释放USDT等值为个人硬上限，达到投入金额1.5倍后停止；最后一批自动截断。全体节点ZC产出仍受1亿ZC总池绝对上限约束，个人可分ZC额度需核验后从总池分配并扣减。本计算器仅演示个人价值上限，不执行总池记账或真实发放。价格只读自BSC PancakeSwap V2 ZC/USDT LP储备比，不是可成交报价。当前页面不发起领取或转账；不足1,000 USDT的零散投资处理待核定。": {"en":"This is an even 1,095-day illustration. A participant’s cumulative USDT-equivalent releases are capped at 1.5× the verified investment, with the final batch reduced to the remaining cap. Total node output remains subject to the hard 100 million ZC pool limit. A participant’s allocation must be verified and deducted from that shared pool. This calculator is illustrative only; it does not reserve pool capacity or distribute ZC. The displayed price is read-only and derived from the BSC PancakeSwap V2 ZC/USDT LP reserve ratio; it is not an executable quote. No claim or transfer is initiated. Treatment of historical investments below 1,000 USDT remains to be confirmed.","ja":"1095日間で均等に配分する試算です。本人の累計リリース額は確認済み投資額の1.5倍相当（USDT）を上限とし、最終回は残り上限に合わせて減額します。ノード全体の発行量は1億ZCの総プール上限内です。本人分は確認後に共通プールから割り当て、差し引く必要があります。この計算機は試算のみで、プール枠の予約やZC配布は行いません。表示価格はBSC PancakeSwap V2のZC/USDT LP準備金比率から読み取る参考値で、約定可能な見積価格ではありません。請求・送金は行いません。1,000 USDT未満の過去投資の扱いは要確認です。"},
+  "节点个人累计产出明细（演示模板）": {"en":"Node lifetime output detail (demo template)","ja":"ノード累計出力明細（デモテンプレート）"},
+  "正式版应按每个核验通过的节点ID独立记录；“发放时价值”为各批次ZC数量×该批实际采用的LP价格之和，“当前估值”按最新链上现货价计算。“已卖出ZC”须从已绑定收益地址及指定池成交记录核验。本地模拟没有真实节点账本，以下只展示字段结构。": {"en":"In production, each verified node ID should have its own record. “Value at distribution” is the sum of each batch’s ZC amount multiplied by its applied LP price; “current valuation” uses the latest on-chain spot reference. “ZC sold” must be verified against the linked payout address and trades in the designated pool. This local demo has no real node ledger; the table only illustrates its fields.","ja":"本番では、確認済みの各ノードIDごとに記録します。「配布時価値」は各回のZC数量と適用LP価格の積の合計、「現在評価額」は最新のオンチェーン参考価格で算出します。「売却済みZC」は紐づく受取アドレスと指定プールの取引記録で確認する必要があります。このローカルデモに実際のノード台帳はなく、表は項目例のみです。"},
+  "达到个人1.5倍累计价值上限后停止该节点新增释放；超过上限未释放的预留ZC按规则销毁。正式链上销毁及卖出统计尚未接入。": {"en":"Once a node reaches its 1.5× cumulative value cap, no further output is released to it. Any reserved ZC above the cap is subject to the stated burn rule. On-chain burns and sell tracking are not connected.","ja":"ノードが本人の累計価値上限1.5倍に達すると、新たなリリースを停止します。上限を超えて未配布の予約ZCは規則に基づき焼却対象です。オンチェーン焼却および売却追跡は未接続です。"},
+  "ZC/USDT 链上现货价": {"en":"On-chain ZC/USDT spot reference","ja":"オンチェーンZC/USDT参考価格"},
+  "此前累计释放时价值 / USDT（演示）": {"en":"Previously released value / USDT (demo)","ja":"過去の累計リリース時価値 / USDT（デモ）"},
+  "此前累计已释放ZC数量（演示）": {"en":"Previously released ZC amount (demo)","ja":"過去の累計リリース済みZC数量（デモ）"},
+  "正在读取BSC链上LP储备…": {"en":"Reading BSC on-chain LP reserves…","ja":"BSCオンチェーンLP準備金を読み込み中…"},
+  "刷新BSC链上价格": {"en":"Refresh BSC on-chain price","ja":"BSCオンチェーン価格を更新"},
+  "历史投资专项：每1,000 USDT为1份算力，三年累计释放价值最高为投入金额的1.5倍USDT等值。": {"en":"Legacy investment allocation: each 1,000 USDT represents one computing node. The cumulative release value over three years is capped at 1.5× the investment in USDT equivalent.","ja":"過去投資者向け枠：1,000 USDTにつき1ノードです。3年間の累計リリース価値は投資額の1.5倍相当（USDT）を上限とします。"},
+  "节点ID / 会员": {"en":"Node ID / member","ja":"ノードID / 会員"},
+  "核定投入": {"en":"Verified investment","ja":"確認済み投資額"},
+  "1.5倍价值上限": {"en":"1.5× value cap","ja":"1.5倍の価値上限"},
+  "累计已释放ZC": {"en":"Cumulative ZC released","ja":"累計リリース済みZC"},
+  "发放时累计价值": {"en":"Cumulative value at distribution","ja":"配布時の累計価値"},
+  "当前链上估值": {"en":"Current on-chain reference value","ja":"現在のオンチェーン参考評価額"},
+  "累计已卖出ZC": {"en":"Cumulative ZC sold","ja":"累計売却済みZC"},
+  "剩余价值额度": {"en":"Remaining value allowance","ja":"残りの価値枠"},
+  "状态": {"en":"Status","ja":"状態"},
+  "演示样例": {"en":"Demo sample","ja":"デモ例"},
+  "未核验 · 演示": {"en":"Unverified · Demo","ja":"未確認・デモ"},
+  "请输入有效的释放天数、链上ZC价格和累计释放数据": {"en":"Enter valid release days, on-chain ZC price and cumulative release data.","ja":"有効なリリース日数、オンチェーンZC価格、累計リリースデータを入力してください。"},
+  "链上价格读取失败：PancakeSwap V2 has no ZC/USDT pool for the configured token。当前不使用手填或默认价格，产出试算已停用。": {"en":"On-chain price unavailable: PancakeSwap V2 has no ZC/USDT pool for the configured token. The calculator is disabled; no manual or default price is used.","ja":"オンチェーン価格を取得できません：設定されたトークンのPancakeSwap V2プールがありません。手入力価格や既定価格は使わず、試算を停止します。"},
+  "未读取到有效的BSC ZC/USDT LP价格，不能计算本次ZC产出。": {"en":"No valid BSC ZC/USDT LP price was found, so this ZC release cannot be calculated.","ja":"有効なBSC ZC/USDT LP価格を取得できないため、今回のZC付与額は計算できません。"}
 };

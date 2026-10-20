@@ -15,7 +15,7 @@
 .dark.wide{background:var(--red);color:white;border-color:var(--red)}.soft.wide{background:var(--pink);color:var(--red);border-color:#ffe0dc}input[type=range]{accent-color:var(--red)}
 .review-card .shot-link{display:block;margin:12px 0}.review-card img{display:block;width:100%;height:180px;object-fit:cover;object-position:top;border:1px solid var(--line);border-radius:7px}.review-card .shot-link:focus img{outline:2px solid var(--red)}
 
-.address{overflow-wrap:anywhere}#memberid{font-size:14px}.order-shortcut .btn{margin-top:8px;width:100%}@media(max-width:950px){.right-rail{display:block;grid-column:1/-1}.right-rail>section:not(.order-shortcut){display:none}.order-shortcut{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.order-shortcut .btn{width:auto}}
+.address{overflow-wrap:anywhere}#memberid{font-size:14px}@media(max-width:950px){.right-rail{display:block;grid-column:1/-1}.right-rail>section:not(.ai-service-box){display:none}.ai-service-box{display:block}}
 
 .language-switch{padding:14px 10px;border-bottom:1px solid var(--line);margin-bottom:10px}.language-switch p{font-size:12px;color:var(--muted);margin:0 0 8px}.language-switch>div{display:flex;flex-wrap:wrap;gap:6px}.language-switch button{padding:7px 8px;border:1px solid var(--line);border-radius:6px;background:white;font-size:12px;cursor:pointer}.language-switch button.active{background:var(--red);color:white;border-color:var(--red)}html:not([lang="zh-CN"]) .original-portrait{background-image:none;background:linear-gradient(145deg,#fff1ef,#f3d9d2);display:grid;place-items:center}html:not([lang="zh-CN"]) .original-portrait:before{content:'OPO';font-size:58px;font-weight:800;color:var(--red)}html:not([lang="zh-CN"]) .original-hero{background-image:none;background:linear-gradient(120deg,#fff0ef,#f5d0c4)}html:not([lang="zh-CN"]) .review-card .shot-link{display:none}html:not([lang="zh-CN"]) .herotext h1{font-size:clamp(23px,2.5vw,36px)}html:not([lang="zh-CN"]) .herotext{max-width:95%}html:not([lang="zh-CN"]) .trust{flex-wrap:wrap}html:not([lang="zh-CN"]) .nav{gap:18px;flex-wrap:wrap}.main .panel,.main .stat{min-width:0;overflow-wrap:anywhere}.admin-title .language-switch{margin:0;padding:8px}
 @media(max-width:650px){.sidebar .language-switch{display:block;padding:10px 3px}.language-switch button{padding:7px 5px}.language-switch>div{gap:4px}html:not([lang="zh-CN"]) .herotext h1{font-size:24px}html:not([lang="zh-CN"]) .nav{gap:12px}html:not([lang="zh-CN"]) .top .trust{font-size:11px}}
@@ -34,7 +34,7 @@ html:not([lang="zh-CN"]) .tagline{font-size:10px;letter-spacing:0;white-space:no
 
 .guide-panel details{border-bottom:1px solid var(--line);padding:14px 0}.guide-panel summary{cursor:pointer;font-weight:700;line-height:1.7}.guide-panel details p{line-height:1.9;color:#40506a;white-space:pre-line}.guide-panel .timeline{padding-top:18px}
 
-.order-shortcut [data-go="faq"],.order-shortcut [data-go="help"]{display:none}@media(max-width:650px){.order-shortcut [data-go="faq"],.order-shortcut [data-go="help"]{display:inline-block}}
+
 
 /* Compact storefront: original featured row, category divider, one full row. */
 .product-sprite{background-image:url('./products/opo-product-photos.png');background-repeat:no-repeat;background-size:400% 200%;background-color:#f1ebe2}
@@ -71,3 +71,105 @@ html:not([lang="zh-CN"]) .tagline{font-size:10px;letter-spacing:0;white-space:no
 .eni-release-ledger .table-wrap{max-height:520px;overflow:auto}.eni-release-ledger table{width:100%;min-width:620px;border-collapse:collapse}.eni-release-ledger th,.eni-release-ledger td{padding:9px 12px;border-bottom:1px solid #edf0f3;text-align:left;white-space:nowrap}.eni-release-ledger thead{position:sticky;top:0;background:#f7f8fa;z-index:1}
 
 .ai-service-enter{padding:4px 9px;border:1px solid #f2c6c3;border-radius:7px;background:#fff7f6;color:var(--red);font-size:12px;font-weight:700;white-space:nowrap}.ai-service-enter:hover{background:var(--pink)}#ai-service-guide{max-width:720px;margin:16px 0}
+
+/* International editorial polish: retain the existing OPO red, white and neutral palette. */
+body{font-family:Inter,"Helvetica Neue","Noto Sans CJK SC","Yu Gothic UI",Arial,sans-serif;letter-spacing:.005em;line-height:1.65}
+.review{padding:8px clamp(16px,2.2vw,36px);letter-spacing:.02em}
+.top{padding:18px clamp(18px,2.4vw,40px) 0;gap:16px clamp(18px,2.5vw,38px);box-shadow:0 4px 18px #19202a08}
+.top .logo b{letter-spacing:-1.5px}
+.lookup{height:50px;border-radius:12px;box-shadow:0 2px 8px #19202a08}
+.lookup input{font-size:17px}
+.lookup button{min-width:125px;padding:0 16px;font-size:14px;font-weight:700;white-space:nowrap;transition:filter .18s ease}
+.lookup button:hover,.railactions button:hover,.btn.primary:hover{filter:brightness(.96)}
+.trust{font-size:14px;gap:12px}
+.trust button{border-radius:9px;transition:background .18s ease,color .18s ease}
+.trust button:hover{background:var(--pink);color:var(--red)}
+.nav{gap:clamp(16px,2vw,30px);min-height:50px}
+.nav a{position:relative;padding:13px 0 12px;color:var(--ink);text-decoration:none;white-space:nowrap;font-size:14px;transition:color .18s ease}
+.nav a:hover,.nav a.active{color:var(--red)}
+.nav a.active{font-weight:700}
+.nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--red)}
+.layout{grid-template-columns:minmax(190px,220px) minmax(0,1fr) minmax(265px,300px);gap:20px;max-width:1740px;margin:20px auto;padding:0 clamp(16px,2vw,30px)}
+.sidebar,.railbox,.panel,.product,.categories,.ecosystem{border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 28px #19202a08}
+.sidebar{padding:18px}
+.sidecats button{border-radius:9px;padding:12px 9px;transition:background .18s ease,color .18s ease,transform .18s ease}
+.sidecats button:hover{transform:translateX(2px)}
+.sideextra{gap:4px}
+.sideextra button,.sideextra .admin-entry{border-radius:8px;padding:9px 10px;line-height:1.45;transition:background .18s ease,color .18s ease}
+.sideextra button:hover,.sideextra .admin-entry:hover{background:var(--pink);color:var(--red)}
+.sideextra button.active{border-left:0;box-shadow:inset 3px 0 var(--red)}
+.main{padding:4px 0 18px}
+.pagehead{position:relative;margin:8px 0 24px;gap:20px;align-items:flex-end;padding:0 0 18px;border-bottom:1px solid var(--line)}
+.pagehead:after{content:"";position:absolute;left:0;bottom:-1px;width:48px;height:2px;background:var(--red);border-radius:2px}
+.pagehead .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 8px}
+.pagehead h1{font-size:clamp(28px,2.4vw,38px);letter-spacing:-.035em;line-height:1.2;margin:0 0 10px}
+.pagehead .sub{max-width:780px;line-height:1.8;margin:0}
+.panel{padding:clamp(20px,2vw,30px);margin-bottom:18px}
+.panel h1,.panel h2,.panel h3{letter-spacing:-.02em}
+.panel h2{font-size:21px;margin-bottom:16px}
+.stats{gap:14px;margin:0 0 18px}
+.stat{position:relative;border:1px solid var(--line);border-radius:15px;padding:21px;box-shadow:0 5px 18px #19202a06;overflow:hidden}
+.stat:before{content:"";position:absolute;top:0;left:0;width:44px;height:2px;background:var(--red);opacity:.72}
+.stat strong{font-size:clamp(24px,2vw,31px);letter-spacing:-.035em}
+.stat span,.stat small{line-height:1.65}
+.grid2{gap:18px}
+.line,.row{gap:14px;padding:14px 0}
+.note{border-radius:12px;line-height:1.8}
+.note p:last-child{margin-bottom:0}
+.formgrid input,.formgrid select,.formgrid textarea,.filterinput,.chatentry{border-radius:10px}
+.formgrid input,.formgrid select,.formgrid textarea,.filterinput{min-height:44px;padding:11px 13px;transition:border-color .18s ease,box-shadow .18s ease}
+.formgrid input:focus,.formgrid select:focus,.formgrid textarea:focus,.filterinput:focus{border-color:var(--red);box-shadow:0 0 0 3px #ee393314;outline:0}
+.btn,.panel button:not(.product):not(.langs button),.sideextra button{transition:transform .16s ease,box-shadow .16s ease,background .16s ease}
+.btn:not(:disabled):hover,.panel button:not(:disabled):not(.product):hover{box-shadow:0 5px 14px #19202a12}
+.btn:not(:disabled):active,.panel button:not(:disabled):not(.product):active{transform:translateY(1px)}
+.right-rail{display:grid;gap:16px;align-content:start}
+.right-rail>.railbox,.right-rail>.invitebox{margin:0;padding:20px}
+.railtop{gap:8px;align-items:flex-start}
+.railtop h3{letter-spacing:-.025em}
+.portrait{height:auto;aspect-ratio:1.18;min-height:190px}
+.bubble{line-height:1.75}
+.categories{padding:18px 14px;gap:12px}
+.categories button{border-radius:10px;padding:7px 4px;transition:background .18s ease,transform .18s ease}
+.categories button:hover{background:var(--pink);transform:translateY(-2px)}
+.sectionhead{margin:30px 0 15px;gap:14px}
+.sectionhead h2{font-size:24px;letter-spacing:-.03em}
+.products{gap:14px}
+.product{border-color:var(--line);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.product:hover{border-color:#ffaea9;transform:translateY(-3px);box-shadow:0 14px 28px #19202a12}
+.productbody{padding:13px}
+.productname{line-height:1.55}
+.sectionhead{position:relative;padding-bottom:9px;border-bottom:1px solid var(--line)}
+.sectionhead h2{font-weight:700}
+.sectionhead button{font-weight:600;text-decoration:none}
+.sidecats button,.sideextra button,.sideextra .admin-entry{font-weight:600;letter-spacing:.01em}
+.social-community{line-height:1.8}
+.social-community h3{letter-spacing:.06em}
+.ai-service-enter{padding:6px 11px;border-radius:9px}
+.btn{min-height:42px;border-radius:10px}
+.badge{border-radius:999px;padding:4px 10px;font-weight:600}
+.result{border-radius:12px;padding:16px;background:var(--wash);line-height:1.8}
+.table-wrap,.tablewrap{border:1px solid var(--line);border-radius:12px}
+table{min-width:620px}
+th{position:sticky;top:0;z-index:1;background:#f7f8fa}
+.ecosystem{max-width:1680px;padding:22px clamp(20px,3vw,42px);margin:10px auto 16px}
+.foot{padding:20px clamp(20px,3vw,42px);border-top:1px solid var(--line)}
+details{border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:10px 0;background:#fff}
+details[open]{box-shadow:0 5px 18px #19202a08}
+details summary{font-weight:700;cursor:pointer;line-height:1.6}
+details>p{line-height:1.85;margin:12px 0 2px}
+table{line-height:1.6}
+th{letter-spacing:.025em}
+.toast{border-radius:12px}
+@media(max-width:1100px){.layout{grid-template-columns:190px minmax(0,1fr);gap:16px}.right-rail{grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr))}.top{gap:14px 20px}}
+@media(max-width:950px){.layout{grid-template-columns:165px minmax(0,1fr);gap:14px}.right-rail{grid-template-columns:repeat(2,minmax(0,1fr))}.main{padding-top:0}}
+@media(max-width:650px){.top{padding:14px 16px 0}.nav{gap:18px;min-height:46px}.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:12px auto;padding:0 12px}.sidebar{padding:14px}.main{padding:0}.right-rail{grid-column:auto;grid-template-columns:minmax(0,1fr);gap:12px}.right-rail>.railbox,.right-rail>.invitebox{padding:16px}.pagehead{margin:4px 0 16px}.pagehead h1{font-size:28px}.panel{padding:18px;border-radius:14px;margin-bottom:12px}.stats{gap:10px}.stat{padding:15px;border-radius:13px}.stat strong{font-size:22px}.grid2{gap:12px}.categories{padding:12px 8px}.sectionhead{margin:22px 0 12px}.sectionhead h2{font-size:20px}.products{gap:10px}.productbody{padding:10px}.ecosystem{margin:12px;padding:16px;align-items:flex-start;flex-wrap:wrap}.ecosystem button{margin-left:0}details{padding:13px 14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Compact community links below the ecosystem subscription panel. */
+.social-community-footer{max-width:1680px;margin:0 auto 18px;padding:14px clamp(20px,3vw,42px);border:1px solid var(--line);border-radius:14px;background:#fff;display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px 24px;box-shadow:0 8px 24px #19202a08}
+.social-community-footer h3{margin:0;font-size:14px;white-space:nowrap}
+.social-community-footer .community-links{display:flex;align-items:center;justify-content:flex-end;gap:8px clamp(12px,2vw,28px);flex-wrap:wrap;padding:0;border:0}
+.social-community-footer .community-links a{color:var(--ink);font-size:12px;text-decoration:none;white-space:nowrap}
+.social-community-footer .community-links a:hover{color:var(--red)}
+.social-community-footer p{grid-column:2;margin:0;text-align:right}
+@media(max-width:650px){.social-community-footer{margin:10px 12px 14px;padding:14px;grid-template-columns:1fr;gap:8px}.social-community-footer .community-links{justify-content:flex-start;gap:8px 16px}.social-community-footer p{grid-column:auto;text-align:left}}
