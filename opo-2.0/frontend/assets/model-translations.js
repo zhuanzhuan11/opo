@@ -2764,3 +2764,106 @@ Object.assign(messages,{"DeBox群 OPO去中心化商城(会员群)":{"en":"DeBox
 Object.assign(messages,{"X账号 opo @guiguo_wan61258":{"en":"X account: opo @guiguo_wan61258","ja":"Xアカウント：opo @guiguo_wan61258"},"关注获取广告信息，开启通知及时接收更新。":{"en":"Follow for advertising updates and enable notifications to stay informed.","ja":"広告情報を受け取るにはフォローし、通知を有効にしてください。"},"关注X获取广告信息，或加入Telegram与DeBox群交流。":{"en":"Follow X for advertising updates, or join our Telegram and DeBox groups.","ja":"広告情報はXでフォロー、交流はTelegram・DeBoxグループへ。"}});
 
 Object.assign(messages,{"AI数字服务":{"en":"AI Digital Services","ja":"AIデジタルサービス"},"演示 · AI数字服务 ›":{"en":"Demo · AI Digital Services ›","ja":"デモ・AIデジタルサービス ›"},"当前为功能演示，尚未接入真实AI。":{"en":"Feature demo; live AI is not connected yet.","ja":"機能デモです。実際のAIは未接続です。"},"选品咨询、社群管理、商品与素材、每日同步和云端知识服务。":{"en":"Product guidance, community management, catalog and media, daily updates and cloud knowledge.","ja":"商品相談、コミュニティ管理、商品・素材、日次更新、クラウド知識サービス。"},"当前介绍及演示内容主要为中文；其他语言完整服务文案待正式接入时完善。":{"en":"This preview currently uses Chinese; full localized service content will follow during implementation.","ja":"本プレビューは主に中国語です。多言語の詳細内容は本実装時に対応予定です。"}});
+
+Object.assign(messages,{
+  "AI数字服务在哪里，能做什么？": {
+    "en": "Where is AI Digital Services and what does it cover?",
+    "ja": "AIデジタルサービスの入口と内容は？"
+  },
+  "从左侧AI数字服务或右侧演示按钮进入。页面包含服务介绍、选品与咨询、群管理、商品与素材、每日同步、云端知识库和我的汇总七区。": {
+    "en": "Open AI Digital Services from the sidebar or the demo button on the right. The seven sections cover the overview, product advice, group management, products and media, daily updates, cloud knowledge, and owner reports.",
+    "ja": "左メニューのAIデジタルサービス、または右側のデモから開きます。概要、商品相談、グループ管理、商品・素材、日次更新、クラウド知識、管理者向け集計の7項目です。"
+  },
+  "AI是否已经自动回复、审批或发布？": {
+    "en": "Are automatic replies, approvals or publishing live?",
+    "ja": "自動返信・承認・公開は稼働していますか？"
+  },
+  "尚未启用。当前按钮只展示预设示例，不调用真实模型，不发送社交消息、不处理真实入群申请、不操作商品或上传云端。演示结果不是实际执行记录。": {
+    "en": "Not yet. Buttons show preset examples only: no live model, social messages, real join approvals, product actions or cloud uploads. Demo results are not execution records.",
+    "ja": "未稼働です。ボタンは定型例の表示のみで、実AI、外部送信、実際の入会承認、商品操作、クラウド保存は行いません。デモ結果は実行記録ではありません。"
+  },
+  "AI如何先回答问题并形成标准服务？": {
+    "en": "How will AI answer first and build standard service?",
+    "ja": "先に回答し標準サービスにする流れは？"
+  },
+  "规划为理解问题、检索当前有效资料、结合上下文先回答可确认部分，再跟进结果、分类归档和核验修订。未知事实标待确认，个人订单、退款、资产或资格问题转人工；临时答复不能直接改变正式规则。": {
+    "en": "The plan is to understand the question, retrieve valid sources, answer supported points in context, then follow up, classify, verify and revise. Unknown facts remain pending; private orders, refunds, assets and eligibility go to a human. A draft answer cannot change official rules.",
+    "ja": "質問を理解し、有効な資料と文脈から確認できる内容を回答し、結果確認・分類・検証・改訂につなげる計画です。不明事項は確認待ちとし、個人注文・返金・資産・資格は担当者へ引き継ぎます。仮回答で正式規則は変わりません。"
+  },
+  "Telegram、DeBox和X都能自动回复吗？": {
+    "en": "Can Telegram, DeBox and X all reply automatically?",
+    "ja": "Telegram・DeBox・Xすべてで自動返信できますか？"
+  },
+  "当前均未接入。Telegram需机器人及相应权限；DeBox需验证机器人和消息接口；X的AI自动回复需平台事先明确书面批准，获批前只规划待审稿。不因公布社群链接就获得机器人权限。": {
+    "en": "None is connected yet. Telegram needs a bot and permissions; DeBox needs verified bot and messaging access. X AI replies require prior explicit written approval from X; drafts remain review-only until then. Publishing a community link does not grant bot access.",
+    "ja": "現在すべて未接続です。TelegramはBotと権限、DeBoxはBotとメッセージAPIの検証が必要です。XのAI返信には事前の明示的な書面承認が必要で、それまでは確認用下書きです。リンク公開だけでBot権限は得られません。"
+  },
+  "演示的入群批准会获得商城资格吗？": {
+    "en": "Does demo group approval grant store eligibility?",
+    "ja": "デモの参加承認で商城資格は得られますか？"
+  },
+  "不会。选择示例申请后，页面只显示规则判断。真实Telegram审批需要机器人管理员权限；DeBox入群审批接口仍待核验。入群不授予白名单、城市服务商、积分或资产，X不建群。": {
+    "en": "No. Selecting a sample only shows a rule decision. Real Telegram approvals need bot administrator rights; DeBox approval support is unverified. Group membership grants no whitelist, city-provider status, points or assets. No X group is planned.",
+    "ja": "得られません。サンプルは判定表示のみです。Telegramの実承認にはBot管理権限が必要で、DeBox承認APIは確認待ちです。グループ参加でホワイトリスト、都市サービス資格、ポイント、資産は付与されません。Xグループは作りません。"
+  },
+  "AI可以自动上下架和制作图片视频了吗？": {
+    "en": "Can AI list products and generate media now?",
+    "ja": "AIの商品掲載や画像・動画制作は使えますか？"
+  },
+  "目前只能演示任务。商品与素材页可查看资料核验、草稿、审核、上下架及主图/详情图/不超过30秒短视频流程。未生成或发布真实媒体。正式执行需真实商品、授权素材、库存接口、预算和批准范围。": {
+    "en": "Only task demos are available. Products and Media shows validation, drafts, review, listing changes, main/detail images and videos up to 30 seconds. No real media is generated or published. Execution requires verified products, licensed assets, inventory access, budgets and authorized scope.",
+    "ja": "現在はタスクのデモのみです。資料確認、下書き、審査、掲載変更、主画像・詳細画像・30秒以内動画の流れを確認できます。実素材は生成・公開しません。実行には実商品、素材利用許諾、在庫API、予算、承認範囲が必要です。"
+  },
+  "每日同步和云端保存已经运行了吗？": {
+    "en": "Are daily sync and cloud storage running?",
+    "ja": "日次同期とクラウド保存は稼働していますか？"
+  },
+  "尚未运行。日报示例覆盖开发、实际上线修改、全部已审核产品目录及商品变更；未来分别发到TG群、DeBox群和X账号。云端规划按七类资料保存版本、权限、来源与变更，可检索备份；当前没有上传会员资料或建立定时发送。": {
+    "en": "Not yet. The digest example covers development, actual releases, all reviewed products and catalog changes, for future TG, DeBox and X publication. Cloud records are planned in seven categories with versions, permissions, sources and changes. No member data is uploaded and no daily sending task exists.",
+    "ja": "未稼働です。日報例は開発、実リリース、審査済み全商品一覧と変更を含み、将来TG・DeBox・Xへ配信する計画です。クラウドは7分類と版・権限・出典・変更履歴を管理する予定です。会員情報のアップロードや定時配信は行っていません。"
+  },
+  "打开AI数字服务并切换栏目": {
+    "en": "Open AI Digital Services and switch sections",
+    "ja": "AIデジタルサービスを開く"
+  },
+  "点击左侧AI数字服务或右侧演示按钮，进入介绍页。点击上方七个栏目切换；返回入口后可再点演示重新打开。详细演示目前主要中文，其他语言完整文案待正式接入时完善。": {
+    "en": "Use the sidebar entry or right-side demo, then switch among the seven sections. Return to the entry and reopen the demo if needed. Detailed demo content is currently mainly Chinese; full localization is pending.",
+    "ja": "左メニューまたは右側デモから開き、上部の7項目を切り替えます。入口へ戻った後も再度開けます。詳細デモは現在主に中国語で、多言語の全文は本実装時に対応予定です。"
+  },
+  "体验选品、咨询与群管理": {
+    "en": "Try product advice, support and group management",
+    "ja": "商品相談とグループ管理を試す"
+  },
+  "在选品与咨询选择渠道和示例问题，再点演示处理，查看拟答或转人工路径。群管理选择示例申请，再点演示审批判断。X待审稿、DeBox人工处理提示均为功能边界，不是按钮故障。": {
+    "en": "In Product Advice, choose a channel and sample question, then run the demo to see a draft answer or handoff. In Group Management, choose a sample request and run the approval decision. X review drafts and DeBox manual handling are deliberate limitations, not button failures.",
+    "ja": "商品相談でチャネルと質問例を選び、処理デモで回答案や引継ぎを確認します。グループ管理では申請例から承認判定を試せます。Xの確認用下書きやDeBoxの手動処理は仕様上の境界で、故障ではありません。"
+  },
+  "体验商品与素材任务": {
+    "en": "Try product and media tasks",
+    "ja": "商品・素材タスクを試す"
+  },
+  "进入商品与素材，分别点击生成商品任务和素材制作流程，查看资料核验、待补全草稿、主图/详情图/短视频和质检步骤。不会更改在售状态、价格或库存，也不会消耗生成费用。": {
+    "en": "Open Products and Media and run the product-task and media-workflow demos to inspect validation, incomplete drafts, images, video and quality checks. No live listing, price or stock changes occur, and no generation fees are incurred.",
+    "ja": "商品・素材で商品タスクと素材制作のデモを開き、資料確認、補完待ち下書き、画像・動画、品質確認を確認します。実際の掲載状態・価格・在庫の変更や生成費用は発生しません。"
+  },
+  "查看日报、知识库和负责人汇总": {
+    "en": "Review digests, knowledge and owner reports",
+    "ja": "日報・知識庫・管理者集計を見る"
+  },
+  "每日同步中选择目标渠道并生成日报示例；真实发送按钮保持禁用。云端知识库介绍先回答、跟进、归档、核验和标准化流程，以及七类资料和权限。我的汇总展示未来负责人报告结构，不是实际运营数据。": {
+    "en": "In Daily Updates, select a destination and generate a sample digest; real sending remains disabled. Cloud Knowledge explains answer, follow-up, archive, verification and standardization, with seven data categories and access controls. Owner Reports shows a proposed structure, not live metrics.",
+    "ja": "日次更新で配信先を選び日報例を生成します。実送信ボタンは無効です。クラウド知識庫で回答・追跡・保存・検証・標準化、7分類と権限を確認できます。管理者集計は将来の報告構成で、実績データではありません。"
+  },
+  "演示无响应或需要真人处理": {
+    "en": "When a demo does not respond or a human is needed",
+    "ja": "デモが反応しない・担当者が必要な場合"
+  },
+  "先确认已进入AI数字服务，再选择栏目及示例后点击对应按钮。若刷新，商城原有模拟账号和记录会清空，切勿用真实订单资料测试。需要人工时，可从侧栏官方社群入口咨询，不要在公开群发送私钥、验证码或个人订单详情。": {
+    "en": "Confirm you are in AI Digital Services, choose a section and sample, then use its button. Reloading clears existing simulated accounts and records; do not test with real order data. For human support use the community links, without posting private keys, codes or personal order details publicly.",
+    "ja": "AIデジタルサービス内で項目とサンプルを選び、対応ボタンを押してください。再読込で模擬アカウントや記録は消去されるため、実注文情報を入力しないでください。担当者への相談は公式コミュニティ入口から行い、秘密鍵・認証コード・個人注文情報を公開しないでください。"
+  },
+  "以下PDF为历史框架资料，未包含本次AI数字服务说明；最新用法以本页为准。": {
+    "en": "These PDFs are historical framework references and do not include this AI service update. Use this page for current instructions.",
+    "ja": "以下のPDFは過去のフレームワーク資料で、今回のAIサービス説明は含みません。最新手順は本ページをご参照ください。"
+  }
+});
