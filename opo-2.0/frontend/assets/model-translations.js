@@ -1,4 +1,68 @@
 export const messages={
+  "商品导购、家伴服务与行业咨询；当前仅提供本地流程演示。": {"en":"Shopping guide, companion care and industry consulting; local demo only.","ja":"商品案内・家伴サービス・業界相談。現在はローカルデモのみです。"},
+  "家伴服务 · 模拟": {"en":"Companion care · Demo","ja":"家伴サービス・デモ"},
+  "家伴服务": {"en":"Companion care","ja":"家伴サービス"},
+  "上传体检报告后，查看报告解读流程演示。": {"en":"See a sample report interpretation flow after selecting a medical checkup report.","ja":"健康診断書を選択し、レポート解説の流れを確認できます。"},
+  "单次费用": {"en":"Per-session fee","ja":"1回の料金"},
+  "2 USDT，或等值 ZC": {"en":"2 USDT or equivalent ZC","ja":"2 USDT または同等額のZC"},
+  "最多可用相当于 1 USDT 的 OPOC 支付（费用的 50%），其余以 USDT 或等值 ZC 结算。当前价格换算与支付均未接入。": {"en":"Up to 1 USDT equivalent in OPOC may cover 50%; the remainder is USDT or equivalent ZC. Live pricing and payments are not connected.","ja":"最大1 USDT相当（料金の50%）をOPOCで支払い、残額はUSDTまたは同等額のZCで精算できます。現在、価格換算と決済は未接続です。"},
+  "支付方式": {"en":"Payment method","ja":"支払方法"},
+  "USDT · 2 USDT（模拟）": {"en":"USDT · 2 USDT (demo)","ja":"USDT・2 USDT（デモ）"},
+  "ZC · 2 USDT 等值（模拟）": {"en":"ZC · 2 USDT equivalent (demo)","ja":"ZC・2 USDT相当（デモ）"},
+  "OPOC 抵扣最多 50%，余款以 USDT / ZC（模拟）": {"en":"Up to 50% OPOC; remainder in USDT / ZC (demo)","ja":"最大50%をOPOCで支払い、残額はUSDT / ZC（デモ）"},
+  "模拟支付并继续": {"en":"Simulate payment and continue","ja":"模擬決済して続行"},
+  "选择体检资料（仅选择文件，不读取或上传）": {"en":"Select a checkup file (selected only; not read or uploaded)","ja":"健康診断書を選択（選択のみ。読み取り・アップロードなし）"},
+  "请勿选择含姓名、身份证号、联系方式等个人信息的真实报告。本演示不会读取或发送文件，只生成虚构示例；内容不构成诊断或治疗建议。": {"en":"Do not select a real report containing personal information. This demo never reads or sends the file and only creates a fictional sample; it is not medical advice.","ja":"個人情報を含む実際のレポートは選択しないでください。このデモはファイルを読み取ったり送信したりせず、架空の例のみを表示します。診断・治療の助言ではありません。"},
+  "生成解读示例": {"en":"Generate sample interpretation","ja":"解説例を生成"},
+  "行业咨询 · 模拟": {"en":"Industry consulting · Demo","ja":"業界相談・デモ"},
+  "行业咨询": {"en":"Industry consulting","ja":"業界相談"},
+  "支付币种": {"en":"Payment currency","ja":"支払通貨"},
+  "输入行业名称，生成一份结构化调研报告示例。": {"en":"Enter an industry to generate a sample structured research report.","ja":"業界名を入力して、調査レポートの構成例を生成します。"},
+  "2 USDT 等值": {"en":"2 USDT equivalent","ja":"2 USDT相当"},
+  "USDT（模拟）": {"en":"USDT (demo)","ja":"USDT（デモ）"},
+  "ZC（按 2 USDT 等值模拟）": {"en":"ZC (simulated 2 USDT equivalent)","ja":"ZC（2 USDT相当を模擬）"},
+  "OPOC（按 2 USDT 等值模拟）": {"en":"OPOC (simulated 2 USDT equivalent)","ja":"OPOC（2 USDT相当を模擬）"},
+  "咨询行业": {"en":"Industry","ja":"相談する業界"},
+  "例如：跨境电商、智能家居": {"en":"e.g. cross-border commerce, smart home","ja":"例：越境EC、スマートホーム"},
+  "模拟付款并生成调研报告": {"en":"Simulate payment and generate sample report","ja":"模擬決済してレポート例を生成"},
+  "当前不接入实时数据或外部AI；生成内容为通用结构示例，不代表真实市场调研或专业意见。": {"en":"No live data or external AI is connected. The output is a generic outline, not current market research or professional advice.","ja":"リアルタイムデータや外部AIは未接続です。生成内容は一般的な構成例であり、最新の市場調査や専門的助言ではありません。"},
+  "行业概况": {"en":"Industry overview","ja":"業界概要"},
+  "需求与客户": {"en":"Demand and customers","ja":"需要と顧客"},
+  "竞争与渠道": {"en":"Competition and channels","ja":"競争とチャネル"},
+  "风险与下一步": {"en":"Risks and next steps","ja":"リスクと次のステップ"},
+  "返回上一级菜单": {"en":"Back to previous menu","ja":"上位メニューに戻る"},
+  "体检报告解读示例（虚构内容）": {"en":"Sample checkup report interpretation (fictional)","ja":"健康診断レポート解説例（架空の内容）"},
+  "本示例未读取所选文件。实际指标、异常提示与建议需由合格医疗专业人员结合完整病史判断。": {"en":"This sample did not read the selected file. A qualified medical professional must assess real results and advice with the full medical history.","ja":"この例では選択ファイルを読み取っていません。実際の数値や所見、助言は、医療専門家が病歴全体と併せて判断する必要があります。"},
+  "建议：核对报告日期、检查项目与参考范围；如有异常标记或不适，请携带原报告咨询医生。": {"en":"Check the report date, tests and reference ranges. If anything is flagged or you feel unwell, consult a doctor with the original report.","ja":"レポートの日付、検査項目、基準範囲を確認してください。異常表示や不調がある場合は、原本を持参して医師に相談してください。"},
+  "演示模板，不是医学结论、诊断或治疗方案。": {"en":"Demo template, not a medical conclusion, diagnosis or treatment plan.","ja":"デモ用テンプレートです。医学的判断、診断、治療計画ではありません。"},
+  "待补充地区、时间范围和细分赛道后开展调研": {"en":"Research requires a region, time period and sub-sector","ja":"調査には地域、期間、細分業界の指定が必要です"},
+  "建议梳理目标人群、核心场景与购买决策因素": {"en":"Map target users, core use cases and purchase decision factors","ja":"対象顧客、主な利用場面、購入決定要因を整理します"},
+  "建议核对主要参与者、渠道成本及差异化能力": {"en":"Verify key competitors, channel costs and differentiation","ja":"主要企業、チャネルコスト、差別化要因を確認します"},
+  "需使用可核验的最新数据补充，当前结果不含实时市场信息": {"en":"Add verifiable current data; this sample contains no live market information","ja":"検証可能な最新データを追加してください。この例にはリアルタイム市場情報は含まれていません"},
+  "本地生成的结构示例，不是付费调研成果。模拟支付未扣款。": {"en":"Locally generated outline, not a paid research deliverable. No payment was charged.","ja":"ローカル生成の構成例で、有料調査の成果物ではありません。決済は行われていません。"},
+  "（示例）": {"en":" (sample)","ja":"（サンプル）"},
+  "已生成行业调研结构示例；未扣款": {"en":"Sample research outline generated; no charge made","ja":"調査構成例を生成しました。課金はありません"},
+  "模拟支付完成；未扣款，未创建真实订单": {"en":"Demo payment step complete; no charge or real order","ja":"模擬決済ステップ完了。課金・実際の注文はありません"},
+  "选择支付方式和 OPOC 抵扣比例，模拟支付后再选择体检资料。": {"en":"Choose a payment method and OPOC discount percentage, then select a checkup file after demo payment.","ja":"支払方法とOPOC控除率を選び、模擬決済後に健康診断資料を選択します。"},
+  "OPOC 抵扣比例（0–50%）": {"en":"OPOC discount percentage (0–50%)","ja":"OPOC控除率（0～50%）"},
+  "确认模拟支付": {"en":"Confirm demo payment","ja":"模擬決済を確認"},
+  "USDT": {"en":"USDT","ja":"USDT"},
+  "ZC · 按 2 USDT 等值": {"en":"ZC · 2 USDT equivalent","ja":"ZC・2 USDT相当"},
+  "OPOC + USDT 余款": {"en":"OPOC + USDT remainder","ja":"OPOC + USDT残額"},
+  "OPOC + ZC 余款": {"en":"OPOC + ZC remainder","ja":"OPOC + ZC残額"},
+  "模拟支付并打开咨询": {"en":"Simulate payment and open consultation","ja":"模擬決済して相談を開始"},
+  "行业咨询服务": {"en":"Industry consultation","ja":"業界相談サービス"},
+  "模拟付款完成 · 未扣款": {"en":"Demo payment complete · No charge made","ja":"模擬決済完了・課金なし"},
+  "生成调研报告": {"en":"Generate research report","ja":"調査レポートを生成"},
+  "本地结构示例，不含实时数据或外部AI，不构成专业调研意见。": {"en":"Local outline only; no live data or external AI. Not professional research advice.","ja":"ローカルの構成例です。リアルタイムデータや外部AIはなく、専門的な調査意見ではありません。"},
+  "支付方式：": {"en":"Payment method: ","ja":"支払方法："},
+  "单次费用：": {"en":"Per-session fee: ","ja":"1回の料金："},
+  "OPOC抵扣比例": {"en":"OPOC discount","ja":"OPOC控除率"},
+  "余款": {"en":"Remainder","ja":"残額"},
+  "USDT等值": {"en":"USDT equivalent","ja":"USDT相当"},
+  "模拟支付完成；未扣款，未创建真实订单": {"en":"Demo payment complete; no charge or real order","ja":"模擬決済完了。課金・実際の注文はありません"},
+  "OPOC抵扣比例须在0到50%之间": {"en":"OPOC discount must be between 0 and 50%","ja":"OPOC控除率は0～50%にしてください"},
+  "请先选择一个演示文件": {"en":"Select a demo file first","ja":"デモファイルを選択してください"},
   "Telegram账号已开放，其他链接待确认": {
     "en": "Telegram contact available; other links pending",
     "ja": "Telegram連絡先公開中。他のリンクは確認待ちです。"
@@ -311,9 +375,9 @@ export const messages={
     "en": "New eligibility follows spendable balances: provider status pauses below 10,000; whitelist remains from 5,000 and pauses below it. Spending, transfers and refunds trigger reassessment. Legacy eligibility is retained below the new threshold with a 300 base plus personally held spendable OPOC weight. After transfer, the sender loses that legacy eligibility and its future weight.",
     "ja": "新資格は利用可能残高で判定し、10,000未満で事業者を停止、5,000以上ならホワイトリストを維持し、それ未満では新ホワイトリストも停止します。消費・送金・返金で再判定します。旧資格は新基準未満でも300基礎に本人の利用可能OPOCを加えて計算し、譲渡後は元の保有者の旧資格と将来の加重がなくなります。"
   },
-  "登录会员中心，在会员ID旁查看☆历史白名单、◇白名单或◆城市服务商标记。左侧“LP与奖励”中，模拟质押区下方是城市资格与专项奖励。展开计算器，选择旧资格300基础加实际持有量或新资格实际持有量，输入合格小时、其他用户权重和ZC价格查看试算。计算器不授予资格，不代表已到账奖励。": {
-    "en": "Sign in and check the badge beside your member ID: ☆ legacy whitelist, ◇ whitelist or ◆ city provider. Open LP & Rewards and find city eligibility below demo staking. Expand the calculator and choose legacy 300-base-plus-holdings or new actual-holdings weighting, with eligible hours, others’ weight and ZC price. Calculator choices do not grant eligibility or credit rewards.",
-    "ja": "ログイン後、会員ID横の☆旧ホワイトリスト、◇ホワイトリスト、◆都市事業者の表示を確認します。「LP・報酬」のデモステーキング下に都市資格があります。計算欄で旧300基礎＋実保有量または新実保有加重を選び、時間・他会員加重・ZC価格を入力して試算できます。計算だけで資格や報酬は付与されません。"
+  "登录会员中心，在会员ID旁查看☆历史白名单、◇白名单或◆城市服务商标记。左侧“LP与奖励”中，模拟质押区下方是城市白名单资格与专项奖励。展开计算器，选择旧资格300基础加实际持有量或新资格实际持有量，输入合格小时、其他用户权重和ZC价格查看试算。计算器不授予资格，不代表已到账奖励。": {
+    "en": "Sign in and check the badge beside your member ID: ☆ legacy whitelist, ◇ whitelist or ◆ city provider. Open LP & Rewards and find city whitelist eligibility below demo staking. Expand the calculator and choose legacy 300-base-plus-holdings or new actual-holdings weighting, with eligible hours, others’ weight and ZC price. Calculator choices do not grant eligibility or credit rewards.",
+    "ja": "ログイン後、会員ID横の☆旧ホワイトリスト、◇ホワイトリスト、◆都市事業者の表示を確認します。「LP・報酬」のデモステーキング下に都市ホワイトリスト資格があります。計算欄で旧300基礎＋実保有量または新実保有加重を選び、時間・他会員加重・ZC価格を入力して試算できます。計算だけで資格や報酬は付与されません。"
   },
   "旧资格须由历史名单与消费资料核定后绑定会员ID，不重新收取1,500元。新版按5,000可用OPOC门槛判断。当前可在会员中心体验一份虚构历史资格，或通过模拟认购释放体验新门槛；样本只在当前页面有效、刷新清空，不连接真实旧客户。商品上传和真实发币尚未接入。OPOC可用于商城消费，或转给已有已完成且未退款商品订单的伙伴；平台不代收或结算转售价款，OPOC不能兑换USDT或ZC。": {
     "en": "Legacy eligibility must be verified against historical rosters and spending records and linked to a member ID, with no new RMB 1,500 charge. New eligibility uses the 5,000 spendable OPOC threshold. The member center offers one fictitious legacy record per page, or demo subscriptions and vesting for the new tier. Samples reset on reload and do not import real customers. Product uploads and live token distribution are not connected. OPOC can be spent or internally transferred, not redeemed for USDT or ZC.",
@@ -515,9 +579,9 @@ export const messages={
     "en": "Where can I check eligibility and estimated rewards?",
     "ja": "資格と権益の試算はどこで確認できますか？"
   },
-  "先登录会员中心，再从左侧进入“LP与奖励”，查看左列“模拟质押LP”下方的“城市资格与专项奖励”。页面显示当前账号可用OPOC、待释放OPOC及资格状态；展开“资格与奖励模拟计算”，可输入持有量、合格小时、其他用户权重及ZC价格，查看模拟个人当日分配比例、USDT记账额度和ZC枚数。计算器输入不会改变账号余额或授予资格；结果不是已到账或可领取收益，当前没有真实奖励账单。": {
-    "en": "Sign in, open LP & Rewards from the left navigation, and find City eligibility and special rewards below Demo LP staking in the left column. Check your spendable OPOC, unvested points and tier. Expand the eligibility and reward calculator to explore holding amounts, eligible hours, other users’ weight and ZC price. It shows a simulated daily share, USDT accounting amount and ZC quantity. Inputs do not change your account or grant eligibility. Estimates are not credited or claimable rewards; live reward statements are not available.",
-    "ja": "ログイン後、左メニューの「LP・報酬」を開き、左列のデモLPステーキング下にある都市資格・特別報酬を確認します。利用可能OPOC・付与予定分・資格を表示します。資格・報酬計算を展開して、保有量・対象時間・他会員の加重・ZC価格を入力すると、個人の日次割合・USDT記帳額・ZC枚数を試算できます。入力で残高や資格は変わりません。試算は入金済み・受取可能な報酬ではなく、本番明細は未実装です。"
+  "先登录会员中心，再从左侧进入“LP与奖励”，查看“模拟质押LP”下方的“城市白名单资格与专项奖励”。页面显示当前账号可用OPOC、待释放OPOC及资格状态；展开“资格与奖励模拟计算”，可输入持有量、合格小时、其他用户权重及ZC价格，查看模拟个人当日分配比例、USDT记账额度和ZC枚数。计算器输入不会改变账号余额或授予资格；结果不是已到账或可领取收益，当前没有真实奖励账单。": {
+    "en": "Sign in, open LP & Rewards from the left navigation, and find City whitelist eligibility and special rewards below Demo LP staking. Check your spendable OPOC, unvested points and tier. Expand the eligibility and reward calculator to explore holding amounts, eligible hours, other users’ weight and ZC price. It shows a simulated daily share, USDT accounting amount and ZC quantity. Inputs do not change your account or grant eligibility. Estimates are not credited or claimable rewards; live reward statements are not available.",
+    "ja": "ログイン後、左メニューの「LP・報酬」を開き、デモLPステーキング下にある都市ホワイトリスト資格・特別報酬を確認します。利用可能OPOC・付与予定分・資格を表示します。資格・報酬計算を展開して、保有量・対象時間・他会員の加重・ZC価格を入力すると、個人の日次割合・USDT記帳額・ZC枚数を試算できます。入力で残高や資格は変わりません。試算は入金済み・受取可能な報酬ではなく、本番明細は未実装です。"
   },
   "如何获得资格、上传商品或领取城市奖励？": {
     "en": "How do I qualify, upload products or receive city rewards?",
@@ -759,9 +823,9 @@ export const messages={
     "en": "How do I report another issue?",
     "ja": "その他の問題を報告するには？"
   },
-  "公开客服为guiguowang99@gmail.com。也可通过页面左侧官方社群入口联系Telegram「opo去中心化商业平台」、X「opo @guiguo_wan61258」或DeBox「OPO去中心化商城(会员群)」。反馈时记录页面、操作步骤、设备、语言和脱敏截图；不要发送密码或客户资产资料。": {
-    "en": "Public support: guiguowang99@gmail.com. You can also use the official community links in the left sidebar: Telegram “opo去中心化商业平台”, X “opo @guiguo_wan61258”, or DeBox “OPO去中心化商城(会员群)”. Include the page, steps, device, language and a redacted screenshot. Do not send passwords or customer asset records.",
-    "ja": "公開窓口はguiguowang99@gmail.comです。左側の公式コミュニティリンクからTelegram「opo去中心化商业平台」、X「opo @guiguo_wan61258」、DeBox「OPO去中心化商城(会员群)」にも連絡できます。画面・手順・端末・言語と個人情報を隠した画像を添えてください。パスワードや顧客資産資料は送らないでください。"
+  "公开客服为guiguowang99@gmail.com。也可通过页面底部OPO社交群入口联系Telegram「opo去中心化商业平台」、X「opo @guiguo_wan61258」或DeBox「OPO去中心化商城(会员群)」。反馈时记录页面、操作步骤、设备、语言和脱敏截图；不要发送密码或客户资产资料。": {
+    "en": "Public support: guiguowang99@gmail.com. You can also use the OPO social group links at the bottom of the page: Telegram “opo去中心化商业平台”, X “opo @guiguo_wan61258”, or DeBox “OPO去中心化商城(会员群)”. Include the page, steps, device, language and a redacted screenshot. Do not send passwords or customer asset records.",
+    "ja": "公開窓口はguiguowang99@gmail.comです。ページ下部のOPOソーシャルグループからTelegram「opo去中心化商业平台」、X「opo @guiguo_wan61258」、DeBox「OPO去中心化商城(会员群)」にも連絡できます。画面・手順・端末・言語と個人情報を隠した画像を添えてください。パスワードや顧客資産資料は送らないでください。"
   },
   "先了解测试范围": {
     "en": "Understand the demo scope",
@@ -1055,9 +1119,9 @@ export const messages={
     "en": "Daily weight is the sum of spendable OPOC × holding hours across eligible intervals. Intervals below 5,000 count as zero, and service providers do not also receive whitelist weight. Your reward equals your weight divided by all eligible weight, multiplied by that day’s pool; OPOC is not spent. The demo uses 1,095 days, about 45,662.100457 ZC daily. Actual dates, precision and periods with no eligible users remain to be defined.",
     "ja": "日次ウェイトは対象となる各時間帯の「利用可能OPOC×保有時間」の合計です。5,000未満の時間帯は0とし、事業者にホワイトリスト分を重複加算しません。個人ウェイト÷対象者全体のウェイト×当日の報酬枠で計算し、OPOCは消費しません。デモは1,095日、1日約45,662.100457 ZCとします。正式期間、精度、対象者がいない日の処理は未定です。"
   },
-  "城市资格与专项奖励": {
-    "en": "City eligibility & dedicated rewards",
-    "ja": "都市サービス資格・専用報酬"
+  "城市白名单资格与专项奖励": {
+    "en": "City whitelist eligibility & dedicated rewards",
+    "ja": "都市ホワイトリスト資格・専用報酬"
   },
   "OPOC持有资格与专项ZC奖励独立；OPOC本身仍只能商城消费，不兑换ZC或USDT。": {
     "en": "OPOC-based eligibility and dedicated ZC rewards are separate. OPOC itself remains for store purchases only, with no redemption for ZC or USDT.",
@@ -1155,9 +1219,9 @@ export const messages={
     "en": "Advertising",
     "ja": "広告サービス"
   },
-  "官方社群": {
-    "en": "Official community",
-    "ja": "公式コミュニティ"
+  "OPO社交群": {
+    "en": "OPO Social Groups",
+    "ja": "OPOソーシャルグループ"
   },
   "OPO去中心化商业平台": {
     "en": "OPO Decentralized Business Platform",
@@ -3099,5 +3163,6 @@ export const messages={
   "未核验 · 演示": {"en":"Unverified · Demo","ja":"未確認・デモ"},
   "请输入有效的释放天数、链上ZC价格和累计释放数据": {"en":"Enter valid release days, on-chain ZC price and cumulative release data.","ja":"有効なリリース日数、オンチェーンZC価格、累計リリースデータを入力してください。"},
   "链上价格读取失败：PancakeSwap V2 has no ZC/USDT pool for the configured token。当前不使用手填或默认价格，产出试算已停用。": {"en":"On-chain price unavailable: PancakeSwap V2 has no ZC/USDT pool for the configured token. The calculator is disabled; no manual or default price is used.","ja":"オンチェーン価格を取得できません：設定されたトークンのPancakeSwap V2プールがありません。手入力価格や既定価格は使わず、試算を停止します。"},
-  "未读取到有效的BSC ZC/USDT LP价格，不能计算本次ZC产出。": {"en":"No valid BSC ZC/USDT LP price was found, so this ZC release cannot be calculated.","ja":"有効なBSC ZC/USDT LP価格を取得できないため、今回のZC付与額は計算できません。"}
+  "未读取到有效的BSC ZC/USDT LP价格，不能计算本次ZC产出。": {"en":"No valid BSC ZC/USDT LP price was found, so this ZC release cannot be calculated.","ja":"有効なBSC ZC/USDT LP価格を取得できないため、今回のZC付与額は計算できません。"},
+  "返回上级菜单": { "en": "Back to main menu", "ja": "メインメニューに戻る" }
 };
