@@ -5,7 +5,8 @@
 - 完成会员快捷支付工作台页面，沿用此前确认的界面颜色和视觉风格。页面支持中文、日文、英文切换，展示会员积分、商户收款设置、USDT 备用金、积分冻结/退款规则、客户确认与商家代操作授权等模拟流程。
 - 将工作台发布到 OPO 公开测试站，并将商城首页及规则测试页中的“会员快捷支付系统”入口指向工作台。旧的单店试用页面和其资源仍保留。
 - 测试站 Sites 版本 6 已发布，源码提交：`4a015823f5bd2a85f4b107af8a4a8623d237d140`。
-- 跨设备测试链接：<https://opo-eni-simulation.guiguowang09.chatgpt.site/member-pay-workbench?v=20261102-workbench-v6>
+- OPO 商业平台首页测试链接（明天优先打开）：<https://opo-eni-simulation.guiguowang09.chatgpt.site/?v=20261103-member-pay>。从左侧菜单“会员快捷支付系统”进入工作台。
+- 工作台单独直达链接：<https://opo-eni-simulation.guiguowang09.chatgpt.site/member-pay-workbench?v=20261102-workbench-v6>
 - 外网检查：工作台、CSS、JS、商城规则测试页及首页均返回 HTTP 200；规则测试页内的快捷支付菜单入口指向工作台。页面使用模拟状态，没有连接真实钱包、Wise 汇率接口或链上结算。
 - 工作台源文件在 `opo-2.0/frontend/member-pay-workbench.html`、`opo-2.0/frontend/assets/member-pay-workbench.css`、`opo-2.0/frontend/assets/member-pay-workbench.js`。设计说明及实现计划位于 `opo-2.0/docs/superpowers/`。
 
@@ -13,12 +14,12 @@
 
 - 仓库：<https://github.com/zhuanzhuan11/opo>
 - 开发分支：`codex/opo-all-product-payment`
-- 完整工作台实现此前已同步到提交 `f03bb8909274321123626e2cd07ce7f10cf518af`。本次新增的续接说明需要与本次提交一并推送；新聊天请核对远端分支和当前工作区状态。
+- 完整工作台实现及 OPO 商城菜单入口已同步到提交 `f03bb8909274321123626e2cd07ce7f10cf518af`；续接文件已在提交 `6f55e7ead9ac9e0b8438e5d64ff3db2bf73d965f` 推送。本次更新后会再提交并推送续接文件；新聊天请核对远端分支和当前工作区状态。
 - Sites 测试站源仓库与 GitHub 开发仓库彼此独立：Sites 镜像提交 `4a015823f5bd2a85f4b107af8a4a8623d237d140` 只包含部署页面资源与入口更新，不要将其误认为 GitHub 开发分支提交。
 
 ## 下一聊天可直接复制的续接指令
 
-继续 OPO 会员快捷支付项目。先阅读项目根目录 `AGENTS.md`、`opo-2026-11-03-handoff.md`、`opo-2.0/PROJECT_MEMORY.md` 和 `opo-2.0/docs/当前版本交接.md`，然后核对 GitHub 仓库 `zhuanzhuan11/opo` 的 `codex/opo-all-product-payment` 分支最新提交及工作区状态。会员快捷支付工作台已完成并发布到 https://opo-eni-simulation.guiguowang09.chatgpt.site/member-pay-workbench?v=20261102-workbench-v6，Sites 版本 6；已检查工作台 HTML、CSS、JS、首页和商城入口均为 HTTP 200。确认续接说明本次提交已同步后，继续处理我在新聊天中提出的工作。测试站目前是模拟演示，不连接真实钱包、Wise 实时报价或链上结算，不要将其描述为真实资金系统或正式上线。
+继续 OPO 会员快捷支付项目。先阅读项目根目录 `AGENTS.md`、`opo-2026-11-03-handoff.md`、`opo-2.0/PROJECT_MEMORY.md` 和 `opo-2.0/docs/当前版本交接.md`，然后核对 GitHub 仓库 `zhuanzhuan11/opo` 的 `codex/opo-all-product-payment` 分支最新提交及工作区状态。先打开 OPO 商业平台首页测试链接 https://opo-eni-simulation.guiguowang09.chatgpt.site/?v=20261103-member-pay，再从左侧菜单“会员快捷支付系统”进入工作台；也可直接打开 https://opo-eni-simulation.guiguowang09.chatgpt.site/member-pay-workbench?v=20261102-workbench-v6。工作台源码及 OPO 菜单入口已在 GitHub 分支中，源码基准提交为 `f03bb8909274321123626e2cd07ce7f10cf518af`；续接说明曾在 `6f55e7ead9ac9e0b8438e5d64ff3db2bf73d965f` 推送，之后以远端最新提交为准。测试站目前是模拟演示，不连接真实钱包、Wise 实时报价或链上结算，不要将其描述为真实资金系统或正式上线。请基于我在新聊天中提出的要求继续工作。
 
 ## 真实部署前仍需实现
 
