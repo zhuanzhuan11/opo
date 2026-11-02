@@ -11,7 +11,8 @@ const output=resolve(process.argv[2]||resolve(app,'../../output',`OPO2.0-predepl
 const manifest=output+'.manifest.json';
 if(existsSync(output)||existsSync(manifest))throw Error('Output already exists; choose a new destination');
 const files=git('ls-tree','-r','--name-only','HEAD').toString().trim().split('\n');
-const forbidden=files.filter(p=>p!=='frontend/downloads/opo-node-resource-output-v1.1.pdf'&&p!=='frontend/downloads/opo-node-dividends-step-guide-v1.0.pdf'&&/(^|\/)(review|node_modules|\.secrets|backups|test-results)(\/|$)|\.(db|sqlite|pdf|pem|key)$|(^|\/)\.env($|\.)/.test(p)&&!p.endsWith('.env.example')&&!p.endsWith('.env.catalog.example'));
+const publicPdfs=new Set(['opo2-user-manual','opo2-launch-checklist','opo-node-resource-output-v1.1','opo-node-dividends-step-guide-v1.0'].flatMap(stem=>['', '-en', '-ja'].map(locale=>`frontend/downloads/${stem}${locale}.pdf`)));
+const forbidden=files.filter(p=>!publicPdfs.has(p)&&/(^|\/)(review|node_modules|\.secrets|backups|test-results)(\/|$)|\.(db|sqlite|pdf|pem|key)$|(^|\/)\.env($|\.)/.test(p)&&!p.endsWith('.env.example')&&!p.endsWith('.env.catalog.example'));
 if(forbidden.length)throw Error('Review excluded package paths: '+forbidden.join(', '));
 mkdirSync(dirname(output),{recursive:true});
 git('archive','--format=zip','--prefix=opo-release/','-o',output,'HEAD');

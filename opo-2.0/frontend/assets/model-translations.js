@@ -699,13 +699,13 @@ export const messages={
     "en": "OPOC supports shopping and internal ID transfers, with no ZC or USDT conversion.",
     "ja": "OPOCは買い物と会員ID送金に利用でき、ZCやUSDTには交換できません。"
   },
-  "下载中文操作手册PDF": {
-    "en": "Download user manual PDF (Chinese)",
-    "ja": "中国語の操作マニュアルPDF"
+  "下载操作手册PDF": {
+    "en": "Download user manual PDF",
+    "ja": "操作マニュアルPDFをダウンロード"
   },
   "下载上线准备清单PDF": {
-    "en": "Download launch checklist PDF (Chinese)",
-    "ja": "中国語の公開準備チェックリストPDF"
+    "en": "Download launch checklist PDF",
+    "ja": "公開準備チェックリストPDFをダウンロード"
   },
   "这是正式资金商城吗？": {
     "en": "Is this a live money-handling store?",
@@ -3164,5 +3164,7 @@ export const messages={
   "请输入有效的释放天数、链上ZC价格和累计释放数据": {"en":"Enter valid release days, on-chain ZC price and cumulative release data.","ja":"有効なリリース日数、オンチェーンZC価格、累計リリースデータを入力してください。"},
   "链上价格读取失败：PancakeSwap V2 has no ZC/USDT pool for the configured token。当前不使用手填或默认价格，产出试算已停用。": {"en":"On-chain price unavailable: PancakeSwap V2 has no ZC/USDT pool for the configured token. The calculator is disabled; no manual or default price is used.","ja":"オンチェーン価格を取得できません：設定されたトークンのPancakeSwap V2プールがありません。手入力価格や既定価格は使わず、試算を停止します。"},
   "未读取到有效的BSC ZC/USDT LP价格，不能计算本次ZC产出。": {"en":"No valid BSC ZC/USDT LP price was found, so this ZC release cannot be calculated.","ja":"有効なBSC ZC/USDT LP価格を取得できないため、今回のZC付与額は計算できません。"},
-  "返回上级菜单": { "en": "Back to main menu", "ja": "メインメニューに戻る" }
+  "返回上级菜单": { "en": "Back to main menu", "ja": "メインメニューに戻る" },
+  "LP的1亿ZC是OPO自己规划的流动性提供者奖励预算，计划按有效LP份额与参与时间在三年内计算；不是PancakeSwap等DEX或平台直接发放的官方奖励。此页仅模拟，不表示奖励已存入链上合约或可领取；适用LP池、奖励合约和资金是否到位待确认。它与5.49亿ZC流动性配对库存、历史节点专项分开。城市专项则按可用OPOC资格与持有时间分配三年50万USDT等值ZC，初始预留5000万ZC。三个预算分别核算，不重复使用。": {"en":"The 100 million ZC LP budget is OPO's own plan for liquidity provider rewards, calculated over three years by eligible LP shares and participation time; it is not an official reward paid by PancakeSwap or another DEX or platform. This page is a simulation and does not mean rewards are deposited in an on-chain contract or claimable. The applicable LP pool, reward contract and funding status remain to be confirmed. This budget is separate from the 549 million ZC liquidity pairing inventory and the historical node allocation. The city allocation distributes ZC equivalent to 500,000 USDT over three years based on eligible OPOC and holding time, with 50 million ZC initially reserved. The three budgets are accounted for separately and are not reused.","ja":"LP向け1億ZCは、OPOが独自に計画する流動性提供者報酬枠で、有効なLP持分と参加時間に基づき3年間で計算する予定です。PancakeSwapなどのDEXやプラットフォームが直接支給する公式報酬ではありません。このページはシミュレーションであり、報酬がオンチェーンのコントラクトに入金済み、または請求可能であることを示しません。対象LPプール、報酬コントラクト、資金の状況は要確認です。549百万ZCの流動性ペア用在庫および過去のノード枠とは別です。都市枠は利用可能なOPOC資格と保有期間に応じ、3年間で50万USDT相当のZCを配分する計画で、初期枠は5,000万ZCです。3つの予算は別々に管理し、重複利用しません。"},
+  "节点参与属于资源参与。平台正式开通节点登记后，节点本人登录关联会员账号，填写已购买金额和收益地址提交；平台核验后再绑定节点记录。该流程仅登记已购信息，不接受新投资。经核验的投入金额按USDT等值记录，目标产出按投入金额的1.5倍等值计算，ZC枚数按每次分发时批准的参考价格折算。节点产出总量最高为1亿枚，个人加速只提前本人已核定额度、等量扣减未来计划，不增加总量或重复发放。资金紧张时先暂停节点新增产出，价格、核验和执行参数待确认。参与不承诺收益；详细规则见待审核的《节点资源参与与产出说明》。": {"en":"Node participation is resource participation. Once node registration officially opens, the node owner signs in to the linked member account and submits the previously purchased amount and payout address. The platform verifies the information before linking a node record. This process only records existing purchases and accepts no new investment. Verified investment is recorded in USDT equivalent; the target output is calculated at 1.5 times that amount, with the ZC quantity converted using the approved reference price at each distribution. Total node output is capped at 100 million ZC. Personal acceleration only advances that person's verified allocation and deducts the same amount from future scheduled output; it does not increase the total or pay twice. New node output will be paused first if funding is constrained. Pricing, verification and execution parameters remain subject to confirmation. Participation does not promise returns. See the pending review document, ‘Node Resource Participation and Output Guide,’ for details.","ja":"ノード参加はリソース参加です。正式にノード登録が開始された後、本人が関連付け済みの会員アカウントにログインし、購入済み金額と受取アドレスを提出します。プラットフォームが確認した後にノード記録を紐付けます。この手続きは購入済み情報の登録のみで、新規投資は受け付けません。確認済み投資額はUSDT相当で記録し、目標配布額はその1.5倍相当とします。ZC数量は各配布時に承認された参考価格で換算します。ノード配布総量の上限は1億枚です。個別の前倒しは本人の確認済み割当分のみを早め、将来の予定分から同量を差し引きます。総量を増やしたり二重配布したりしません。資金が不足する場合はノードの新規配布を先に停止します。価格、確認、実行条件は要確認です。参加による収益は保証されません。詳細は審査中の「ノード資源参加・配布ガイド」を参照してください。"}
 };
