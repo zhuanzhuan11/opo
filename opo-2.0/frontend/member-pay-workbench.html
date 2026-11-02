@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102d48">
+  <title>OPO · 会员快捷支付工作台</title>
+  <link rel="stylesheet" href="/assets/member-pay-workbench.css">
+  <script type="module" src="/assets/member-pay-workbench.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/model-preview.html"><span class="brand-mark">O</span><span>OPO<small data-t="brandSub"></small></span></a>
+    <div class="top-title"><strong data-t="title"></strong><span data-t="subtitle"></span></div>
+    <label class="language"><span data-t="language"></span><select id="language" aria-label="Language"><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="en">English</option></select></label>
+  </header>
+  <div class="demo-banner"><b data-t="demoBadge"></b><span data-t="demoWarning"></span></div>
+  <nav id="nav" class="nav" aria-label="Quick pay navigation"></nav>
+  <main id="app" tabindex="-1"></main>
+  <footer><span>OPO · <span data-t="footer"></span></span><a href="/model-preview.html" data-t="backMall"></a></footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
