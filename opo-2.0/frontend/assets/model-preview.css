@@ -191,3 +191,21 @@ th{letter-spacing:.025em}
 @media(max-width:650px){.top .nav{overflow:visible;gap:9px;min-height:42px}.nav .global-back{margin-right:16px;padding:5px 7px;font-size:11px}.nav .global-language-switch summary{padding:5px 7px;font-size:11px}.nav a{font-size:12px}}
 .ecosystem-return{display:none;margin-left:auto;padding:7px 12px;border:1px solid #dce0e7;border-radius:8px;background:#fff;color:#4c5869;font-size:12px;white-space:nowrap}.layout.secondary-view+.ecosystem .ecosystem-return{display:inline-flex}.ecosystem-return:hover{border-color:#f4c4c1;color:var(--red)}
 .service-panel{max-width:100%;}.service-panel>label,.service-panel form>label{max-width:720px;margin:14px 0}.service-panel select,.service-panel form input{display:block;width:100%;margin-top:7px}.service-panel input[type=file]{padding:9px}.service-followup{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:10px;background:#fbfcfd}.privacy-note{padding:10px;border-radius:8px;background:#fff5ed;color:#855a35}.service-result{margin-top:14px;padding:16px;border:1px solid var(--line);border-radius:10px;background:#f8fafc}.service-result h3{margin:0 0 12px}.service-result p{font-size:13px;line-height:1.8}.service-result .line{align-items:flex-start}.service-panel>button{min-width:200px}
+
+/* Mobile storefront navigation: keep the original OPO red-and-white look while making all links touch-scrollable. */
+@media(max-width:650px){
+ .top{grid-template-columns:minmax(0,1fr);gap:10px;padding:12px 12px 0;min-width:0}
+ .top>.logo,.top>.lookup,.top>.trust,.top>.nav{grid-column:1;min-width:0;width:100%}
+ .top>.lookup input{font-size:16px;padding:9px 11px}
+ .top>.trust{justify-content:flex-start;flex-wrap:wrap;gap:5px;font-size:13px}
+ .top>.trust .network{margin:0 0 0 auto}
+ .top>.nav{overflow-x:auto!important;overflow-y:hidden;white-space:nowrap;flex-wrap:nowrap;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;gap:16px}
+ .top>.nav>*{flex:0 0 auto}
+ .layout:not(.secondary-view)>.sidebar{display:flex;flex-direction:column;gap:6px;position:relative;min-width:0;overflow:hidden;padding:10px;border:1px solid var(--line);border-top:3px solid var(--red)}
+ .sidebar>.opo-about-entry{flex:0 0 auto;width:max-content;max-width:100%;padding:7px 10px;border:1px solid #f3cfcc;border-radius:8px;background:#fff;color:var(--red);font-weight:700}
+ .sidebar>.sidecats,.sidebar>.sideextra{display:flex;flex-wrap:nowrap;gap:7px;width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 0 7px;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+ .sidebar .sidecats button,.sidebar .sideextra button,.sidebar .sideextra>a{display:block;flex:0 0 auto;width:max-content;max-width:85vw;white-space:nowrap;padding:8px 10px;border:1px solid var(--line);border-radius:20px;background:#fff;text-decoration:none;font-size:12px}
+ .sidebar>.divider,.sidebar>.small{display:none}
+ .layout.secondary-view>.sidebar{display:none}
+}
+.admin-entry[hidden]{display:none!important}
