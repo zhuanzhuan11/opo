@@ -1,20 +1,30 @@
-# OPO 开发续接说明（2026-11-02，供 2026-11-03 新聊天使用）
+# OPO 开发续接说明（2026-11-03，供新聊天使用）
 
 ## 今日完成
 
-- 修复 OPO 模拟商城切换界面语言后，FAQ、帮助等子菜单的 PDF 下载仍指向中文文件的问题。
-- 中、英文、日文 PDF 均提供独立文件；下载入口随界面当前语言切换。修复涉及下载链接映射、缓存版本号、打包脚本和本地预览服务器允许文件清单。
-- 新增英文、日文版本共 8 份 PDF（4 类文档各两种语言），并保留中文文件。
-- 已发布 Sites 版本 5，公开测试站：<https://opo-eni-simulation.guiguowang09.chatgpt.site/?v=20261102-pdf-lang-fix#faq>
-- 线上检查首页、修复后的 JavaScript 及 8 个英文/日文 PDF 均返回 HTTP 200；浏览器确认切换到英文后 FAQ 文案也同步变为英文。发布前 `npm test` 为 90/90 通过，`npm run check` 成功，`git diff --check` 无空白错误。英文和日文 PDF 页面已检查。
-- 注意：本项目站点是模拟演示，不接收真实付款，不执行真实链上操作。
+- 完成会员快捷支付工作台页面，沿用此前确认的界面颜色和视觉风格。页面支持中文、日文、英文切换，展示会员积分、商户收款设置、USDT 备用金、积分冻结/退款规则、客户确认与商家代操作授权等模拟流程。
+- 将工作台发布到 OPO 公开测试站，并将商城首页及规则测试页中的“会员快捷支付系统”入口指向工作台。旧的单店试用页面和其资源仍保留。
+- 测试站 Sites 版本 6 已发布，源码提交：`4a015823f5bd2a85f4b107af8a4a8623d237d140`。
+- 跨设备测试链接：<https://opo-eni-simulation.guiguowang09.chatgpt.site/member-pay-workbench?v=20261102-workbench-v6>
+- 外网检查：工作台、CSS、JS、商城规则测试页及首页均返回 HTTP 200；规则测试页内的快捷支付菜单入口指向工作台。页面使用模拟状态，没有连接真实钱包、Wise 汇率接口或链上结算。
+- 工作台源文件在 `opo-2.0/frontend/member-pay-workbench.html`、`opo-2.0/frontend/assets/member-pay-workbench.css`、`opo-2.0/frontend/assets/member-pay-workbench.js`。设计说明及实现计划位于 `opo-2.0/docs/superpowers/`。
 
-## 今日 GitHub 同步
+## GitHub 同步状态
 
 - 仓库：<https://github.com/zhuanzhuan11/opo>
-- 分支：`codex/opo-all-product-payment`
-- 本次修复文件和本续接说明待提交并推送；新聊天请先检查 `git status`、最新提交及远端分支，确认实际同步状态后再继续。
+- 开发分支：`codex/opo-all-product-payment`
+- 完整工作台实现此前已同步到提交 `f03bb8909274321123626e2cd07ce7f10cf518af`。本次新增的续接说明需要与本次提交一并推送；新聊天请核对远端分支和当前工作区状态。
+- Sites 测试站源仓库与 GitHub 开发仓库彼此独立：Sites 镜像提交 `4a015823f5bd2a85f4b107af8a4a8623d237d140` 只包含部署页面资源与入口更新，不要将其误认为 GitHub 开发分支提交。
 
-## 可直接复制到新聊天的续接指令
+## 下一聊天可直接复制的续接指令
 
-继续 OPO 项目。先阅读项目根目录的 `AGENTS.md`、`opo-2026-11-03-handoff.md`，以及 `opo-2.0/PROJECT_MEMORY.md`、`opo-2.0/docs/当前版本交接.md`，按最新记录恢复上下文。今天已修复模拟商城切换语言后子菜单 PDF 仍打开中文的问题：FAQ/帮助下载链接会根据当前语言切换，中英日文件分别提供。Sites 版本 5 已发布，测试站为 https://opo-eni-simulation.guiguowang09.chatgpt.site/?v=20261102-pdf-lang-fix#faq。修复前 90 项测试通过，检查命令成功，线上首页、JS 和 8 份英日 PDF 均返回 HTTP 200。先核实 GitHub 分支 `codex/opo-all-product-payment` 的提交与工作区状态，完成本文件记录的代码同步（如果此前会话尚未推送）。随后告诉我同步结果，并继续处理我指定的 OPO 工作。该网站仅为模拟演示，真实资金和链上操作保持关闭。
+继续 OPO 会员快捷支付项目。先阅读项目根目录 `AGENTS.md`、`opo-2026-11-03-handoff.md`、`opo-2.0/PROJECT_MEMORY.md` 和 `opo-2.0/docs/当前版本交接.md`，然后核对 GitHub 仓库 `zhuanzhuan11/opo` 的 `codex/opo-all-product-payment` 分支最新提交及工作区状态。会员快捷支付工作台已完成并发布到 https://opo-eni-simulation.guiguowang09.chatgpt.site/member-pay-workbench?v=20261102-workbench-v6，Sites 版本 6；已检查工作台 HTML、CSS、JS、首页和商城入口均为 HTTP 200。确认续接说明本次提交已同步后，继续处理我在新聊天中提出的工作。测试站目前是模拟演示，不连接真实钱包、Wise 实时报价或链上结算，不要将其描述为真实资金系统或正式上线。
+
+## 真实部署前仍需实现
+
+- 商户钱包地址登记、BSC 钱包余额读取及授权支付的安全流程。
+- Wise 汇率的服务端接入、汇率时间戳与失败处理。
+- USDT 备用金的充值、冻结、退款、提现和完整对账；商户储备金规则及退出退款流程。
+- 会员积分的跨商户账本、消费扣减、退款冲销与客户确认记录。
+- 服务端身份验证、授权、反重放、幂等、审计和异常处理。
+- 法律、支付及地区运营要求审查；在真实资金启用前完成安全审计和受控上线验证。
