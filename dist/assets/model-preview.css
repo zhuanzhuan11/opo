@@ -208,3 +208,8 @@ th{letter-spacing:.025em}
  .layout.secondary-view>.sidebar{display:none}
 }
 .admin-entry[hidden]{display:none!important}
+.review .global-language-switch{flex:0 0 auto;margin-left:auto}
+.review .global-language-switch .langs{display:flex;align-items:center;gap:6px;margin:0}
+.review .global-language-switch button{min-width:40px;min-height:36px;padding:6px 9px;border:1px solid #d7c9ad;border-radius:7px;background:#fff;color:#684b1d;text-decoration:none;font-size:13px;font-weight:700;line-height:1}
+.review .global-language-switch button.active{border-color:#a52622;background:#a52622;color:#fff}
+@media(max-width:650px){.review{gap:6px;padding:6px 10px}.review>span:first-child{flex:1 1 100%;line-height:1.4}.review>span:nth-child(2){flex:1 1 auto}.review .global-language-switch{margin-left:auto}.review .global-language-switch button{min-width:42px;min-height:40px;padding:7px 10px}}
